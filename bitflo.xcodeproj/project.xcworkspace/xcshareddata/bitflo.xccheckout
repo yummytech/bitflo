@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>2CA8DE66-50AE-4669-B698-9C16B6CDB4A6</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>87EF43E8790DC14DE8A33213D0316903F8859AE5</key>
+		<string>https://github.com/flomio/bitflo.git</string>
+	</dict>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>87EF43E8790DC14DE8A33213D0316903F8859AE5</key>
+		<string>bitflo/</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/flomio/bitflo.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>87EF43E8790DC14DE8A33213D0316903F8859AE5</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>87EF43E8790DC14DE8A33213D0316903F8859AE5</string>
+			<key>IDESourceControlWCCName</key>
+			<string>bitflo</string>
+		</dict>
+	</array>
+</dict>
+</plist>

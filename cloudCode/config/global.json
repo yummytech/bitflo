@@ -1,0 +1,11 @@
+{
+    "applications": {
+        "_default": {
+            "link": "bitflo"
+        }, 
+        "bitflo": {
+            "applicationId": "yAlCwfOGqCttOdLeme3rP1ah98B3pF34G6XOgDnL", 
+            "masterKey": "5R9qd0QdwfHI57TwjSKDgAS0nwpF6KyEAzWPUL11"
+        }
+    }
+}
