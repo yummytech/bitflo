@@ -11,7 +11,6 @@
 		451CBD2F1A61B54800D22FA6 /* avioncito.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD0F1A61B54800D22FA6 /* avioncito.png */; };
 		451CBD301A61B54800D22FA6 /* BoxWithBlueBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD101A61B54800D22FA6 /* BoxWithBlueBackground.png */; };
 		451CBD311A61B54800D22FA6 /* BoxWithGrayBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD111A61B54800D22FA6 /* BoxWithGrayBackground.png */; };
-		451CBD321A61B54800D22FA6 /* BoxWithPlusMinus983x167.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD121A61B54800D22FA6 /* BoxWithPlusMinus983x167.png */; };
 		451CBD331A61B54800D22FA6 /* BoxWithWhiteBackground983x167.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD131A61B54800D22FA6 /* BoxWithWhiteBackground983x167.png */; };
 		451CBD341A61B54800D22FA6 /* Contactless156x92.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD141A61B54800D22FA6 /* Contactless156x92.png */; };
 		451CBD351A61B54800D22FA6 /* dialoguito.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD151A61B54800D22FA6 /* dialoguito.png */; };
@@ -21,7 +20,6 @@
 		451CBD401A61B54800D22FA6 /* key.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD201A61B54800D22FA6 /* key.png */; };
 		451CBD411A61B54800D22FA6 /* Keypad.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD211A61B54800D22FA6 /* Keypad.png */; };
 		451CBD421A61B54800D22FA6 /* KeypadButton378x241.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD221A61B54800D22FA6 /* KeypadButton378x241.png */; };
-		451CBD431A61B54800D22FA6 /* KeypadGridWithEditButton1114x1175.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD231A61B54800D22FA6 /* KeypadGridWithEditButton1114x1175.png */; };
 		451CBD441A61B54800D22FA6 /* long_key.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD241A61B54800D22FA6 /* long_key.png */; };
 		451CBD451A61B54800D22FA6 /* no.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD251A61B54800D22FA6 /* no.png */; };
 		451CBD471A61B54800D22FA6 /* Settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD271A61B54800D22FA6 /* Settings.png */; };
@@ -66,6 +64,7 @@
 		EF568AC21A623B90006B2B73 /* PinKey.png in Resources */ = {isa = PBXBuildFile; fileRef = EF568ABF1A623B90006B2B73 /* PinKey.png */; };
 		EF568AC31A623B90006B2B73 /* PinMissing.png in Resources */ = {isa = PBXBuildFile; fileRef = EF568AC01A623B90006B2B73 /* PinMissing.png */; };
 		EF568AC41A623B90006B2B73 /* PinPresent.png in Resources */ = {isa = PBXBuildFile; fileRef = EF568AC11A623B90006B2B73 /* PinPresent.png */; };
+		EF568AC61A6246CC006B2B73 /* BitFloLaunchArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = EF568AC51A6246CC006B2B73 /* BitFloLaunchArtwork.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,7 +95,6 @@
 		451CBD0F1A61B54800D22FA6 /* avioncito.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avioncito.png; sourceTree = "<group>"; };
 		451CBD101A61B54800D22FA6 /* BoxWithBlueBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BoxWithBlueBackground.png; sourceTree = "<group>"; };
 		451CBD111A61B54800D22FA6 /* BoxWithGrayBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BoxWithGrayBackground.png; sourceTree = "<group>"; };
-		451CBD121A61B54800D22FA6 /* BoxWithPlusMinus983x167.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BoxWithPlusMinus983x167.png; sourceTree = "<group>"; };
 		451CBD131A61B54800D22FA6 /* BoxWithWhiteBackground983x167.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BoxWithWhiteBackground983x167.png; sourceTree = "<group>"; };
 		451CBD141A61B54800D22FA6 /* Contactless156x92.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Contactless156x92.png; sourceTree = "<group>"; };
 		451CBD151A61B54800D22FA6 /* dialoguito.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dialoguito.png; sourceTree = "<group>"; };
@@ -106,7 +104,6 @@
 		451CBD201A61B54800D22FA6 /* key.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = key.png; sourceTree = "<group>"; };
 		451CBD211A61B54800D22FA6 /* Keypad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Keypad.png; sourceTree = "<group>"; };
 		451CBD221A61B54800D22FA6 /* KeypadButton378x241.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KeypadButton378x241.png; sourceTree = "<group>"; };
-		451CBD231A61B54800D22FA6 /* KeypadGridWithEditButton1114x1175.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KeypadGridWithEditButton1114x1175.png; sourceTree = "<group>"; };
 		451CBD241A61B54800D22FA6 /* long_key.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = long_key.png; sourceTree = "<group>"; };
 		451CBD251A61B54800D22FA6 /* no.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = no.png; sourceTree = "<group>"; };
 		451CBD271A61B54800D22FA6 /* Settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settings.png; sourceTree = "<group>"; };
@@ -178,6 +175,7 @@
 		EF568ABF1A623B90006B2B73 /* PinKey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PinKey.png; sourceTree = "<group>"; };
 		EF568AC01A623B90006B2B73 /* PinMissing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PinMissing.png; sourceTree = "<group>"; };
 		EF568AC11A623B90006B2B73 /* PinPresent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PinPresent.png; sourceTree = "<group>"; };
+		EF568AC51A6246CC006B2B73 /* BitFloLaunchArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BitFloLaunchArtwork.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +213,7 @@
 		451CBD0D1A61B53E00D22FA6 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				EF568AC51A6246CC006B2B73 /* BitFloLaunchArtwork.png */,
 				EF568ABF1A623B90006B2B73 /* PinKey.png */,
 				EF568AC01A623B90006B2B73 /* PinMissing.png */,
 				EF568AC11A623B90006B2B73 /* PinPresent.png */,
@@ -223,7 +222,6 @@
 				451CBD0F1A61B54800D22FA6 /* avioncito.png */,
 				451CBD101A61B54800D22FA6 /* BoxWithBlueBackground.png */,
 				451CBD111A61B54800D22FA6 /* BoxWithGrayBackground.png */,
-				451CBD121A61B54800D22FA6 /* BoxWithPlusMinus983x167.png */,
 				451CBD131A61B54800D22FA6 /* BoxWithWhiteBackground983x167.png */,
 				451CBD141A61B54800D22FA6 /* Contactless156x92.png */,
 				451CBD151A61B54800D22FA6 /* dialoguito.png */,
@@ -233,7 +231,6 @@
 				451CBD201A61B54800D22FA6 /* key.png */,
 				451CBD211A61B54800D22FA6 /* Keypad.png */,
 				451CBD221A61B54800D22FA6 /* KeypadButton378x241.png */,
-				451CBD231A61B54800D22FA6 /* KeypadGridWithEditButton1114x1175.png */,
 				451CBD241A61B54800D22FA6 /* long_key.png */,
 				451CBD251A61B54800D22FA6 /* no.png */,
 				451CBD271A61B54800D22FA6 /* Settings.png */,
@@ -460,8 +457,8 @@
 				451CBD481A61B54800D22FA6 /* thanks.png in Resources */,
 				451CBD351A61B54800D22FA6 /* dialoguito.png in Resources */,
 				45E2F5E61A61878600223EC8 /* Main.storyboard in Resources */,
+				EF568AC61A6246CC006B2B73 /* BitFloLaunchArtwork.png in Resources */,
 				451CBD441A61B54800D22FA6 /* long_key.png in Resources */,
-				451CBD431A61B54800D22FA6 /* KeypadGridWithEditButton1114x1175.png in Resources */,
 				EF568AC31A623B90006B2B73 /* PinMissing.png in Resources */,
 				451CBD3F1A61B54800D22FA6 /* ItemsPagedBox.png in Resources */,
 				451CBD451A61B54800D22FA6 /* no.png in Resources */,
@@ -472,7 +469,6 @@
 				45E2F5EB1A61878600223EC8 /* LaunchScreen.xib in Resources */,
 				451CBD2E1A61B54800D22FA6 /* ArrowGray.png in Resources */,
 				45E2F5E81A61878600223EC8 /* Images.xcassets in Resources */,
-				451CBD321A61B54800D22FA6 /* BoxWithPlusMinus983x167.png in Resources */,
 				451CBD331A61B54800D22FA6 /* BoxWithWhiteBackground983x167.png in Resources */,
 				451CBD751A61C99F00D22FA6 /* scan_sound.mp3 in Resources */,
 				451CBD301A61B54800D22FA6 /* BoxWithBlueBackground.png in Resources */,
@@ -639,6 +635,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/bitflo",
@@ -663,6 +660,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/bitflo",
