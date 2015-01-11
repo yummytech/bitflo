@@ -11,9 +11,10 @@
 #import <AVFoundation/AVFoundation.h>
 #import <Parse/Parse.h>
 #import "AudioJack.h"
+#import "SalesViewController.h"
 
 
-@interface ContactlessViewController : UIViewController <ACRAudioJackReaderDelegate, AVAudioPlayerDelegate>{
+@interface ContactlessViewController : UIViewController <ACRAudioJackReaderDelegate, AVAudioPlayerDelegate, SalesDelegate>{
     
     CGPoint startPosition;
     
@@ -44,17 +45,26 @@
 @property (nonatomic, strong) IBOutlet UIButton *eightButton;
 @property (nonatomic, strong) IBOutlet UIButton *nineButton;
 @property (nonatomic, strong) IBOutlet UIButton *zeroButton;
+@property (nonatomic, strong) IBOutlet UIButton *deleteButton;
 
 @property (nonatomic, strong) IBOutlet UIImageView *firstNumber;
 @property (nonatomic, strong) IBOutlet UIImageView *secondNumber;
 @property (nonatomic, strong) IBOutlet UIImageView *thirdNumber;
 @property (nonatomic, strong) IBOutlet UIImageView *fourthNumber;
 
+@property (nonatomic, strong) IBOutlet UILabel *enterPasscodeLabel;
+
+@property (nonatomic, strong) NSMutableArray *salesArray;
+@property (nonatomic, retain) NSNumber* previous;
+
+@property (nonatomic, strong) IBOutlet UIButton *salesButton;
+
+@property (nonatomic, strong) IBOutlet UILabel *amountLabel;
+
 
 - (void)resetReader;
 - (void)setSleep;
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)audioPlayer successfully:(BOOL)flag;
-- (BOOL)getNfcData;
-- (BOOL)putNfcData:(NSData *) data;
-- (void)readCommand;
+
+
 @end

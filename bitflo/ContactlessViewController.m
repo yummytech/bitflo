@@ -12,8 +12,8 @@
 #import "AJDHex.h"  // TODO: this file shouldn't be needed as functions are duplicated here.
 #import "AppDelegate.h"
 
-
 #define FLOBLE_UUID @"6e400001-b5a3-f393-e0a9-e50e24dcca9e"
+#define FLOMIO_ACCOUNT @"5492cb448d10dc6b8b00009d"
 
 @interface ContactlessViewController ()
 
@@ -26,11 +26,15 @@
     int _swipeCount;
     
     NSCondition *_responseCondition;
+<<<<<<< .merge_file_T40Iou
     NSCondition *_picWaitResponseCondition;
     NSCondition * _picWaitAuthenticateResponseCondition;
     NSCondition * _picWaitReadResponseCondition;
     NSCondition * _picWaitWriteResponseCondition;
 
+=======
+    
+>>>>>>> .merge_file_ObUBeh
     BOOL _firmwareVersionReady;
     NSString *_firmwareVersion;
     
@@ -76,6 +80,7 @@
     NSData *_piccRfConfig;
     
     UIAlertView *_trackDataAlert;
+<<<<<<< .merge_file_T40Iou
     NSOperationQueue * picQueue;
     NSBlockOperation * picRead;
     NSBlockOperation * picResponse;
@@ -86,10 +91,27 @@
     BOOL tagDataFlag;
 
 
+=======
+>>>>>>> .merge_file_ObUBeh
 }
 
-@synthesize logView, oneButton, twoButton, threeButton, fourButton, fiveButton, sixButton, sevenButton, eightButton, nineButton, zeroButton;
-@synthesize firstNumber, secondNumber, thirdNumber, fourthNumber;
+@synthesize logView, oneButton, twoButton, threeButton, fourButton, fiveButton, sixButton, sevenButton, eightButton, nineButton, zeroButton, deleteButton;
+@synthesize firstNumber, secondNumber, thirdNumber, fourthNumber, salesButton;
+@synthesize salesArray, previous, amountLabel, enterPasscodeLabel;
+
+-(IBAction)openSales:(id)sender {
+    
+    SalesViewController *svc = [self.storyboard instantiateViewControllerWithIdentifier:@"sales"];
+    svc.salesArray = self.salesArray;
+    
+    svc.delegate = self;
+    
+    svc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [self presentViewController:svc animated:YES completion:nil];
+    
+    svc.totalLabel.text = [NSString stringWithFormat:@"Total $%.2f",[self.previous floatValue]];
+    
+}
 
 - (IBAction)passcode:(id)sender {
     
@@ -97,8 +119,15 @@
     
     NSInteger selectedButton = [senderButton tag];
     
-    passcode = [NSString stringWithFormat:@"%@%li",passcode,(long)selectedButton];
-    NSLog(@"passcode:%@",passcode);
+    if (selectedButton < 11) {
+        passcode = [NSString stringWithFormat:@"%@%li",passcode,(long)selectedButton];
+        NSLog(@"passcode:%@",passcode);
+    } else {
+        
+        if ([passcode length] > 0) {
+            passcode = [passcode substringToIndex:[passcode length] - 1];
+        }
+    }
     
     if ([passcode length] > 3) {
         if ([storedPasscode isEqualToString:passcode]) {
@@ -201,6 +230,13 @@
         thirdNumber.image = [UIImage imageNamed:@"PinMissing.png"];
         fourthNumber.image = [UIImage imageNamed:@"PinMissing.png"];
         
+    } else if ([passcode length] == 0) {
+        
+        firstNumber.image = [UIImage imageNamed:@"PinMissing.png"];
+        secondNumber.image = [UIImage imageNamed:@"PinMissing.png"];
+        thirdNumber.image = [UIImage imageNamed:@"PinMissing.png"];
+        fourthNumber.image = [UIImage imageNamed:@"PinMissing.png"];
+        
     }
     
 }
@@ -213,21 +249,24 @@
         
         blurEffectView.alpha = 0.8;
         blurEffectView.frame = self.view.bounds;
-        oneButton.frame = CGRectMake(oneButton.frame.origin.x + (self.view.frame.size.width * 0.5), oneButton.frame.origin.y, oneButton.frame.size.width, oneButton.frame.size.height);
-        twoButton.frame = CGRectMake(twoButton.frame.origin.x + (self.view.frame.size.width * 0.5), twoButton.frame.origin.y, twoButton.frame.size.width, twoButton.frame.size.height);
-        threeButton.frame = CGRectMake(threeButton.frame.origin.x + (self.view.frame.size.width * 0.5), threeButton.frame.origin.y, threeButton.frame.size.width, threeButton.frame.size.height);
-        fourButton.frame = CGRectMake(fourButton.frame.origin.x + (self.view.frame.size.width * 0.5), fourButton.frame.origin.y, fourButton.frame.size.width, fourButton.frame.size.height);
-        fiveButton.frame = CGRectMake(fiveButton.frame.origin.x + (self.view.frame.size.width * 0.5), fiveButton.frame.origin.y, fiveButton.frame.size.width, fiveButton.frame.size.height);
-        sixButton.frame = CGRectMake(sixButton.frame.origin.x + (self.view.frame.size.width * 0.5), sixButton.frame.origin.y, sixButton.frame.size.width, sixButton.frame.size.height);
-        sevenButton.frame = CGRectMake(sevenButton.frame.origin.x + (self.view.frame.size.width * 0.5), sevenButton.frame.origin.y, sevenButton.frame.size.width, sevenButton.frame.size.height);
-        eightButton.frame = CGRectMake(eightButton.frame.origin.x + (self.view.frame.size.width * 0.5), eightButton.frame.origin.y, eightButton.frame.size.width, eightButton.frame.size.height);
-        nineButton.frame = CGRectMake(nineButton.frame.origin.x + (self.view.frame.size.width * 0.5), nineButton.frame.origin.y, nineButton.frame.size.width, nineButton.frame.size.height);
-        zeroButton.frame = CGRectMake(zeroButton.frame.origin.x + (self.view.frame.size.width * 0.5), zeroButton.frame.origin.y, zeroButton.frame.size.width, zeroButton.frame.size.height);
+        oneButton.frame = CGRectMake(oneButton.frame.origin.x + (self.view.frame.size.width * 1.5), oneButton.frame.origin.y, oneButton.frame.size.width, oneButton.frame.size.height);
+        twoButton.frame = CGRectMake(twoButton.frame.origin.x + (self.view.frame.size.width * 1.5), twoButton.frame.origin.y, twoButton.frame.size.width, twoButton.frame.size.height);
+        threeButton.frame = CGRectMake(threeButton.frame.origin.x + (self.view.frame.size.width * 1.5), threeButton.frame.origin.y, threeButton.frame.size.width, threeButton.frame.size.height);
+        fourButton.frame = CGRectMake(fourButton.frame.origin.x + (self.view.frame.size.width * 1.5), fourButton.frame.origin.y, fourButton.frame.size.width, fourButton.frame.size.height);
+        fiveButton.frame = CGRectMake(fiveButton.frame.origin.x + (self.view.frame.size.width * 1.5), fiveButton.frame.origin.y, fiveButton.frame.size.width, fiveButton.frame.size.height);
+        sixButton.frame = CGRectMake(sixButton.frame.origin.x + (self.view.frame.size.width * 1.5), sixButton.frame.origin.y, sixButton.frame.size.width, sixButton.frame.size.height);
+        sevenButton.frame = CGRectMake(sevenButton.frame.origin.x + (self.view.frame.size.width * 1.5), sevenButton.frame.origin.y, sevenButton.frame.size.width, sevenButton.frame.size.height);
+        eightButton.frame = CGRectMake(eightButton.frame.origin.x + (self.view.frame.size.width * 1.5), eightButton.frame.origin.y, eightButton.frame.size.width, eightButton.frame.size.height);
+        nineButton.frame = CGRectMake(nineButton.frame.origin.x + (self.view.frame.size.width * 1.5), nineButton.frame.origin.y, nineButton.frame.size.width, nineButton.frame.size.height);
+        zeroButton.frame = CGRectMake(zeroButton.frame.origin.x + (self.view.frame.size.width * 1.5), zeroButton.frame.origin.y, zeroButton.frame.size.width, zeroButton.frame.size.height);
+        deleteButton.frame = CGRectMake(deleteButton.frame.origin.x + (self.view.frame.size.width * 1.5), deleteButton.frame.origin.y, deleteButton.frame.size.width, deleteButton.frame.size.height);
         
-        firstNumber.frame = CGRectMake(firstNumber.frame.origin.x + (self.view.frame.size.width * 0.5), firstNumber.frame.origin.y, firstNumber.frame.size.width, firstNumber.frame.size.height);
-        secondNumber.frame = CGRectMake(secondNumber.frame.origin.x + (self.view.frame.size.width * 0.5), secondNumber.frame.origin.y, secondNumber.frame.size.width, secondNumber.frame.size.height);
-        thirdNumber.frame = CGRectMake(thirdNumber.frame.origin.x + (self.view.frame.size.width * 0.5), thirdNumber.frame.origin.y, thirdNumber.frame.size.width, thirdNumber.frame.size.height);
-        fourthNumber.frame = CGRectMake(fourthNumber.frame.origin.x + (self.view.frame.size.width * 0.5), fourthNumber.frame.origin.y, fourthNumber.frame.size.width, fourthNumber.frame.size.height);
+        enterPasscodeLabel.frame = CGRectMake(enterPasscodeLabel.frame.origin.x + (self.view.frame.size.width * 1.5), enterPasscodeLabel.frame.origin.y, enterPasscodeLabel.frame.size.width, enterPasscodeLabel.frame.size.height);
+        
+        firstNumber.frame = CGRectMake(firstNumber.frame.origin.x + (self.view.frame.size.width * 1.5), firstNumber.frame.origin.y, firstNumber.frame.size.width, firstNumber.frame.size.height);
+        secondNumber.frame = CGRectMake(secondNumber.frame.origin.x + (self.view.frame.size.width * 1.5), secondNumber.frame.origin.y, secondNumber.frame.size.width, secondNumber.frame.size.height);
+        thirdNumber.frame = CGRectMake(thirdNumber.frame.origin.x + (self.view.frame.size.width * 1.5), thirdNumber.frame.origin.y, thirdNumber.frame.size.width, thirdNumber.frame.size.height);
+        fourthNumber.frame = CGRectMake(fourthNumber.frame.origin.x + (self.view.frame.size.width * 1.5), fourthNumber.frame.origin.y, fourthNumber.frame.size.width, fourthNumber.frame.size.height);
         
         
             
@@ -245,34 +284,36 @@
         
         blurEffectView.alpha = 0.0;
         blurEffectView.frame = self.view.bounds;
-        oneButton.frame = CGRectMake(oneButton.frame.origin.x - (self.view.frame.size.width * 1), oneButton.frame.origin.y, oneButton.frame.size.width, oneButton.frame.size.height);
-        twoButton.frame = CGRectMake(twoButton.frame.origin.x - (self.view.frame.size.width * 1), twoButton.frame.origin.y, twoButton.frame.size.width, twoButton.frame.size.height);
-        threeButton.frame = CGRectMake(threeButton.frame.origin.x - (self.view.frame.size.width * 1), threeButton.frame.origin.y, threeButton.frame.size.width, threeButton.frame.size.height);
-        fourButton.frame = CGRectMake(fourButton.frame.origin.x - (self.view.frame.size.width * 1), fourButton.frame.origin.y, fourButton.frame.size.width, fourButton.frame.size.height);
-        fiveButton.frame = CGRectMake(fiveButton.frame.origin.x - (self.view.frame.size.width * 1), fiveButton.frame.origin.y, fiveButton.frame.size.width, fiveButton.frame.size.height);
-        sixButton.frame = CGRectMake(sixButton.frame.origin.x - (self.view.frame.size.width * 1), sixButton.frame.origin.y, sixButton.frame.size.width, sixButton.frame.size.height);
-        sevenButton.frame = CGRectMake(sevenButton.frame.origin.x - (self.view.frame.size.width * 1), sevenButton.frame.origin.y, sevenButton.frame.size.width, sevenButton.frame.size.height);
-        eightButton.frame = CGRectMake(eightButton.frame.origin.x - (self.view.frame.size.width * 1), eightButton.frame.origin.y, eightButton.frame.size.width, eightButton.frame.size.height);
-        nineButton.frame = CGRectMake(nineButton.frame.origin.x - (self.view.frame.size.width * 1), nineButton.frame.origin.y, nineButton.frame.size.width, nineButton.frame.size.height);
-        zeroButton.frame = CGRectMake(zeroButton.frame.origin.x - (self.view.frame.size.width * 1), zeroButton.frame.origin.y, zeroButton.frame.size.width, zeroButton.frame.size.height);
+        oneButton.frame = CGRectMake(oneButton.frame.origin.x - (self.view.frame.size.width * 1.5), oneButton.frame.origin.y, oneButton.frame.size.width, oneButton.frame.size.height);
+        twoButton.frame = CGRectMake(twoButton.frame.origin.x - (self.view.frame.size.width * 1.5), twoButton.frame.origin.y, twoButton.frame.size.width, twoButton.frame.size.height);
+        threeButton.frame = CGRectMake(threeButton.frame.origin.x - (self.view.frame.size.width * 1.5), threeButton.frame.origin.y, threeButton.frame.size.width, threeButton.frame.size.height);
+        fourButton.frame = CGRectMake(fourButton.frame.origin.x - (self.view.frame.size.width * 1.5), fourButton.frame.origin.y, fourButton.frame.size.width, fourButton.frame.size.height);
+        fiveButton.frame = CGRectMake(fiveButton.frame.origin.x - (self.view.frame.size.width * 1.5), fiveButton.frame.origin.y, fiveButton.frame.size.width, fiveButton.frame.size.height);
+        sixButton.frame = CGRectMake(sixButton.frame.origin.x - (self.view.frame.size.width * 1.5), sixButton.frame.origin.y, sixButton.frame.size.width, sixButton.frame.size.height);
+        sevenButton.frame = CGRectMake(sevenButton.frame.origin.x - (self.view.frame.size.width * 1.5), sevenButton.frame.origin.y, sevenButton.frame.size.width, sevenButton.frame.size.height);
+        eightButton.frame = CGRectMake(eightButton.frame.origin.x - (self.view.frame.size.width * 1.5), eightButton.frame.origin.y, eightButton.frame.size.width, eightButton.frame.size.height);
+        nineButton.frame = CGRectMake(nineButton.frame.origin.x - (self.view.frame.size.width * 1.5), nineButton.frame.origin.y, nineButton.frame.size.width, nineButton.frame.size.height);
+        zeroButton.frame = CGRectMake(zeroButton.frame.origin.x - (self.view.frame.size.width * 1.5), zeroButton.frame.origin.y, zeroButton.frame.size.width, zeroButton.frame.size.height);
+        deleteButton.frame = CGRectMake(deleteButton.frame.origin.x - (self.view.frame.size.width * 1.5), deleteButton.frame.origin.y, deleteButton.frame.size.width, deleteButton.frame.size.height);
         
-        firstNumber.frame = CGRectMake(firstNumber.frame.origin.x - (self.view.frame.size.width * 1), firstNumber.frame.origin.y, firstNumber.frame.size.width, firstNumber.frame.size.height);
-        secondNumber.frame = CGRectMake(secondNumber.frame.origin.x - (self.view.frame.size.width * 1), secondNumber.frame.origin.y, secondNumber.frame.size.width, secondNumber.frame.size.height);
-        thirdNumber.frame = CGRectMake(thirdNumber.frame.origin.x - (self.view.frame.size.width * 1), thirdNumber.frame.origin.y, thirdNumber.frame.size.width, thirdNumber.frame.size.height);
-        fourthNumber.frame = CGRectMake(fourthNumber.frame.origin.x - (self.view.frame.size.width * 1), fourthNumber.frame.origin.y, fourthNumber.frame.size.width, fourthNumber.frame.size.height);
+        enterPasscodeLabel.frame = CGRectMake(enterPasscodeLabel.frame.origin.x - (self.view.frame.size.width * 1.5), enterPasscodeLabel.frame.origin.y, enterPasscodeLabel.frame.size.width, deleteButton.frame.size.height);
+        
+        firstNumber.frame = CGRectMake(firstNumber.frame.origin.x - (self.view.frame.size.width * 1.5), firstNumber.frame.origin.y, firstNumber.frame.size.width, firstNumber.frame.size.height);
+        secondNumber.frame = CGRectMake(secondNumber.frame.origin.x - (self.view.frame.size.width * 1.5), secondNumber.frame.origin.y, secondNumber.frame.size.width, secondNumber.frame.size.height);
+        thirdNumber.frame = CGRectMake(thirdNumber.frame.origin.x - (self.view.frame.size.width * 1.5), thirdNumber.frame.origin.y, thirdNumber.frame.size.width, thirdNumber.frame.size.height);
+        fourthNumber.frame = CGRectMake(fourthNumber.frame.origin.x - (self.view.frame.size.width * 1.5), fourthNumber.frame.origin.y, fourthNumber.frame.size.width, fourthNumber.frame.size.height);
         
         
     }completion:^(BOOL finished){
         
-        
         [PFCloud callFunctionInBackground:@"send"
-                           withParameters:@{@"from": @"18dfLDPCYEWB7SETaABcnr9tUy3Tv5QEe4", @"to": @"12BuwZVpv8h48zgMtr2BQBuZmATA9VNrXQ", @"amount": @"0.00001"}
+                           withParameters:@{@"from" : FLOMIO_ACCOUNT, @"to": [[PFUser currentUser] objectForKey:@"bitcoinAddress"], @"amount": @"0.0001"}
                                     block:^(NSString *response, NSError *error) {
                                         if (!error) {
                                             NSLog(@"response:%@",response);
                                             [self goToThanks:nil];
                                         }
-                                    }]; //
+                                    }];
     }];
     
 }
@@ -281,8 +322,10 @@
     
     [self blur];
     
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    float amount = [appDelegate.currentAmount floatValue];
+    NSLog(@"UUID:%@",[UUID stringByReplacingOccurrencesOfString:@" " withString:@""]);
+    
+    //AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    //float amount = [appDelegate.currentAmount floatValue];
     
     PFQuery *query = [PFQuery queryWithClassName:@"Customer"];
     [query whereKey:@"UUID" equalTo:[UUID stringByReplacingOccurrencesOfString:@" " withString:@""]];
@@ -326,10 +369,7 @@
             if (phone) {
                 [dict setObject:phone forKey:@"phone"];
             }
-            
-            [self blur];
-            //[self performSelectorOnMainThread:@selector(goToThanksWithDict:) withObject:dict waitUntilDone:YES];
-            
+
         } else {
             // Log details of the failure
             NSLog(@"Error_: %@ %@", error, [error userInfo]);
@@ -368,58 +408,79 @@
     [self.navigationController pushViewController:tvc animated:YES];
 }
 
-
 - (void)viewWillAppear:(BOOL)animated {
     
-    oneButton.frame = CGRectMake(oneButton.frame.origin.x - (self.view.frame.size.width * 1), oneButton.frame.origin.y, oneButton.frame.size.width, oneButton.frame.size.height);
+    
+    /*
+    [PFCloud callFunctionInBackground:@"listaccounts"
+                       withParameters:@{@"from": @"18dfLDPCYEWB7SETaABcnr9tUy3Tv5QEe4"}
+                                block:^(NSString *response, NSError *error) {
+                                    if (!error) {
+                                        NSLog(@"response:%@",response);
+                                        [self goToThanks:nil];
+                                    }
+                                }];
+     */
+    
+    
+    
+    amountLabel.text = [NSString stringWithFormat:@"Total $%.2f",[self.previous floatValue]];
+    
+    oneButton.frame = CGRectMake(oneButton.frame.origin.x - (self.view.frame.size.width * 1.5), oneButton.frame.origin.y, oneButton.frame.size.width, oneButton.frame.size.height);
     [self.view bringSubviewToFront:oneButton];
     
-    twoButton.frame = CGRectMake(twoButton.frame.origin.x - (self.view.frame.size.width * 1), twoButton.frame.origin.y, twoButton.frame.size.width, twoButton.frame.size.height);
+    twoButton.frame = CGRectMake(twoButton.frame.origin.x - (self.view.frame.size.width * 1.5), twoButton.frame.origin.y, twoButton.frame.size.width, twoButton.frame.size.height);
     [self.view bringSubviewToFront:twoButton];
     
-    threeButton.frame = CGRectMake(threeButton.frame.origin.x - (self.view.frame.size.width * 1), threeButton.frame.origin.y, threeButton.frame.size.width, threeButton.frame.size.height);
+    threeButton.frame = CGRectMake(threeButton.frame.origin.x - (self.view.frame.size.width * 1.5), threeButton.frame.origin.y, threeButton.frame.size.width, threeButton.frame.size.height);
     [self.view bringSubviewToFront:threeButton];
     
-    fourButton.frame = CGRectMake(fourButton.frame.origin.x - (self.view.frame.size.width * 1), fourButton.frame.origin.y, fourButton.frame.size.width, fourButton.frame.size.height);
+    fourButton.frame = CGRectMake(fourButton.frame.origin.x - (self.view.frame.size.width * 1.5), fourButton.frame.origin.y, fourButton.frame.size.width, fourButton.frame.size.height);
     [self.view bringSubviewToFront:fourButton];
     
-    fiveButton.frame = CGRectMake(fiveButton.frame.origin.x - (self.view.frame.size.width * 1), fiveButton.frame.origin.y, fiveButton.frame.size.width, fiveButton.frame.size.height);
+    fiveButton.frame = CGRectMake(fiveButton.frame.origin.x - (self.view.frame.size.width * 1.5), fiveButton.frame.origin.y, fiveButton.frame.size.width, fiveButton.frame.size.height);
     [self.view bringSubviewToFront:fiveButton];
     
-    sixButton.frame = CGRectMake(sixButton.frame.origin.x - (self.view.frame.size.width * 1), sixButton.frame.origin.y, sixButton.frame.size.width, sixButton.frame.size.height);
+    sixButton.frame = CGRectMake(sixButton.frame.origin.x - (self.view.frame.size.width * 1.5), sixButton.frame.origin.y, sixButton.frame.size.width, sixButton.frame.size.height);
     [self.view bringSubviewToFront:sixButton];
     
-    sevenButton.frame = CGRectMake(sevenButton.frame.origin.x - (self.view.frame.size.width * 1), sevenButton.frame.origin.y, sevenButton.frame.size.width, sevenButton.frame.size.height);
+    sevenButton.frame = CGRectMake(sevenButton.frame.origin.x - (self.view.frame.size.width * 1.5), sevenButton.frame.origin.y, sevenButton.frame.size.width, sevenButton.frame.size.height);
     [self.view bringSubviewToFront:sevenButton];
     
-    eightButton.frame = CGRectMake(eightButton.frame.origin.x - (self.view.frame.size.width * 1), eightButton.frame.origin.y, eightButton.frame.size.width, eightButton.frame.size.height);
+    eightButton.frame = CGRectMake(eightButton.frame.origin.x - (self.view.frame.size.width * 1.5), eightButton.frame.origin.y, eightButton.frame.size.width, eightButton.frame.size.height);
     [self.view bringSubviewToFront:eightButton];
     
-    nineButton.frame = CGRectMake(nineButton.frame.origin.x - (self.view.frame.size.width * 1), nineButton.frame.origin.y, nineButton.frame.size.width, nineButton.frame.size.height);
+    nineButton.frame = CGRectMake(nineButton.frame.origin.x - (self.view.frame.size.width * 1.5), nineButton.frame.origin.y, nineButton.frame.size.width, nineButton.frame.size.height);
     [self.view bringSubviewToFront:nineButton];
     
-    zeroButton.frame = CGRectMake(zeroButton.frame.origin.x - (self.view.frame.size.width * 1), zeroButton.frame.origin.y, zeroButton.frame.size.width, zeroButton.frame.size.height);
+    zeroButton.frame = CGRectMake(zeroButton.frame.origin.x - (self.view.frame.size.width * 1.5), zeroButton.frame.origin.y, zeroButton.frame.size.width, zeroButton.frame.size.height);
     [self.view bringSubviewToFront:zeroButton];
+    
+    deleteButton.frame = CGRectMake(deleteButton.frame.origin.x - (self.view.frame.size.width * 1.5), deleteButton.frame.origin.y, deleteButton.frame.size.width, deleteButton.frame.size.height);
+    [self.view bringSubviewToFront:deleteButton];
+    
+    enterPasscodeLabel.frame = CGRectMake(enterPasscodeLabel.frame.origin.x - (self.view.frame.size.width * 1.5), enterPasscodeLabel.frame.origin.y, enterPasscodeLabel.frame.size.width, enterPasscodeLabel.frame.size.height);
+    [self.view bringSubviewToFront:enterPasscodeLabel];
     
     firstNumber.image = [UIImage imageNamed:@"PinMissing.png"];
     secondNumber.image = [UIImage imageNamed:@"PinMissing.png"];
     thirdNumber.image = [UIImage imageNamed:@"PinMissing.png"];
     fourthNumber.image = [UIImage imageNamed:@"PinMissing.png"];
     
-    firstNumber.frame = CGRectMake(firstNumber.frame.origin.x - (self.view.frame.size.width * 1), firstNumber.frame.origin.y, firstNumber.frame.size.width, firstNumber.frame.size.height);
+    firstNumber.frame = CGRectMake(firstNumber.frame.origin.x - (self.view.frame.size.width * 1.5), firstNumber.frame.origin.y, firstNumber.frame.size.width, firstNumber.frame.size.height);
     [self.view bringSubviewToFront:firstNumber];
     
-    secondNumber.frame = CGRectMake(secondNumber.frame.origin.x - (self.view.frame.size.width * 1), secondNumber.frame.origin.y, secondNumber.frame.size.width, secondNumber.frame.size.height);
+    secondNumber.frame = CGRectMake(secondNumber.frame.origin.x - (self.view.frame.size.width * 1.5), secondNumber.frame.origin.y, secondNumber.frame.size.width, secondNumber.frame.size.height);
     [self.view bringSubviewToFront:secondNumber];
     
-    thirdNumber.frame = CGRectMake(thirdNumber.frame.origin.x - (self.view.frame.size.width * 1), thirdNumber.frame.origin.y, thirdNumber.frame.size.width, thirdNumber.frame.size.height);
+    thirdNumber.frame = CGRectMake(thirdNumber.frame.origin.x - (self.view.frame.size.width * 1.5), thirdNumber.frame.origin.y, thirdNumber.frame.size.width, thirdNumber.frame.size.height);
     [self.view bringSubviewToFront:thirdNumber];
     
-    fourthNumber.frame = CGRectMake(fourthNumber.frame.origin.x - (self.view.frame.size.width * 1), fourthNumber.frame.origin.y, fourthNumber.frame.size.width, fourthNumber.frame.size.height);
+    fourthNumber.frame = CGRectMake(fourthNumber.frame.origin.x - (self.view.frame.size.width * 1.5), fourthNumber.frame.origin.y, fourthNumber.frame.size.width, fourthNumber.frame.size.height);
     [self.view bringSubviewToFront:fourthNumber];
-
     
     [self resetReader];
+
 
 }
 
@@ -487,10 +548,13 @@
     _swipeCount = 0;
     
     _responseCondition = [[NSCondition alloc] init];
+<<<<<<< .merge_file_T40Iou
     _picWaitResponseCondition = [[NSCondition alloc] init];
     _picWaitAuthenticateResponseCondition = [[NSCondition alloc] init];
     _picWaitReadResponseCondition = [[NSCondition alloc] init];
     _picWaitWriteResponseCondition = [[NSCondition alloc] init];
+=======
+>>>>>>> .merge_file_ObUBeh
     
     _firmwareVersionReady = NO;
     _firmwareVersion = nil;
@@ -584,10 +648,14 @@
     // Load the initial key.
     [_dukptReceiver loadInitialKey:_ipek];
     
+<<<<<<< .merge_file_T40Iou
     picQueue = [[NSOperationQueue alloc]init];
     tagData = [[NSMutableData alloc]initWithCapacity:32];
     tagDataFlag = NO; // this flag will be set when the tagData is updated, it is up to the user to clear it after accessing.
 
+=======
+    
+>>>>>>> .merge_file_ObUBeh
 }
 
 - (IBAction)Next:(id)sender {
@@ -861,7 +929,7 @@
         self.observingMessages = YES;
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         self.timerSource = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
-        dispatch_source_set_timer(self.timerSource, dispatch_walltime(NULL, 0), 1.5 * NSEC_PER_SEC, 1ull * NSEC_PER_SEC);
+        dispatch_source_set_timer(self.timerSource, dispatch_walltime(NULL, 0), 0.5 * NSEC_PER_SEC, 1ull * NSEC_PER_SEC);
         dispatch_source_set_event_handler(self.timerSource, ^{
             if (self.isObservingMessages) {
                 //[self transmit:nil];
@@ -882,9 +950,8 @@
     [self resetReader];
 }
 
-- (IBAction)transmit:(id)sender
-  {
-    static BOOL state = YES;
+- (IBAction)transmit:(id)sender {
+    
     // Transmit the command APDU.
     _piccResponseApduReady = NO;
     _resultReady = NO;
@@ -893,6 +960,7 @@
     //[self showPiccResponseApdu:piccViewController];
     
     NSData *commandApdu = nil;
+<<<<<<< .merge_file_T40Iou
 #if 0
     commandApdu = [AJDHex byteArrayFromHexString:@"FF CA 00 00 00"];
 
@@ -912,11 +980,11 @@
 //      NSData * myData = [AJDHex byteArrayFromHexString:@"55 44 33 22 11"];
 //      [self putNfcData:myData];
 #if 0
+=======
+    commandApdu = [AJDHex byteArrayFromHexString:@"FF CA 00 00 00"];
+>>>>>>> .merge_file_ObUBeh
     
-    NSData* commandApdu = nil;
-    commandApdu = [AJDHex byteArrayFromHexString:@"FF 82 00 00 06 FF FF FF FF FF FF"]; // load auth keys
     if (![_reader piccTransmitWithTimeout:9.0 commandApdu:[commandApdu bytes] length:[commandApdu length]]) {
-        NSLog(@"::error");
         
         // Show the request queue error.
         [self showRequestQueueError];
@@ -926,59 +994,7 @@
         [self powerOn];
         
     }
-#endif
-#if 0
-    commandApdu = [AJDHex byteArrayFromHexString:@"FF 82 00 01 06 FF FF FF FF FF FF"]; // load auth keys
-    if (![_reader piccTransmitWithTimeout:9.0 commandApdu:[commandApdu bytes] length:[commandApdu length]]) {
-        NSLog(@"::error");
-        
-        // Show the request queue error.
-        [self showRequestQueueError];
-        
-    } else {
-        
-        [self powerOn];
-        
-    }
-#endif
-
-#if 0
     
-    if (state)
-    {
-        state = NO;
-        commandApdu = [AJDHex byteArrayFromHexString:@"FF 86 00 00 05 01 00 04 60 00"]; // authenticate block
-        if (![_reader piccTransmitWithTimeout:9.0 commandApdu:[commandApdu bytes] length:[commandApdu length]]) {
-            // Show the request queue error.
-            [self showRequestQueueError];
-            
-        } else {
-            
-            [self powerOn];
-            
-        }
-        NSLog(@"::commandApdu = %@",commandApdu);
-    }
-    else
-    {
-        state = YES;
-         commandApdu = [AJDHex byteArrayFromHexString:@"FF B0 00 04 20"];
-         //      commandApdu = [AJDHex byteArrayFromHexString:@"FF D6 00 04 10 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F 10"];
-         if (![_reader piccTransmitWithTimeout:9.0 commandApdu:[commandApdu bytes] length:[commandApdu length]])
-         {
-         
-         // Show the request queue error.
-         [self showRequestQueueError];
-         
-         }
-         else
-         {
-             [self powerOn];
-         }
-         NSLog(@"::commandApdu = %@",commandApdu);
-    }
-#endif
-
 }
 
 -(void)powerOn {
@@ -1049,6 +1065,7 @@
         });
     });
 }
+<<<<<<< .merge_file_T40Iou
 #pragma mark - Mifare 4K read/write 32 bytes starting at block 4
 - (BOOL)getNfcData //:(NSData *) data
 {
@@ -1218,6 +1235,8 @@
     return YES;
     
 }
+=======
+>>>>>>> .merge_file_ObUBeh
 
 #pragma mark - Audio Jack Reader Delegate
 
@@ -1511,8 +1530,6 @@ cleanup:
     
     NSString *hexString = [self toHexString:rawData length:length];
     
-    NSLog(@"::didSendRawData %@",hexString);
-    
     hexString = [hexString stringByAppendingString:[_reader verifyData:rawData length:length] ? @" (Checksum OK)" : @" (Checksum Error)"];
     
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -1531,6 +1548,7 @@ cleanup:
         // self.dataReceivedLabel.text = hexString;
         // [self.tableView reloadData];
     });
+<<<<<<< .merge_file_T40Iou
     
     //   picResponse = [NSBlockOperation blockOperationWithBlock: ^{ NSLog(@"::picResponse");
     //   }];
@@ -1578,6 +1596,8 @@ cleanup:
 
 //        [_picWaitReadResponseCondition signal];
     }
+=======
+>>>>>>> .merge_file_ObUBeh
 }
 
 - (void)reader:(ACRAudioJackReader *)reader didSendCustomId:(const uint8_t *)customId length:(NSUInteger)length {
@@ -1633,6 +1653,7 @@ cleanup:
     [_responseCondition lock];
     _piccResponseApdu = [NSData dataWithBytes:responseApdu length:length];
     
+<<<<<<< .merge_file_T40Iou
     NSLog(@"piccResponse %@, %d",_piccResponseApdu , length);
 #if 0
     if((responseApdu[0] == 0x90 && responseApdu[1] == 0x00) || (responseApdu[0] == 0x63 && responseApdu[1] == 0x00))
@@ -1646,6 +1667,8 @@ cleanup:
     }
 #endif
 #if 0
+=======
+>>>>>>> .merge_file_ObUBeh
     // Mute AudioJack library
     _reader.mute = YES;
     // Route audio to speakers
@@ -1693,21 +1716,9 @@ cleanup:
     //    });
     
     
-    if((responseApdu[0] == 0x90 && responseApdu[1] == 0x00) || (responseApdu[0] == 0x63 && responseApdu[1] == 0x00))
-    {
-//        NSLog(@"_picWaitResponseCondition signal");
-//        [_picWaitResponseCondition signal];
-    }
-    else
-    {
-//        NSLog(@"_picWaitResponseCondition signal no cigar %2.2x %2.2x", responseApdu[0],responseApdu[1]);
-    }
-
     _piccResponseApduReady = YES;
     [_responseCondition signal];
     [_responseCondition unlock];
-//        [_picWaitResponseCondition signal];
-    
 }
 
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)audioPlayer successfully:(BOOL)flag
@@ -1798,7 +1809,28 @@ cleanup:
 }
 
 
+#pragma mark - Sales Delegate
 
+- (void)dismiss:(UIViewController *)viewController withSales:(NSMutableArray *)array {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    salesArray = array;
+    previous = [NSNumber numberWithFloat:0];
+    
+    float p = [previous floatValue];
+    
+    for (NSMutableDictionary *dictionary in salesArray) {
+        p += [[dictionary objectForKey:@"amount"] floatValue];
+    }
+    
+    previous = [NSNumber numberWithFloat:p/100.0];
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    appDelegate.currentAmount = [NSString stringWithFormat:@"%.2f",[previous floatValue]];
+    appDelegate.salesArray = salesArray;
+    
+    
+}
 
 
 @end

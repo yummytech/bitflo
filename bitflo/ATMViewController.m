@@ -11,8 +11,11 @@
 #import <CommonCrypto/CommonCrypto.h>
 #import "AJDHex.h"  // TODO: this file shouldn't be needed as functions are duplicated here.
 #import "AppDelegate.h"
-
 #import "ATMViewController.h"
+#import "ConfigurationsViewController.h"
+#import "ViewController.h"
+
+#define FLOMIO_ACCOUNT @"5492cb448d10dc6b8b00009d"
 
 @interface ATMViewController ()
 
@@ -74,8 +77,22 @@
 }
 
 @synthesize logView, amountTextField;
-@synthesize oneButton, twoButton, threeButton, fourButton, fiveButton, sixButton, sevenButton, eightButton, nineButton, zeroButton;
-@synthesize firstNumber, secondNumber, thirdNumber, fourthNumber;
+@synthesize oneButton, twoButton, threeButton, fourButton, fiveButton, sixButton, sevenButton, eightButton, nineButton, zeroButton, deleteButton;
+@synthesize firstNumber, secondNumber, thirdNumber, fourthNumber, enterPasscodeLabel;
+
+- (IBAction)goToMain:(id)sender {
+    
+    ViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"main_merchant"];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
+
+- (IBAction)goToConfigurations:(id)sender {
+    
+    ConfigurationsViewController *cvc = [self.storyboard instantiateViewControllerWithIdentifier:@"conf"];
+    [self.navigationController pushViewController:cvc animated:YES];
+    
+}
 
 - (IBAction)passcode:(id)sender {
     
@@ -83,8 +100,15 @@
     
     NSInteger selectedButton = [senderButton tag];
     
-    passcode = [NSString stringWithFormat:@"%@%li",passcode,(long)selectedButton];
-    NSLog(@"passcode:%@",passcode);
+    if (selectedButton < 11) {
+        passcode = [NSString stringWithFormat:@"%@%li",passcode,(long)selectedButton];
+        NSLog(@"passcode:%@",passcode);
+    } else {
+        
+        if ([passcode length] > 0) {
+            passcode = [passcode substringToIndex:[passcode length] - 1];
+        }
+    }
     
     if ([passcode length] > 3) {
         if ([storedPasscode isEqualToString:passcode]) {
@@ -188,6 +212,13 @@
         thirdNumber.image = [UIImage imageNamed:@"PinMissing.png"];
         fourthNumber.image = [UIImage imageNamed:@"PinMissing.png"];
         
+    } else if ([passcode length] == 0) {
+        
+        firstNumber.image = [UIImage imageNamed:@"PinMissing.png"];
+        secondNumber.image = [UIImage imageNamed:@"PinMissing.png"];
+        thirdNumber.image = [UIImage imageNamed:@"PinMissing.png"];
+        fourthNumber.image = [UIImage imageNamed:@"PinMissing.png"];
+        
     }
     
 }
@@ -210,6 +241,9 @@
         eightButton.frame = CGRectMake(eightButton.frame.origin.x + (self.view.frame.size.width * 1.5), eightButton.frame.origin.y, eightButton.frame.size.width, eightButton.frame.size.height);
         nineButton.frame = CGRectMake(nineButton.frame.origin.x + (self.view.frame.size.width * 1.5), nineButton.frame.origin.y, nineButton.frame.size.width, nineButton.frame.size.height);
         zeroButton.frame = CGRectMake(zeroButton.frame.origin.x + (self.view.frame.size.width * 1.5), zeroButton.frame.origin.y, zeroButton.frame.size.width, zeroButton.frame.size.height);
+        deleteButton.frame = CGRectMake(deleteButton.frame.origin.x + (self.view.frame.size.width * 0.5), deleteButton.frame.origin.y, deleteButton.frame.size.width, deleteButton.frame.size.height);
+        
+        enterPasscodeLabel.frame = CGRectMake(enterPasscodeLabel.frame.origin.x + (self.view.frame.size.width * 0.5), enterPasscodeLabel.frame.origin.y, enterPasscodeLabel.frame.size.width, enterPasscodeLabel.frame.size.height);
         
         firstNumber.frame = CGRectMake(firstNumber.frame.origin.x + (self.view.frame.size.width * 1.5), firstNumber.frame.origin.y, firstNumber.frame.size.width, firstNumber.frame.size.height);
         secondNumber.frame = CGRectMake(secondNumber.frame.origin.x + (self.view.frame.size.width * 1.5), secondNumber.frame.origin.y, secondNumber.frame.size.width, secondNumber.frame.size.height);
@@ -241,6 +275,9 @@
         eightButton.frame = CGRectMake(eightButton.frame.origin.x - (self.view.frame.size.width * 1.5), eightButton.frame.origin.y, eightButton.frame.size.width, eightButton.frame.size.height);
         nineButton.frame = CGRectMake(nineButton.frame.origin.x - (self.view.frame.size.width * 1.5), nineButton.frame.origin.y, nineButton.frame.size.width, nineButton.frame.size.height);
         zeroButton.frame = CGRectMake(zeroButton.frame.origin.x - (self.view.frame.size.width * 1.5), zeroButton.frame.origin.y, zeroButton.frame.size.width, zeroButton.frame.size.height);
+        deleteButton.frame = CGRectMake(deleteButton.frame.origin.x - (self.view.frame.size.width * 1.5), deleteButton.frame.origin.y, deleteButton.frame.size.width, deleteButton.frame.size.height);
+        
+        enterPasscodeLabel.frame = CGRectMake(enterPasscodeLabel.frame.origin.x - (self.view.frame.size.width * 1.5), enterPasscodeLabel.frame.origin.y, enterPasscodeLabel.frame.size.width, deleteButton.frame.size.height);
         
         firstNumber.frame = CGRectMake(firstNumber.frame.origin.x - (self.view.frame.size.width * 1.5), firstNumber.frame.origin.y, firstNumber.frame.size.width, firstNumber.frame.size.height);
         secondNumber.frame = CGRectMake(secondNumber.frame.origin.x - (self.view.frame.size.width * 1.5), secondNumber.frame.origin.y, secondNumber.frame.size.width, secondNumber.frame.size.height);
@@ -252,7 +289,7 @@
         
         
         [PFCloud callFunctionInBackground:@"transfer"
-                           withParameters:@{@"to": @"aaaaa", @"from": @"aaaaa", @"amount": @"aaaaa"}
+                           withParameters:@{@"from": FLOMIO_ACCOUNT, @"to": currentAccount, @"amount": @"0.0001"}
                                     block:^(NSString *response, NSError *error) {
                                         if (!error) {
                                             [self goToThanks:nil];
@@ -261,7 +298,6 @@
     }];
     
 }
-
 
 - (IBAction)numbersMethod:(id)sender {
     
@@ -341,12 +377,15 @@
 
 }
 
-
-
 - (void)completeTransaction:(NSString *)UUID {
     
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    float amount = [appDelegate.currentAmount floatValue];
+    
+    [self blur];
+    
+    //AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    //float amount = [appDelegate.currentAmount floatValue];
+    
+    NSLog(@"UUID:%@",[UUID stringByReplacingOccurrencesOfString:@" " withString:@""]);
     
     PFQuery *query = [PFQuery queryWithClassName:@"Customer"];
     [query whereKey:@"UUID" equalTo:[UUID stringByReplacingOccurrencesOfString:@" " withString:@""]];
@@ -369,6 +408,8 @@
                 [alert addButtonWithTitle:@"OK"];
                 [alert show];
                 
+            } else {
+                currentAccount = [[objects objectAtIndex:0] objectForKey:@"account"];
             }
             
             
@@ -391,7 +432,7 @@
                 [dict setObject:phone forKey:@"phone"];
             }
             
-            [self blur];
+            
             //[self performSelectorOnMainThread:@selector(goToThanksWithDict:) withObject:dict waitUntilDone:YES];
             
         } else {
@@ -462,6 +503,12 @@
     
     zeroButton.frame = CGRectMake(zeroButton.frame.origin.x - (self.view.frame.size.width * 1.5), zeroButton.frame.origin.y, zeroButton.frame.size.width, zeroButton.frame.size.height);
     [self.view bringSubviewToFront:zeroButton];
+    
+    deleteButton.frame = CGRectMake(deleteButton.frame.origin.x - (self.view.frame.size.width * 1.5), deleteButton.frame.origin.y, deleteButton.frame.size.width, deleteButton.frame.size.height);
+    [self.view bringSubviewToFront:deleteButton];
+    
+    enterPasscodeLabel.frame = CGRectMake(enterPasscodeLabel.frame.origin.x - (self.view.frame.size.width * 1.5), enterPasscodeLabel.frame.origin.y, enterPasscodeLabel.frame.size.width, enterPasscodeLabel.frame.size.height);
+    [self.view bringSubviewToFront:enterPasscodeLabel];
     
     firstNumber.image = [UIImage imageNamed:@"PinMissing.png"];
     secondNumber.image = [UIImage imageNamed:@"PinMissing.png"];
