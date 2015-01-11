@@ -65,6 +65,7 @@
 		EF568AC31A623B90006B2B73 /* PinMissing.png in Resources */ = {isa = PBXBuildFile; fileRef = EF568AC01A623B90006B2B73 /* PinMissing.png */; };
 		EF568AC41A623B90006B2B73 /* PinPresent.png in Resources */ = {isa = PBXBuildFile; fileRef = EF568AC11A623B90006B2B73 /* PinPresent.png */; };
 		EF568AC61A6246CC006B2B73 /* BitFloLaunchArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = EF568AC51A6246CC006B2B73 /* BitFloLaunchArtwork.png */; };
+		EF568ACA1A6267FE006B2B73 /* Contactless1182x2000.png in Resources */ = {isa = PBXBuildFile; fileRef = EF568AC91A6267FE006B2B73 /* Contactless1182x2000.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -176,6 +177,7 @@
 		EF568AC01A623B90006B2B73 /* PinMissing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PinMissing.png; sourceTree = "<group>"; };
 		EF568AC11A623B90006B2B73 /* PinPresent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PinPresent.png; sourceTree = "<group>"; };
 		EF568AC51A6246CC006B2B73 /* BitFloLaunchArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BitFloLaunchArtwork.png; sourceTree = "<group>"; };
+		EF568AC91A6267FE006B2B73 /* Contactless1182x2000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Contactless1182x2000.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +215,7 @@
 		451CBD0D1A61B53E00D22FA6 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				EF568AC91A6267FE006B2B73 /* Contactless1182x2000.png */,
 				EF568AC51A6246CC006B2B73 /* BitFloLaunchArtwork.png */,
 				EF568ABF1A623B90006B2B73 /* PinKey.png */,
 				EF568AC01A623B90006B2B73 /* PinMissing.png */,
@@ -458,6 +461,7 @@
 				451CBD351A61B54800D22FA6 /* dialoguito.png in Resources */,
 				45E2F5E61A61878600223EC8 /* Main.storyboard in Resources */,
 				EF568AC61A6246CC006B2B73 /* BitFloLaunchArtwork.png in Resources */,
+				EF568ACA1A6267FE006B2B73 /* Contactless1182x2000.png in Resources */,
 				451CBD441A61B54800D22FA6 /* long_key.png in Resources */,
 				EF568AC31A623B90006B2B73 /* PinMissing.png in Resources */,
 				451CBD3F1A61B54800D22FA6 /* ItemsPagedBox.png in Resources */,

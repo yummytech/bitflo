@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C78c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Lxa-2O-Ksi">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B17" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Lxa-2O-Ksi">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
@@ -513,7 +513,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Contactless156x92.png" id="Xi4-Mv-uyF">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Contactless1182x2000.png" id="Xi4-Mv-uyF">
                                 <rect key="frame" x="95" y="217" width="226" height="133"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -1164,7 +1164,7 @@
     <resources>
         <image name="ArrowGray.png" width="79" height="79"/>
         <image name="BoxWithBlueBackground.png" width="1030" height="242"/>
-        <image name="Contactless156x92.png" width="156" height="92"/>
+        <image name="Contactless1182x2000.png" width="2000" height="1182"/>
         <image name="Items.png" width="110" height="75"/>
         <image name="ItemsPagedBox.png" width="110" height="113"/>
         <image name="Keypad.png" width="92" height="92"/>
