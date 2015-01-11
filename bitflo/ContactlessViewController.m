@@ -27,6 +27,9 @@
     
     NSCondition *_responseCondition;
     NSCondition *_picWaitResponseCondition;
+    NSCondition * _picWaitAuthenticateResponseCondition;
+    NSCondition * _picWaitReadResponseCondition;
+    NSCondition * _picWaitWriteResponseCondition;
 
     BOOL _firmwareVersionReady;
     NSString *_firmwareVersion;
@@ -76,6 +79,12 @@
     NSOperationQueue * picQueue;
     NSBlockOperation * picRead;
     NSBlockOperation * picResponse;
+    NSBlockOperation * picAuthenticate;
+    NSBlockOperation * picWrite;
+    
+    NSMutableData * tagData;
+    BOOL tagDataFlag;
+
 
 }
 
@@ -479,6 +488,9 @@
     
     _responseCondition = [[NSCondition alloc] init];
     _picWaitResponseCondition = [[NSCondition alloc] init];
+    _picWaitAuthenticateResponseCondition = [[NSCondition alloc] init];
+    _picWaitReadResponseCondition = [[NSCondition alloc] init];
+    _picWaitWriteResponseCondition = [[NSCondition alloc] init];
     
     _firmwareVersionReady = NO;
     _firmwareVersion = nil;
@@ -573,6 +585,8 @@
     [_dukptReceiver loadInitialKey:_ipek];
     
     picQueue = [[NSOperationQueue alloc]init];
+    tagData = [[NSMutableData alloc]initWithCapacity:32];
+    tagDataFlag = NO; // this flag will be set when the tagData is updated, it is up to the user to clear it after accessing.
 
 }
 
@@ -879,7 +893,7 @@
     //[self showPiccResponseApdu:piccViewController];
     
     NSData *commandApdu = nil;
-
+#if 0
     commandApdu = [AJDHex byteArrayFromHexString:@"FF CA 00 00 00"];
 
     if (![_reader piccTransmitWithTimeout:9.0 commandApdu:[commandApdu bytes] length:[commandApdu length]]) {
@@ -892,9 +906,11 @@
         [self powerOn];
         
     }
-
+#endif
     
-//    [self getNfcData];
+    [self getNfcData];
+//      NSData * myData = [AJDHex byteArrayFromHexString:@"55 44 33 22 11"];
+//      [self putNfcData:myData];
 #if 0
     
     NSData* commandApdu = nil;
@@ -1038,18 +1054,23 @@
 {
     BOOL result = YES;
 
-    NSData * commandApdu = [AJDHex byteArrayFromHexString:@"FF 86 00 00 05 01 00 04 60 00"]; // authenticate block
+    picAuthenticate = [NSBlockOperation blockOperationWithBlock: ^{ NSData * commandApdu = [AJDHex byteArrayFromHexString:@"FF 86 00 00 05 01 00 04 60 00"]; // authenticate block
+        [_picWaitAuthenticateResponseCondition lock];
+        [_picWaitAuthenticateResponseCondition wait];
+
     if (![_reader piccTransmitWithTimeout:9.0 commandApdu:[commandApdu bytes] length:[commandApdu length]]) {
         // Show the request queue error.
         [self showRequestQueueError];
-        result = NO;
-    } else
-    {
-        [self powerOn];
-    }
-    NSLog(@"::commandApdu = %@",commandApdu);
+//        result = NO;
+        } else
+        {
+            [self powerOn];
+        }
+        NSLog(@"::commandApdu = %@",commandApdu);
+        [_picWaitAuthenticateResponseCondition unlock];
+    }];
     
-    BOOL predicate = NO;
+//    BOOL predicate = NO;
     
 //    NSTimeInterval QLCTimeoutInterval = 2.0;
 
@@ -1077,12 +1098,12 @@
     }
     NSLog(@"::commandApdu = %@",commandApdu);
 #endif
-#if 0
+
     //picQueue
     picRead = [NSBlockOperation blockOperationWithBlock: ^{ NSData * commandApdu = [AJDHex byteArrayFromHexString:@"FF B0 00 04 20"];
         BOOL predicate = NO;
-        [_picWaitResponseCondition lock];
-        [_picWaitResponseCondition wait];
+        [_picWaitReadResponseCondition lock];
+        [_picWaitReadResponseCondition wait];
         if (![_reader piccTransmitWithTimeout:9.0 commandApdu:[commandApdu bytes] length:[commandApdu length]]) {
             
             // Show the request queue error.
@@ -1095,10 +1116,11 @@
         {
             [self powerOn];
         }
-        [_picWaitResponseCondition unlock];
+        [_picWaitReadResponseCondition unlock];
         NSLog(@"::commandApdu = %@",commandApdu);
     }];
-#endif
+
+#if 0
     //picQueue
     picRead = [NSBlockOperation blockOperationWithBlock: ^{
         [_picWaitResponseCondition lock];
@@ -1107,10 +1129,11 @@
         [self performSelectorOnMainThread:@selector(readCommand) withObject:nil waitUntilDone:NO];
         [_picWaitResponseCondition unlock];
     }];
+#endif
     
     [picQueue cancelAllOperations];
+    [picQueue addOperation:picAuthenticate];
     [picQueue addOperation:picRead];
-
     return YES;
     
     
@@ -1136,11 +1159,64 @@
   
 }
 
-- (BOOL)putNfcData:(NSData *) data
+- (BOOL)putNfcData:(NSData *) data  // will always write 32 bytes
 {
-    // commandApdu = [AJDHex byteArrayFromHexString:@"FF D6 00 04 10 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F 10"];
+    Byte writeCommand[] = {0xFF, 0xD6, 0x00, 0x04, 0x20,
+                            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+    NSMutableData * commandApdu = [NSMutableData dataWithCapacity:37];
+    NSRange range = {.location = 0, .length = 37};
+    [commandApdu replaceBytesInRange:range withBytes:writeCommand];
+    range.location = 5; range.length = [data length];
+    [commandApdu replaceBytesInRange:range withBytes:(Byte*)data.bytes];
     
+//    NSMutableData * commandApdu = [AJDHex byteArrayFromHexString:@"FF D6 00 04 10 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F 10"];
+
+    
+    BOOL result = YES;
+
+    picAuthenticate = [NSBlockOperation blockOperationWithBlock: ^{ NSData * commandApdu = [AJDHex byteArrayFromHexString:@"FF 86 00 00 05 01 00 04 60 00"]; // authenticate block
+        [_picWaitAuthenticateResponseCondition lock];
+        [_picWaitAuthenticateResponseCondition wait];
+        
+        if (![_reader piccTransmitWithTimeout:9.0 commandApdu:[commandApdu bytes] length:[commandApdu length]]) {
+            // Show the request queue error.
+            [self showRequestQueueError];
+            //        result = NO;
+        } else
+        {
+            [self powerOn];
+        }
+        NSLog(@"::commandApdu = %@",commandApdu);
+        [_picWaitAuthenticateResponseCondition unlock];
+    }];
+    
+   
+    //picQueue
+    picWrite = [NSBlockOperation blockOperationWithBlock: ^{ /*NSData * commandApdu = [AJDHex byteArrayFromHexString:@"FF B0 00 04 20"];*/
+        [_picWaitWriteResponseCondition lock];
+        [_picWaitWriteResponseCondition wait];
+        if (![_reader piccTransmitWithTimeout:9.0 commandApdu:[commandApdu bytes] length:[commandApdu length]]) {
+            
+            // Show the request queue error.
+            [self showRequestQueueError];
+            NSLog(@"::Error commandApdu = %@",commandApdu);
+            
+            //        result = NO;
+            
+        } else
+        {
+            [self powerOn];
+        }
+        [_picWaitWriteResponseCondition unlock];
+        NSLog(@"::commandApdu = %@",commandApdu);
+    }];
+    
+    [picQueue cancelAllOperations];
+    [picQueue addOperation:picAuthenticate];
+    [picQueue addOperation:picWrite];
     return YES;
+    
 }
 
 #pragma mark - Audio Jack Reader Delegate
@@ -1463,7 +1539,7 @@ cleanup:
     //    [picQueue addOperation:picResponse];
     //    [picQueue addOperation:picRead];
     //    ::didSendRawData 23 00 05 A1 90 00 3A 7D
-
+#if 0
     if((rawData[4] == 0x90 && rawData[5] == 0x00) || (rawData[4] == 0x63 && rawData[5] == 0x00))
     {
         NSLog(@"_picWaitResponseCondition signal");
@@ -1474,7 +1550,34 @@ cleanup:
 //        NSLog(@"_picWaitResponseCondition signal no cigar %2.2x %2.2x", rawData[4],rawData[5]);
         
     }
+#endif
+  //  State machine to read tag data.
+//    accessState = BlockAuthenticationCommand;
+//    accessState = BlockReadCommand;
+//    accessState = BlockWriteCommand;
+//    accessState = BlockReadWriteData
+    if((rawData[4] == 0x3B && rawData[5] == 0x8F) || (rawData[4] == 0x00 && rawData[5] == 0xE4)) //periodic atq or status
+    {  // trigger block authentication
+        NSLog(@"_picWaitAuthenticateResponseCondition signal");
+ //       [_picWaitResponseCondition signal];
+        [_picWaitAuthenticateResponseCondition signal];
+    }
+    else if((rawData[4] == 0x90 && rawData[5] == 0x00) || (rawData[4] == 0x63 && rawData[5] == 0x00))  // Authentication ok, send read command
+    {  // trigger block read/write
+        NSLog(@"_picWaitReadResponseCondition signal");
+        [_picWaitReadResponseCondition signal];
+        [_picWaitWriteResponseCondition signal];
+   }
+    else if((rawData[length - 4] == 0x90 && rawData[length - 3] == 0x00) && (rawData[2] == 0x25))  // Appears to be read data.
+    {  // capture data
+ //       NSData * readData = [NSData dataWithBytes:rawData length:length];
+        NSRange range = {.location = 0, .length = 32};
+        [tagData replaceBytesInRange:range withBytes:rawData];
+        NSLog(@"capture data %@", tagData);
+        tagDataFlag = YES;
 
+//        [_picWaitReadResponseCondition signal];
+    }
 }
 
 - (void)reader:(ACRAudioJackReader *)reader didSendCustomId:(const uint8_t *)customId length:(NSUInteger)length {
@@ -1542,7 +1645,7 @@ cleanup:
         NSLog(@"_picWaitResponseCondition signal no cigar %2.2x %2.2x", responseApdu[0],responseApdu[1]);
     }
 #endif
-
+#if 0
     // Mute AudioJack library
     _reader.mute = YES;
     // Route audio to speakers
@@ -1563,8 +1666,8 @@ cleanup:
     else
         self.audioPlayer.delegate = self; // assign this player delegate to this class so audioPlayerDidFinishPlaying will be called here
     [self.audioPlayer play]; // play the scan sound
+#endif
     NSString *UUID = [self toHexString:[_piccResponseApdu bytes] length:[_piccResponseApdu length]];
-    
     
     NSLog(@"UUID:%@",UUID);
     
