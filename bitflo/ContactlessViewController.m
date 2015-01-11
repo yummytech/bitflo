@@ -387,7 +387,6 @@
     [self.navigationController pushViewController:tvc animated:YES];
 }
 
-
 - (void)viewWillAppear:(BOOL)animated {
     
     
@@ -403,7 +402,7 @@
      */
     
     
-    amountLabel.text = [NSString stringWithFormat:@"$%.2f",[self.previous floatValue]];
+    amountLabel.text = [NSString stringWithFormat:@"Total $%.2f",[self.previous floatValue]];
     
     oneButton.frame = CGRectMake(oneButton.frame.origin.x - (self.view.frame.size.width * 1.5), oneButton.frame.origin.y, oneButton.frame.size.width, oneButton.frame.size.height);
     [self.view bringSubviewToFront:oneButton];
