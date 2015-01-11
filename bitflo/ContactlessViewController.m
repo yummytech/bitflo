@@ -402,6 +402,7 @@
      */
     
     
+    
     amountLabel.text = [NSString stringWithFormat:@"Total $%.2f",[self.previous floatValue]];
     
     oneButton.frame = CGRectMake(oneButton.frame.origin.x - (self.view.frame.size.width * 1.5), oneButton.frame.origin.y, oneButton.frame.size.width, oneButton.frame.size.height);
