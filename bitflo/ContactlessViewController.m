@@ -26,15 +26,12 @@
     int _swipeCount;
     
     NSCondition *_responseCondition;
-<<<<<<< .merge_file_T40Iou
+
     NSCondition *_picWaitResponseCondition;
     NSCondition * _picWaitAuthenticateResponseCondition;
     NSCondition * _picWaitReadResponseCondition;
     NSCondition * _picWaitWriteResponseCondition;
 
-=======
-    
->>>>>>> .merge_file_ObUBeh
     BOOL _firmwareVersionReady;
     NSString *_firmwareVersion;
     
@@ -80,7 +77,7 @@
     NSData *_piccRfConfig;
     
     UIAlertView *_trackDataAlert;
-<<<<<<< .merge_file_T40Iou
+
     NSOperationQueue * picQueue;
     NSBlockOperation * picRead;
     NSBlockOperation * picResponse;
@@ -91,8 +88,6 @@
     BOOL tagDataFlag;
 
 
-=======
->>>>>>> .merge_file_ObUBeh
 }
 
 @synthesize logView, oneButton, twoButton, threeButton, fourButton, fiveButton, sixButton, sevenButton, eightButton, nineButton, zeroButton, deleteButton;
@@ -548,13 +543,11 @@
     _swipeCount = 0;
     
     _responseCondition = [[NSCondition alloc] init];
-<<<<<<< .merge_file_T40Iou
+
     _picWaitResponseCondition = [[NSCondition alloc] init];
     _picWaitAuthenticateResponseCondition = [[NSCondition alloc] init];
     _picWaitReadResponseCondition = [[NSCondition alloc] init];
     _picWaitWriteResponseCondition = [[NSCondition alloc] init];
-=======
->>>>>>> .merge_file_ObUBeh
     
     _firmwareVersionReady = NO;
     _firmwareVersion = nil;
@@ -648,14 +641,11 @@
     // Load the initial key.
     [_dukptReceiver loadInitialKey:_ipek];
     
-<<<<<<< .merge_file_T40Iou
+
     picQueue = [[NSOperationQueue alloc]init];
     tagData = [[NSMutableData alloc]initWithCapacity:32];
     tagDataFlag = NO; // this flag will be set when the tagData is updated, it is up to the user to clear it after accessing.
 
-=======
-    
->>>>>>> .merge_file_ObUBeh
 }
 
 - (IBAction)Next:(id)sender {
@@ -960,8 +950,8 @@
     //[self showPiccResponseApdu:piccViewController];
     
     NSData *commandApdu = nil;
-<<<<<<< .merge_file_T40Iou
-#if 0
+
+
     commandApdu = [AJDHex byteArrayFromHexString:@"FF CA 00 00 00"];
 
     if (![_reader piccTransmitWithTimeout:9.0 commandApdu:[commandApdu bytes] length:[commandApdu length]]) {
@@ -974,15 +964,15 @@
         [self powerOn];
         
     }
-#endif
+
     
-    [self getNfcData];
+//    [self getNfcData];
 //      NSData * myData = [AJDHex byteArrayFromHexString:@"55 44 33 22 11"];
 //      [self putNfcData:myData];
 #if 0
-=======
+
     commandApdu = [AJDHex byteArrayFromHexString:@"FF CA 00 00 00"];
->>>>>>> .merge_file_ObUBeh
+
     
     if (![_reader piccTransmitWithTimeout:9.0 commandApdu:[commandApdu bytes] length:[commandApdu length]]) {
         
@@ -994,7 +984,7 @@
         [self powerOn];
         
     }
-    
+#endif
 }
 
 -(void)powerOn {
@@ -1065,7 +1055,7 @@
         });
     });
 }
-<<<<<<< .merge_file_T40Iou
+
 #pragma mark - Mifare 4K read/write 32 bytes starting at block 4
 - (BOOL)getNfcData //:(NSData *) data
 {
@@ -1235,8 +1225,6 @@
     return YES;
     
 }
-=======
->>>>>>> .merge_file_ObUBeh
 
 #pragma mark - Audio Jack Reader Delegate
 
@@ -1548,7 +1536,7 @@ cleanup:
         // self.dataReceivedLabel.text = hexString;
         // [self.tableView reloadData];
     });
-<<<<<<< .merge_file_T40Iou
+
     
     //   picResponse = [NSBlockOperation blockOperationWithBlock: ^{ NSLog(@"::picResponse");
     //   }];
@@ -1596,8 +1584,6 @@ cleanup:
 
 //        [_picWaitReadResponseCondition signal];
     }
-=======
->>>>>>> .merge_file_ObUBeh
 }
 
 - (void)reader:(ACRAudioJackReader *)reader didSendCustomId:(const uint8_t *)customId length:(NSUInteger)length {
@@ -1653,22 +1639,11 @@ cleanup:
     [_responseCondition lock];
     _piccResponseApdu = [NSData dataWithBytes:responseApdu length:length];
     
-<<<<<<< .merge_file_T40Iou
+
     NSLog(@"piccResponse %@, %d",_piccResponseApdu , length);
-#if 0
-    if((responseApdu[0] == 0x90 && responseApdu[1] == 0x00) || (responseApdu[0] == 0x63 && responseApdu[1] == 0x00))
-    {
-        NSLog(@"_picWaitResponseCondition signal");
-        [_picWaitResponseCondition signal];
-    }
-    else
-    {
-        NSLog(@"_picWaitResponseCondition signal no cigar %2.2x %2.2x", responseApdu[0],responseApdu[1]);
-    }
-#endif
-#if 0
-=======
->>>>>>> .merge_file_ObUBeh
+
+
+
     // Mute AudioJack library
     _reader.mute = YES;
     // Route audio to speakers
@@ -1689,7 +1664,7 @@ cleanup:
     else
         self.audioPlayer.delegate = self; // assign this player delegate to this class so audioPlayerDidFinishPlaying will be called here
     [self.audioPlayer play]; // play the scan sound
-#endif
+
     NSString *UUID = [self toHexString:[_piccResponseApdu bytes] length:[_piccResponseApdu length]];
     
     NSLog(@"UUID:%@",UUID);
