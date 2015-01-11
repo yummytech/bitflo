@@ -379,8 +379,11 @@
 
 - (void)completeTransaction:(NSString *)UUID {
     
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    float amount = [appDelegate.currentAmount floatValue];
+    
+    [self blur];
+    
+    //AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    //float amount = [appDelegate.currentAmount floatValue];
     
     PFQuery *query = [PFQuery queryWithClassName:@"Customer"];
     [query whereKey:@"UUID" equalTo:[UUID stringByReplacingOccurrencesOfString:@" " withString:@""]];
@@ -427,7 +430,7 @@
                 [dict setObject:phone forKey:@"phone"];
             }
             
-            [self blur];
+            
             //[self performSelectorOnMainThread:@selector(goToThanksWithDict:) withObject:dict waitUntilDone:YES];
             
         } else {
