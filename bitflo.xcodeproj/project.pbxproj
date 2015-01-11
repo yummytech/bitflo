@@ -11,33 +11,21 @@
 		451CBD2F1A61B54800D22FA6 /* avioncito.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD0F1A61B54800D22FA6 /* avioncito.png */; };
 		451CBD301A61B54800D22FA6 /* BoxWithBlueBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD101A61B54800D22FA6 /* BoxWithBlueBackground.png */; };
 		451CBD311A61B54800D22FA6 /* BoxWithGrayBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD111A61B54800D22FA6 /* BoxWithGrayBackground.png */; };
-		451CBD321A61B54800D22FA6 /* BoxWithPlusMinus983x167.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD121A61B54800D22FA6 /* BoxWithPlusMinus983x167.png */; };
 		451CBD331A61B54800D22FA6 /* BoxWithWhiteBackground983x167.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD131A61B54800D22FA6 /* BoxWithWhiteBackground983x167.png */; };
 		451CBD341A61B54800D22FA6 /* Contactless156x92.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD141A61B54800D22FA6 /* Contactless156x92.png */; };
 		451CBD351A61B54800D22FA6 /* dialoguito.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD151A61B54800D22FA6 /* dialoguito.png */; };
-		451CBD361A61B54800D22FA6 /* GoPaymentPlusLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD161A61B54800D22FA6 /* GoPaymentPlusLogo.png */; };
-		451CBD371A61B54800D22FA6 /* IceCreamChocolateLime.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD171A61B54800D22FA6 /* IceCreamChocolateLime.png */; };
-		451CBD381A61B54800D22FA6 /* IceCreamChocolateNuts.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD181A61B54800D22FA6 /* IceCreamChocolateNuts.png */; };
-		451CBD391A61B54800D22FA6 /* IceCreamNeopolitan.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD191A61B54800D22FA6 /* IceCreamNeopolitan.png */; };
-		451CBD3A1A61B54800D22FA6 /* IceCreamOrange.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD1A1A61B54800D22FA6 /* IceCreamOrange.png */; };
-		451CBD3B1A61B54800D22FA6 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD1B1A61B54800D22FA6 /* icon.png */; };
-		451CBD3C1A61B54800D22FA6 /* icon@120x.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD1C1A61B54800D22FA6 /* icon@120x.png */; };
 		451CBD3D1A61B54800D22FA6 /* item_field.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD1D1A61B54800D22FA6 /* item_field.png */; };
 		451CBD3E1A61B54800D22FA6 /* Items.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD1E1A61B54800D22FA6 /* Items.png */; };
 		451CBD3F1A61B54800D22FA6 /* ItemsPagedBox.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD1F1A61B54800D22FA6 /* ItemsPagedBox.png */; };
 		451CBD401A61B54800D22FA6 /* key.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD201A61B54800D22FA6 /* key.png */; };
 		451CBD411A61B54800D22FA6 /* Keypad.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD211A61B54800D22FA6 /* Keypad.png */; };
 		451CBD421A61B54800D22FA6 /* KeypadButton378x241.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD221A61B54800D22FA6 /* KeypadButton378x241.png */; };
-		451CBD431A61B54800D22FA6 /* KeypadGridWithEditButton1114x1175.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD231A61B54800D22FA6 /* KeypadGridWithEditButton1114x1175.png */; };
 		451CBD441A61B54800D22FA6 /* long_key.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD241A61B54800D22FA6 /* long_key.png */; };
 		451CBD451A61B54800D22FA6 /* no.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD251A61B54800D22FA6 /* no.png */; };
-		451CBD461A61B54800D22FA6 /* PaymentOptionGridWithIcons.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD261A61B54800D22FA6 /* PaymentOptionGridWithIcons.png */; };
 		451CBD471A61B54800D22FA6 /* Settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD271A61B54800D22FA6 /* Settings.png */; };
 		451CBD481A61B54800D22FA6 /* thanks.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD281A61B54800D22FA6 /* thanks.png */; };
-		451CBD491A61B54800D22FA6 /* ThanksImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD291A61B54800D22FA6 /* ThanksImage.png */; };
 		451CBD4A1A61B54800D22FA6 /* thx_blue_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD2A1A61B54800D22FA6 /* thx_blue_button.png */; };
 		451CBD4B1A61B54800D22FA6 /* thx_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD2B1A61B54800D22FA6 /* thx_button.png */; };
-		451CBD4C1A61B54800D22FA6 /* TruckIceCream.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD2C1A61B54800D22FA6 /* TruckIceCream.png */; };
 		451CBD4D1A61B54800D22FA6 /* XButtonGray80x80.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD2D1A61B54800D22FA6 /* XButtonGray80x80.png */; };
 		451CBD501A61BD9300D22FA6 /* ContactlessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 451CBD4F1A61BD9300D22FA6 /* ContactlessViewController.m */; };
 		451CBD5F1A61BDC000D22FA6 /* libAudioJack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 451CBD5E1A61BDC000D22FA6 /* libAudioJack.a */; };
@@ -47,6 +35,7 @@
 		451CBD721A61C5E600D22FA6 /* Dummy.mm in Sources */ = {isa = PBXBuildFile; fileRef = 451CBD711A61C5E600D22FA6 /* Dummy.mm */; };
 		451CBD751A61C99F00D22FA6 /* scan_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD741A61C99F00D22FA6 /* scan_sound.mp3 */; };
 		451CBD781A61D15000D22FA6 /* ATMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 451CBD771A61D15000D22FA6 /* ATMViewController.m */; };
+		459884F81A6210AC00558E5F /* blur.png in Resources */ = {isa = PBXBuildFile; fileRef = 459884F71A6210AC00558E5F /* blur.png */; };
 		45E2F5DA1A61878600223EC8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E2F5D91A61878600223EC8 /* main.m */; };
 		45E2F5DD1A61878600223EC8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E2F5DC1A61878600223EC8 /* AppDelegate.m */; };
 		45E2F5E01A61878600223EC8 /* bitflo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 45E2F5DE1A61878600223EC8 /* bitflo.xcdatamodeld */; };
@@ -72,6 +61,13 @@
 		45E2F62C1A619AD500223EC8 /* SalesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E2F62B1A619AD500223EC8 /* SalesViewController.m */; };
 		45E2F6311A619B0200223EC8 /* SalesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E2F62E1A619B0200223EC8 /* SalesTableViewCell.m */; };
 		45E2F6321A619B0200223EC8 /* SalesTallTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E2F6301A619B0200223EC8 /* SalesTallTableViewCell.m */; };
+		EF568AC21A623B90006B2B73 /* PinKey.png in Resources */ = {isa = PBXBuildFile; fileRef = EF568ABF1A623B90006B2B73 /* PinKey.png */; };
+		EF568AC31A623B90006B2B73 /* PinMissing.png in Resources */ = {isa = PBXBuildFile; fileRef = EF568AC01A623B90006B2B73 /* PinMissing.png */; };
+		EF568AC41A623B90006B2B73 /* PinPresent.png in Resources */ = {isa = PBXBuildFile; fileRef = EF568AC11A623B90006B2B73 /* PinPresent.png */; };
+		EF568AC61A6246CC006B2B73 /* BitFloLaunchArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = EF568AC51A6246CC006B2B73 /* BitFloLaunchArtwork.png */; };
+		EF568ACA1A6267FE006B2B73 /* Contactless1182x2000.png in Resources */ = {isa = PBXBuildFile; fileRef = EF568AC91A6267FE006B2B73 /* Contactless1182x2000.png */; };
+		EF568ACC1A628A9D006B2B73 /* atm_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EF568ACB1A628A9D006B2B73 /* atm_icon.png */; };
+		EF568ACE1A628E6A006B2B73 /* ContactlessWhite1000x591.png in Resources */ = {isa = PBXBuildFile; fileRef = EF568ACD1A628E6A006B2B73 /* ContactlessWhite1000x591.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,33 +98,21 @@
 		451CBD0F1A61B54800D22FA6 /* avioncito.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avioncito.png; sourceTree = "<group>"; };
 		451CBD101A61B54800D22FA6 /* BoxWithBlueBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BoxWithBlueBackground.png; sourceTree = "<group>"; };
 		451CBD111A61B54800D22FA6 /* BoxWithGrayBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BoxWithGrayBackground.png; sourceTree = "<group>"; };
-		451CBD121A61B54800D22FA6 /* BoxWithPlusMinus983x167.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BoxWithPlusMinus983x167.png; sourceTree = "<group>"; };
 		451CBD131A61B54800D22FA6 /* BoxWithWhiteBackground983x167.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BoxWithWhiteBackground983x167.png; sourceTree = "<group>"; };
 		451CBD141A61B54800D22FA6 /* Contactless156x92.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Contactless156x92.png; sourceTree = "<group>"; };
 		451CBD151A61B54800D22FA6 /* dialoguito.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dialoguito.png; sourceTree = "<group>"; };
-		451CBD161A61B54800D22FA6 /* GoPaymentPlusLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GoPaymentPlusLogo.png; sourceTree = "<group>"; };
-		451CBD171A61B54800D22FA6 /* IceCreamChocolateLime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IceCreamChocolateLime.png; sourceTree = "<group>"; };
-		451CBD181A61B54800D22FA6 /* IceCreamChocolateNuts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IceCreamChocolateNuts.png; sourceTree = "<group>"; };
-		451CBD191A61B54800D22FA6 /* IceCreamNeopolitan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IceCreamNeopolitan.png; sourceTree = "<group>"; };
-		451CBD1A1A61B54800D22FA6 /* IceCreamOrange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IceCreamOrange.png; sourceTree = "<group>"; };
-		451CBD1B1A61B54800D22FA6 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
-		451CBD1C1A61B54800D22FA6 /* icon@120x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@120x.png"; sourceTree = "<group>"; };
 		451CBD1D1A61B54800D22FA6 /* item_field.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = item_field.png; sourceTree = "<group>"; };
 		451CBD1E1A61B54800D22FA6 /* Items.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Items.png; sourceTree = "<group>"; };
 		451CBD1F1A61B54800D22FA6 /* ItemsPagedBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ItemsPagedBox.png; sourceTree = "<group>"; };
 		451CBD201A61B54800D22FA6 /* key.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = key.png; sourceTree = "<group>"; };
 		451CBD211A61B54800D22FA6 /* Keypad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Keypad.png; sourceTree = "<group>"; };
 		451CBD221A61B54800D22FA6 /* KeypadButton378x241.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KeypadButton378x241.png; sourceTree = "<group>"; };
-		451CBD231A61B54800D22FA6 /* KeypadGridWithEditButton1114x1175.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KeypadGridWithEditButton1114x1175.png; sourceTree = "<group>"; };
 		451CBD241A61B54800D22FA6 /* long_key.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = long_key.png; sourceTree = "<group>"; };
 		451CBD251A61B54800D22FA6 /* no.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = no.png; sourceTree = "<group>"; };
-		451CBD261A61B54800D22FA6 /* PaymentOptionGridWithIcons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PaymentOptionGridWithIcons.png; sourceTree = "<group>"; };
 		451CBD271A61B54800D22FA6 /* Settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settings.png; sourceTree = "<group>"; };
 		451CBD281A61B54800D22FA6 /* thanks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thanks.png; sourceTree = "<group>"; };
-		451CBD291A61B54800D22FA6 /* ThanksImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ThanksImage.png; sourceTree = "<group>"; };
 		451CBD2A1A61B54800D22FA6 /* thx_blue_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thx_blue_button.png; sourceTree = "<group>"; };
 		451CBD2B1A61B54800D22FA6 /* thx_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thx_button.png; sourceTree = "<group>"; };
-		451CBD2C1A61B54800D22FA6 /* TruckIceCream.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TruckIceCream.png; sourceTree = "<group>"; };
 		451CBD2D1A61B54800D22FA6 /* XButtonGray80x80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = XButtonGray80x80.png; sourceTree = "<group>"; };
 		451CBD4E1A61BD9300D22FA6 /* ContactlessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactlessViewController.h; sourceTree = "<group>"; };
 		451CBD4F1A61BD9300D22FA6 /* ContactlessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactlessViewController.m; sourceTree = "<group>"; };
@@ -154,6 +138,7 @@
 		451CBD741A61C99F00D22FA6 /* scan_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = scan_sound.mp3; sourceTree = "<group>"; };
 		451CBD761A61D15000D22FA6 /* ATMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATMViewController.h; sourceTree = "<group>"; };
 		451CBD771A61D15000D22FA6 /* ATMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATMViewController.m; sourceTree = "<group>"; };
+		459884F71A6210AC00558E5F /* blur.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blur.png; sourceTree = "<group>"; };
 		45E2F5D41A61878600223EC8 /* bitflo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bitflo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45E2F5D81A61878600223EC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45E2F5D91A61878600223EC8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -190,6 +175,13 @@
 		45E2F62E1A619B0200223EC8 /* SalesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SalesTableViewCell.m; sourceTree = "<group>"; };
 		45E2F62F1A619B0200223EC8 /* SalesTallTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SalesTallTableViewCell.h; sourceTree = "<group>"; };
 		45E2F6301A619B0200223EC8 /* SalesTallTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SalesTallTableViewCell.m; sourceTree = "<group>"; };
+		EF568ABF1A623B90006B2B73 /* PinKey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PinKey.png; sourceTree = "<group>"; };
+		EF568AC01A623B90006B2B73 /* PinMissing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PinMissing.png; sourceTree = "<group>"; };
+		EF568AC11A623B90006B2B73 /* PinPresent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PinPresent.png; sourceTree = "<group>"; };
+		EF568AC51A6246CC006B2B73 /* BitFloLaunchArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BitFloLaunchArtwork.png; sourceTree = "<group>"; };
+		EF568AC91A6267FE006B2B73 /* Contactless1182x2000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Contactless1182x2000.png; sourceTree = "<group>"; };
+		EF568ACB1A628A9D006B2B73 /* atm_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = atm_icon.png; sourceTree = "<group>"; };
+		EF568ACD1A628E6A006B2B73 /* ContactlessWhite1000x591.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ContactlessWhite1000x591.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,37 +219,33 @@
 		451CBD0D1A61B53E00D22FA6 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				EF568ACB1A628A9D006B2B73 /* atm_icon.png */,
+				EF568ACD1A628E6A006B2B73 /* ContactlessWhite1000x591.png */,
+				EF568AC91A6267FE006B2B73 /* Contactless1182x2000.png */,
+				451CBD141A61B54800D22FA6 /* Contactless156x92.png */,
+				EF568AC51A6246CC006B2B73 /* BitFloLaunchArtwork.png */,
+				EF568ABF1A623B90006B2B73 /* PinKey.png */,
+				EF568AC01A623B90006B2B73 /* PinMissing.png */,
+				EF568AC11A623B90006B2B73 /* PinPresent.png */,
+				459884F71A6210AC00558E5F /* blur.png */,
 				451CBD0E1A61B54800D22FA6 /* ArrowGray.png */,
 				451CBD0F1A61B54800D22FA6 /* avioncito.png */,
 				451CBD101A61B54800D22FA6 /* BoxWithBlueBackground.png */,
 				451CBD111A61B54800D22FA6 /* BoxWithGrayBackground.png */,
-				451CBD121A61B54800D22FA6 /* BoxWithPlusMinus983x167.png */,
 				451CBD131A61B54800D22FA6 /* BoxWithWhiteBackground983x167.png */,
-				451CBD141A61B54800D22FA6 /* Contactless156x92.png */,
 				451CBD151A61B54800D22FA6 /* dialoguito.png */,
-				451CBD161A61B54800D22FA6 /* GoPaymentPlusLogo.png */,
-				451CBD171A61B54800D22FA6 /* IceCreamChocolateLime.png */,
-				451CBD181A61B54800D22FA6 /* IceCreamChocolateNuts.png */,
-				451CBD191A61B54800D22FA6 /* IceCreamNeopolitan.png */,
-				451CBD1A1A61B54800D22FA6 /* IceCreamOrange.png */,
-				451CBD1B1A61B54800D22FA6 /* icon.png */,
-				451CBD1C1A61B54800D22FA6 /* icon@120x.png */,
 				451CBD1D1A61B54800D22FA6 /* item_field.png */,
 				451CBD1E1A61B54800D22FA6 /* Items.png */,
 				451CBD1F1A61B54800D22FA6 /* ItemsPagedBox.png */,
 				451CBD201A61B54800D22FA6 /* key.png */,
 				451CBD211A61B54800D22FA6 /* Keypad.png */,
 				451CBD221A61B54800D22FA6 /* KeypadButton378x241.png */,
-				451CBD231A61B54800D22FA6 /* KeypadGridWithEditButton1114x1175.png */,
 				451CBD241A61B54800D22FA6 /* long_key.png */,
 				451CBD251A61B54800D22FA6 /* no.png */,
-				451CBD261A61B54800D22FA6 /* PaymentOptionGridWithIcons.png */,
 				451CBD271A61B54800D22FA6 /* Settings.png */,
 				451CBD281A61B54800D22FA6 /* thanks.png */,
-				451CBD291A61B54800D22FA6 /* ThanksImage.png */,
 				451CBD2A1A61B54800D22FA6 /* thx_blue_button.png */,
 				451CBD2B1A61B54800D22FA6 /* thx_button.png */,
-				451CBD2C1A61B54800D22FA6 /* TruckIceCream.png */,
 				451CBD2D1A61B54800D22FA6 /* XButtonGray80x80.png */,
 			);
 			name = Images;
@@ -478,38 +466,34 @@
 				451CBD481A61B54800D22FA6 /* thanks.png in Resources */,
 				451CBD351A61B54800D22FA6 /* dialoguito.png in Resources */,
 				45E2F5E61A61878600223EC8 /* Main.storyboard in Resources */,
-				451CBD3C1A61B54800D22FA6 /* icon@120x.png in Resources */,
+				EF568AC61A6246CC006B2B73 /* BitFloLaunchArtwork.png in Resources */,
+				EF568ACA1A6267FE006B2B73 /* Contactless1182x2000.png in Resources */,
 				451CBD441A61B54800D22FA6 /* long_key.png in Resources */,
-				451CBD431A61B54800D22FA6 /* KeypadGridWithEditButton1114x1175.png in Resources */,
+				EF568AC31A623B90006B2B73 /* PinMissing.png in Resources */,
 				451CBD3F1A61B54800D22FA6 /* ItemsPagedBox.png in Resources */,
 				451CBD451A61B54800D22FA6 /* no.png in Resources */,
 				451CBD471A61B54800D22FA6 /* Settings.png in Resources */,
 				451CBD411A61B54800D22FA6 /* Keypad.png in Resources */,
+				EF568ACE1A628E6A006B2B73 /* ContactlessWhite1000x591.png in Resources */,
+				EF568AC21A623B90006B2B73 /* PinKey.png in Resources */,
 				451CBD2F1A61B54800D22FA6 /* avioncito.png in Resources */,
 				45E2F5EB1A61878600223EC8 /* LaunchScreen.xib in Resources */,
-				451CBD491A61B54800D22FA6 /* ThanksImage.png in Resources */,
 				451CBD2E1A61B54800D22FA6 /* ArrowGray.png in Resources */,
 				45E2F5E81A61878600223EC8 /* Images.xcassets in Resources */,
-				451CBD321A61B54800D22FA6 /* BoxWithPlusMinus983x167.png in Resources */,
 				451CBD331A61B54800D22FA6 /* BoxWithWhiteBackground983x167.png in Resources */,
 				451CBD751A61C99F00D22FA6 /* scan_sound.mp3 in Resources */,
-				451CBD461A61B54800D22FA6 /* PaymentOptionGridWithIcons.png in Resources */,
 				451CBD301A61B54800D22FA6 /* BoxWithBlueBackground.png in Resources */,
-				451CBD361A61B54800D22FA6 /* GoPaymentPlusLogo.png in Resources */,
-				451CBD4C1A61B54800D22FA6 /* TruckIceCream.png in Resources */,
+				EF568AC41A623B90006B2B73 /* PinPresent.png in Resources */,
 				451CBD421A61B54800D22FA6 /* KeypadButton378x241.png in Resources */,
-				451CBD3A1A61B54800D22FA6 /* IceCreamOrange.png in Resources */,
+				EF568ACC1A628A9D006B2B73 /* atm_icon.png in Resources */,
 				451CBD4D1A61B54800D22FA6 /* XButtonGray80x80.png in Resources */,
 				451CBD401A61B54800D22FA6 /* key.png in Resources */,
-				451CBD371A61B54800D22FA6 /* IceCreamChocolateLime.png in Resources */,
-				451CBD3B1A61B54800D22FA6 /* icon.png in Resources */,
-				451CBD381A61B54800D22FA6 /* IceCreamChocolateNuts.png in Resources */,
-				451CBD391A61B54800D22FA6 /* IceCreamNeopolitan.png in Resources */,
 				451CBD3D1A61B54800D22FA6 /* item_field.png in Resources */,
 				451CBD4A1A61B54800D22FA6 /* thx_blue_button.png in Resources */,
 				451CBD4B1A61B54800D22FA6 /* thx_button.png in Resources */,
 				451CBD341A61B54800D22FA6 /* Contactless156x92.png in Resources */,
 				451CBD3E1A61B54800D22FA6 /* Items.png in Resources */,
+				459884F81A6210AC00558E5F /* blur.png in Resources */,
 				451CBD311A61B54800D22FA6 /* BoxWithGrayBackground.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -663,6 +647,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/bitflo",
@@ -687,6 +672,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/bitflo",

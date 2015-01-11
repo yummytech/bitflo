@@ -46,13 +46,17 @@
 
     NSString *type = [[PFUser currentUser] objectForKey:@"type"];
     
+    ViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"main_merchant"];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+    /*
     if ([type isEqualToString:@"M"]) {
-        ViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"main_merchant"];
-        [self.navigationController pushViewController:vc animated:YES];
+     
     } else {
         ViewController *cvc = [self.storyboard instantiateViewControllerWithIdentifier:@"main_customer"];
         [self.navigationController pushViewController:cvc animated:YES];
     }
+     */
     
     
 }
