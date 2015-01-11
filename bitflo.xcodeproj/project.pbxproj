@@ -66,6 +66,9 @@
 		EF568AC31A623B90006B2B73 /* PinMissing.png in Resources */ = {isa = PBXBuildFile; fileRef = EF568AC01A623B90006B2B73 /* PinMissing.png */; };
 		EF568AC41A623B90006B2B73 /* PinPresent.png in Resources */ = {isa = PBXBuildFile; fileRef = EF568AC11A623B90006B2B73 /* PinPresent.png */; };
 		EF568AC61A6246CC006B2B73 /* BitFloLaunchArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = EF568AC51A6246CC006B2B73 /* BitFloLaunchArtwork.png */; };
+		EF568AD11A62E0AA006B2B73 /* Contactless1182x2000.png in Resources */ = {isa = PBXBuildFile; fileRef = EF568ACF1A62E0AA006B2B73 /* Contactless1182x2000.png */; };
+		EF568AD21A62E0AA006B2B73 /* ContactlessWhite1000x591.png in Resources */ = {isa = PBXBuildFile; fileRef = EF568AD01A62E0AA006B2B73 /* ContactlessWhite1000x591.png */; };
+		EF568AD41A62E0C4006B2B73 /* atm_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EF568AD31A62E0C4006B2B73 /* atm_icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -179,6 +182,9 @@
 		EF568AC01A623B90006B2B73 /* PinMissing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PinMissing.png; sourceTree = "<group>"; };
 		EF568AC11A623B90006B2B73 /* PinPresent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PinPresent.png; sourceTree = "<group>"; };
 		EF568AC51A6246CC006B2B73 /* BitFloLaunchArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BitFloLaunchArtwork.png; sourceTree = "<group>"; };
+		EF568ACF1A62E0AA006B2B73 /* Contactless1182x2000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Contactless1182x2000.png; sourceTree = "<group>"; };
+		EF568AD01A62E0AA006B2B73 /* ContactlessWhite1000x591.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ContactlessWhite1000x591.png; sourceTree = "<group>"; };
+		EF568AD31A62E0C4006B2B73 /* atm_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = atm_icon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +222,10 @@
 		451CBD0D1A61B53E00D22FA6 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				EF568AD31A62E0C4006B2B73 /* atm_icon.png */,
+				EF568ACF1A62E0AA006B2B73 /* Contactless1182x2000.png */,
+				EF568AD01A62E0AA006B2B73 /* ContactlessWhite1000x591.png */,
+				451CBD141A61B54800D22FA6 /* Contactless156x92.png */,
 				EF568AC51A6246CC006B2B73 /* BitFloLaunchArtwork.png */,
 				EF568ABF1A623B90006B2B73 /* PinKey.png */,
 				EF568AC01A623B90006B2B73 /* PinMissing.png */,
@@ -226,7 +236,6 @@
 				451CBD101A61B54800D22FA6 /* BoxWithBlueBackground.png */,
 				451CBD111A61B54800D22FA6 /* BoxWithGrayBackground.png */,
 				451CBD131A61B54800D22FA6 /* BoxWithWhiteBackground983x167.png */,
-				451CBD141A61B54800D22FA6 /* Contactless156x92.png */,
 				451CBD151A61B54800D22FA6 /* dialoguito.png */,
 				451CBD1D1A61B54800D22FA6 /* item_field.png */,
 				451CBD1E1A61B54800D22FA6 /* Items.png */,
@@ -463,10 +472,12 @@
 				451CBD351A61B54800D22FA6 /* dialoguito.png in Resources */,
 				45E2F5E61A61878600223EC8 /* Main.storyboard in Resources */,
 				EF568AC61A6246CC006B2B73 /* BitFloLaunchArtwork.png in Resources */,
+				EF568AD11A62E0AA006B2B73 /* Contactless1182x2000.png in Resources */,
 				451CBD441A61B54800D22FA6 /* long_key.png in Resources */,
 				EF568AC31A623B90006B2B73 /* PinMissing.png in Resources */,
 				451CBD3F1A61B54800D22FA6 /* ItemsPagedBox.png in Resources */,
 				451CBD451A61B54800D22FA6 /* no.png in Resources */,
+				EF568AD41A62E0C4006B2B73 /* atm_icon.png in Resources */,
 				451CBD471A61B54800D22FA6 /* Settings.png in Resources */,
 				451CBD411A61B54800D22FA6 /* Keypad.png in Resources */,
 				EF568AC21A623B90006B2B73 /* PinKey.png in Resources */,
@@ -483,6 +494,7 @@
 				451CBD401A61B54800D22FA6 /* key.png in Resources */,
 				451CBD3D1A61B54800D22FA6 /* item_field.png in Resources */,
 				451CBD4A1A61B54800D22FA6 /* thx_blue_button.png in Resources */,
+				EF568AD21A62E0AA006B2B73 /* ContactlessWhite1000x591.png in Resources */,
 				451CBD4B1A61B54800D22FA6 /* thx_button.png in Resources */,
 				451CBD341A61B54800D22FA6 /* Contactless156x92.png in Resources */,
 				451CBD3E1A61B54800D22FA6 /* Items.png in Resources */,
