@@ -47,6 +47,7 @@
 		451CBD721A61C5E600D22FA6 /* Dummy.mm in Sources */ = {isa = PBXBuildFile; fileRef = 451CBD711A61C5E600D22FA6 /* Dummy.mm */; };
 		451CBD751A61C99F00D22FA6 /* scan_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 451CBD741A61C99F00D22FA6 /* scan_sound.mp3 */; };
 		451CBD781A61D15000D22FA6 /* ATMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 451CBD771A61D15000D22FA6 /* ATMViewController.m */; };
+		459884F81A6210AC00558E5F /* blur.png in Resources */ = {isa = PBXBuildFile; fileRef = 459884F71A6210AC00558E5F /* blur.png */; };
 		45E2F5DA1A61878600223EC8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E2F5D91A61878600223EC8 /* main.m */; };
 		45E2F5DD1A61878600223EC8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E2F5DC1A61878600223EC8 /* AppDelegate.m */; };
 		45E2F5E01A61878600223EC8 /* bitflo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 45E2F5DE1A61878600223EC8 /* bitflo.xcdatamodeld */; };
@@ -154,6 +155,7 @@
 		451CBD741A61C99F00D22FA6 /* scan_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = scan_sound.mp3; sourceTree = "<group>"; };
 		451CBD761A61D15000D22FA6 /* ATMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATMViewController.h; sourceTree = "<group>"; };
 		451CBD771A61D15000D22FA6 /* ATMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATMViewController.m; sourceTree = "<group>"; };
+		459884F71A6210AC00558E5F /* blur.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blur.png; sourceTree = "<group>"; };
 		45E2F5D41A61878600223EC8 /* bitflo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bitflo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45E2F5D81A61878600223EC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45E2F5D91A61878600223EC8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 		451CBD0D1A61B53E00D22FA6 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				459884F71A6210AC00558E5F /* blur.png */,
 				451CBD0E1A61B54800D22FA6 /* ArrowGray.png */,
 				451CBD0F1A61B54800D22FA6 /* avioncito.png */,
 				451CBD101A61B54800D22FA6 /* BoxWithBlueBackground.png */,
@@ -510,6 +513,7 @@
 				451CBD4B1A61B54800D22FA6 /* thx_button.png in Resources */,
 				451CBD341A61B54800D22FA6 /* Contactless156x92.png in Resources */,
 				451CBD3E1A61B54800D22FA6 /* Items.png in Resources */,
+				459884F81A6210AC00558E5F /* blur.png in Resources */,
 				451CBD311A61B54800D22FA6 /* BoxWithGrayBackground.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

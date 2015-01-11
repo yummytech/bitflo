@@ -74,16 +74,116 @@
     UIAlertView *_trackDataAlert;
 }
 
-@synthesize logView;
+@synthesize logView, oneButton, twoButton, threeButton, fourButton, fiveButton, sixButton, sevenButton, eightButton, nineButton, zeroButton, OLabel;
 
+- (IBAction)passcode:(id)sender {
+    
+    UIButton *senderButton = (UIButton *)sender;
+    
+    NSInteger selectedButton = [senderButton tag];
+    
+    passcode = [NSString stringWithFormat:@"%@%li",passcode,(long)selectedButton];
+    NSLog(@"passcode:%@",passcode);
+    
+    if ([passcode length] > 3) {
+        if ([storedPasscode isEqualToString:passcode]) {
+            NSLog(@"success");
+            [self deblur];
+        } else {
+            NSLog(@"fail");
+            
+            [UIView animateWithDuration:0.1 animations:^{
+                OLabel.frame = CGRectMake(OLabel.frame.origin.x + 10, OLabel.frame.origin.y, OLabel.frame.size.width, OLabel.frame.size.height); } completion:^(BOOL finished){
+                [UIView animateWithDuration:0.1 animations:^{
+                    OLabel.frame = CGRectMake(OLabel.frame.origin.x - 10, OLabel.frame.origin.y, OLabel.frame.size.width, OLabel.frame.size.height); } completion:^(BOOL finished){
+                        [UIView animateWithDuration:0.1 animations:^{
+                            OLabel.frame = CGRectMake(OLabel.frame.origin.x + 10, OLabel.frame.origin.y, OLabel.frame.size.width, OLabel.frame.size.height); } completion:^(BOOL finished){
+                                [UIView animateWithDuration:0.1 animations:^{
+                                    OLabel.frame = CGRectMake(OLabel.frame.origin.x - 10, OLabel.frame.origin.y, OLabel.frame.size.width, OLabel.frame.size.height); } completion:^(BOOL finished){
+                                        
+                                    }];
+                            }];
+                        
+                     }];
+            }];
+            
 
+        }
+        
+        passcode = @"";
+    }
+    
+}
+
+- (void)blur {
+    
+    passcode = @"";
+    
+    [UIView animateWithDuration:1.0 animations:^{
+        
+        blurEffectView.alpha = 0.8;
+        blurEffectView.frame = self.view.bounds;
+        oneButton.frame = CGRectMake(oneButton.frame.origin.x + (self.view.frame.size.width * 1.5), oneButton.frame.origin.y, oneButton.frame.size.width, oneButton.frame.size.height);
+        twoButton.frame = CGRectMake(twoButton.frame.origin.x + (self.view.frame.size.width * 1.5), twoButton.frame.origin.y, twoButton.frame.size.width, twoButton.frame.size.height);
+        threeButton.frame = CGRectMake(threeButton.frame.origin.x + (self.view.frame.size.width * 1.5), threeButton.frame.origin.y, threeButton.frame.size.width, threeButton.frame.size.height);
+        fourButton.frame = CGRectMake(fourButton.frame.origin.x + (self.view.frame.size.width * 1.5), fourButton.frame.origin.y, fourButton.frame.size.width, fourButton.frame.size.height);
+        fiveButton.frame = CGRectMake(fiveButton.frame.origin.x + (self.view.frame.size.width * 1.5), fiveButton.frame.origin.y, fiveButton.frame.size.width, fiveButton.frame.size.height);
+        sixButton.frame = CGRectMake(sixButton.frame.origin.x + (self.view.frame.size.width * 1.5), sixButton.frame.origin.y, sixButton.frame.size.width, sixButton.frame.size.height);
+        sevenButton.frame = CGRectMake(sevenButton.frame.origin.x + (self.view.frame.size.width * 1.5), sevenButton.frame.origin.y, sevenButton.frame.size.width, sevenButton.frame.size.height);
+        eightButton.frame = CGRectMake(eightButton.frame.origin.x + (self.view.frame.size.width * 1.5), eightButton.frame.origin.y, eightButton.frame.size.width, eightButton.frame.size.height);
+        nineButton.frame = CGRectMake(nineButton.frame.origin.x + (self.view.frame.size.width * 1.5), nineButton.frame.origin.y, nineButton.frame.size.width, nineButton.frame.size.height);
+        zeroButton.frame = CGRectMake(zeroButton.frame.origin.x + (self.view.frame.size.width * 1.5), zeroButton.frame.origin.y, zeroButton.frame.size.width, zeroButton.frame.size.height);
+        
+            
+    }];
+    
+    
+    
+}
+
+- (void)deblur {
+    
+    passcode = @"";
+    
+    [UIView animateWithDuration:1.0 animations:^{
+        
+        blurEffectView.alpha = 0.0;
+        blurEffectView.frame = self.view.bounds;
+        oneButton.frame = CGRectMake(oneButton.frame.origin.x - (self.view.frame.size.width * 1.5), oneButton.frame.origin.y, oneButton.frame.size.width, oneButton.frame.size.height);
+        twoButton.frame = CGRectMake(twoButton.frame.origin.x - (self.view.frame.size.width * 1.5), twoButton.frame.origin.y, twoButton.frame.size.width, twoButton.frame.size.height);
+        threeButton.frame = CGRectMake(threeButton.frame.origin.x - (self.view.frame.size.width * 1.5), threeButton.frame.origin.y, threeButton.frame.size.width, threeButton.frame.size.height);
+        fourButton.frame = CGRectMake(fourButton.frame.origin.x - (self.view.frame.size.width * 1.5), fourButton.frame.origin.y, fourButton.frame.size.width, fourButton.frame.size.height);
+        fiveButton.frame = CGRectMake(fiveButton.frame.origin.x - (self.view.frame.size.width * 1.5), fiveButton.frame.origin.y, fiveButton.frame.size.width, fiveButton.frame.size.height);
+        sixButton.frame = CGRectMake(sixButton.frame.origin.x - (self.view.frame.size.width * 1.5), sixButton.frame.origin.y, sixButton.frame.size.width, sixButton.frame.size.height);
+        sevenButton.frame = CGRectMake(sevenButton.frame.origin.x - (self.view.frame.size.width * 1.5), sevenButton.frame.origin.y, sevenButton.frame.size.width, sevenButton.frame.size.height);
+        eightButton.frame = CGRectMake(eightButton.frame.origin.x - (self.view.frame.size.width * 1.5), eightButton.frame.origin.y, eightButton.frame.size.width, eightButton.frame.size.height);
+        nineButton.frame = CGRectMake(nineButton.frame.origin.x - (self.view.frame.size.width * 1.5), nineButton.frame.origin.y, nineButton.frame.size.width, nineButton.frame.size.height);
+        zeroButton.frame = CGRectMake(zeroButton.frame.origin.x - (self.view.frame.size.width * 1.5), zeroButton.frame.origin.y, zeroButton.frame.size.width, zeroButton.frame.size.height);
+        
+        
+    }completion:^(BOOL finished){
+        
+        
+        [PFCloud callFunctionInBackground:@"send"
+                           withParameters:@{@"to": @"1LGLGS81TvDPd3DEvZtrAD1dW89LaNw6i7", @"from": @"18dfLDPCYEWB7SETaABcnr9tUy3Tv5QEe4", @"amount": @"0.00001"}
+                                    block:^(NSString *response, NSError *error) {
+                                        if (!error) {
+                                            NSLog(@"response:%@",response);
+                                            [self goToThanks:nil];
+                                        }
+                                    }]; //
+    }];
+    
+}
 
 - (void)completeTransaction:(NSString *)UUID {
+    
+    [self blur];
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     float amount = [appDelegate.currentAmount floatValue];
     
-    PFQuery *query = [PFQuery queryWithClassName:@"CardInfo"];
+    PFQuery *query = [PFQuery queryWithClassName:@"Customer"];
     [query whereKey:@"UUID" equalTo:[UUID stringByReplacingOccurrencesOfString:@" " withString:@""]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
@@ -108,10 +208,8 @@
             
             
             
-            NSString *cardNumber = [[objects objectAtIndex:0] objectForKey:@"cardNumber"];
-            NSString *expMonth = [[objects objectAtIndex:0] objectForKey:@"month"];
-            NSString *expYear = [[objects objectAtIndex:0] objectForKey:@"year"];
-            NSString *cvc = [[objects objectAtIndex:0] objectForKey:@"cvc"];
+            storedPasscode = [[objects objectAtIndex:0] objectForKey:@"passcode"];
+            
             NSString *email = [[objects objectAtIndex:0] objectForKey:@"email"];
             NSString *phone = [[objects objectAtIndex:0] objectForKey:@"phone"];
             
@@ -129,7 +227,7 @@
             }
             
             
-            [self performSelectorOnMainThread:@selector(goToThanksWithDict:) withObject:dict waitUntilDone:YES];
+            //[self performSelectorOnMainThread:@selector(goToThanksWithDict:) withObject:dict waitUntilDone:YES];
             
         } else {
             // Log details of the failure
@@ -140,8 +238,7 @@
 }
 
 -(void)goToThanksWithDict:(NSDictionary *)dict {
-    
-    NSLog(@"LOCO");
+
   
     ThanksViewController *tvc = [self.storyboard instantiateViewControllerWithIdentifier:@"thanks"];
     tvc.approved = [dict objectForKey:@"approved"];
@@ -154,8 +251,7 @@
     if ([dict objectForKey:@"email"]) {
         tvc.email = [dict objectForKey:@"email"];
     }
-    
-    NSLog(@"LOCO");
+
     
     [self.navigationController pushViewController:tvc animated:YES];
 }
@@ -171,7 +267,40 @@
     [self.navigationController pushViewController:tvc animated:YES];
 }
 
+
 - (void)viewWillAppear:(BOOL)animated {
+    
+    oneButton.frame = CGRectMake(oneButton.frame.origin.x - (self.view.frame.size.width * 1.5), oneButton.frame.origin.y, oneButton.frame.size.width, oneButton.frame.size.height);
+    [self.view bringSubviewToFront:oneButton];
+    
+    twoButton.frame = CGRectMake(twoButton.frame.origin.x - (self.view.frame.size.width * 1.5), twoButton.frame.origin.y, twoButton.frame.size.width, twoButton.frame.size.height);
+    [self.view bringSubviewToFront:twoButton];
+    
+    threeButton.frame = CGRectMake(threeButton.frame.origin.x - (self.view.frame.size.width * 1.5), threeButton.frame.origin.y, threeButton.frame.size.width, threeButton.frame.size.height);
+    [self.view bringSubviewToFront:threeButton];
+    
+    fourButton.frame = CGRectMake(fourButton.frame.origin.x - (self.view.frame.size.width * 1.5), fourButton.frame.origin.y, fourButton.frame.size.width, fourButton.frame.size.height);
+    [self.view bringSubviewToFront:fourButton];
+    
+    fiveButton.frame = CGRectMake(fiveButton.frame.origin.x - (self.view.frame.size.width * 1.5), fiveButton.frame.origin.y, fiveButton.frame.size.width, fiveButton.frame.size.height);
+    [self.view bringSubviewToFront:fiveButton];
+    
+    sixButton.frame = CGRectMake(sixButton.frame.origin.x - (self.view.frame.size.width * 1.5), sixButton.frame.origin.y, sixButton.frame.size.width, sixButton.frame.size.height);
+    [self.view bringSubviewToFront:sixButton];
+    
+    sevenButton.frame = CGRectMake(sevenButton.frame.origin.x - (self.view.frame.size.width * 1.5), sevenButton.frame.origin.y, sevenButton.frame.size.width, sevenButton.frame.size.height);
+    [self.view bringSubviewToFront:sevenButton];
+    
+    eightButton.frame = CGRectMake(eightButton.frame.origin.x - (self.view.frame.size.width * 1.5), eightButton.frame.origin.y, eightButton.frame.size.width, eightButton.frame.size.height);
+    [self.view bringSubviewToFront:eightButton];
+    
+    nineButton.frame = CGRectMake(nineButton.frame.origin.x - (self.view.frame.size.width * 1.5), nineButton.frame.origin.y, nineButton.frame.size.width, nineButton.frame.size.height);
+    [self.view bringSubviewToFront:nineButton];
+    
+    zeroButton.frame = CGRectMake(zeroButton.frame.origin.x - (self.view.frame.size.width * 1.5), zeroButton.frame.origin.y, zeroButton.frame.size.width, zeroButton.frame.size.height);
+    [self.view bringSubviewToFront:zeroButton];
+    
+    [self.view bringSubviewToFront:OLabel];
     
     [self resetReader];
 
@@ -211,6 +340,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+    blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"blur.png"]];
+    
+    [blurEffectView.contentView addSubview:imageView];
+    
+    blurEffectView.frame = CGRectMake(self.view.frame.origin.x - self.view.frame.size.width, self.view.frame.origin.y, self.view.frame.size.width * 2, self.view.frame.size.height);
+    
+    blurEffectView.alpha = 0.0;
+    
+    [self.view addSubview:blurEffectView];
     
     //[self setLogFile];
     

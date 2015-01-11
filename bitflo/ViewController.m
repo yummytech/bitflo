@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "SalesViewController.h"
 #import "ContactlessViewController.h"
+#import "ATMViewController.h"
 
 #define FLOBLE_UUID @"6e400001-b5a3-f393-e0a9-e50e24dcca9e"
 
@@ -23,6 +24,11 @@
 @synthesize itemsCountButton, testTextfield;
 
 
+- (IBAction)goToATM:(id)sender {
+    
+    ATMViewController *avc = [self.storyboard instantiateViewControllerWithIdentifier:@"atm"];
+    [self.navigationController pushViewController:avc animated:YES];
+}
 
 -(IBAction)openSales:(id)sender {
     
@@ -183,7 +189,6 @@
     [self.navigationController pushViewController:cvc animated:YES];
     
 }
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];

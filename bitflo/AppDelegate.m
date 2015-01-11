@@ -24,8 +24,8 @@
     
     //[Stripe setDefaultPublishableKey:@"pk_test_5A6sQZLDRHpkjtqs90yCjWoG"];
     
-    [Parse setApplicationId:@"zE4zLsKV6q86Z2ukLuRieenglEnS7HqjTgtlVYT7"
-                  clientKey:@"qlpwetfWsvw5jfajVXitIyKVLblSZtTrwauNbb9c"];
+    [Parse setApplicationId:@"yAlCwfOGqCttOdLeme3rP1ah98B3pF34G6XOgDnL"
+                  clientKey:@"7wOyTy9ZDWbTfsA32GSNKUcn5cnwqim1S1zX1Wsm"];
     
     // [Optional] Track statistics around application opens.
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];

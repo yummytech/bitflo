@@ -23,6 +23,13 @@
     //AppDelegate *appDelegate;
     NSString  *filePath;
     NSString *previousResponse;
+    
+    int currentInput;
+    
+    UIVisualEffectView *blurEffectView;
+    
+    NSString *passcode;
+    NSString *storedPasscode;
 }
 
 @property (nonatomic, strong) dispatch_source_t timerSource;
@@ -30,6 +37,19 @@
 
 @property (nonatomic, strong) IBOutlet UITextView *logView;
 @property (nonatomic, strong) AVAudioPlayer *audioPlayer;
+
+@property (nonatomic, strong) IBOutlet UITextField *amountTextField;
+
+@property (nonatomic, strong) IBOutlet UIButton *oneButton;
+@property (nonatomic, strong) IBOutlet UIButton *twoButton;
+@property (nonatomic, strong) IBOutlet UIButton *threeButton;
+@property (nonatomic, strong) IBOutlet UIButton *fourButton;
+@property (nonatomic, strong) IBOutlet UIButton *fiveButton;
+@property (nonatomic, strong) IBOutlet UIButton *sixButton;
+@property (nonatomic, strong) IBOutlet UIButton *sevenButton;
+@property (nonatomic, strong) IBOutlet UIButton *eightButton;
+@property (nonatomic, strong) IBOutlet UIButton *nineButton;
+@property (nonatomic, strong) IBOutlet UIButton *zeroButton;
 
 - (void)resetReader;
 - (void)setSleep;

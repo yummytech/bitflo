@@ -6,29 +6,33 @@
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>2CA8DE66-50AE-4669-B698-9C16B6CDB4A6</string>
+	<key>IDESourceControlProjectName</key>
+	<string>bitflo</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>87EF43E8790DC14DE8A33213D0316903F8859AE5</key>
+		<key>04F8A43209933917B353255CBF215E30FA1BE722</key>
 		<string>https://github.com/flomio/bitflo.git</string>
 	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>bitflo.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>87EF43E8790DC14DE8A33213D0316903F8859AE5</key>
-		<string>bitflo/</string>
+		<key>04F8A43209933917B353255CBF215E30FA1BE722</key>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/flomio/bitflo.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>87EF43E8790DC14DE8A33213D0316903F8859AE5</string>
+	<string>04F8A43209933917B353255CBF215E30FA1BE722</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>87EF43E8790DC14DE8A33213D0316903F8859AE5</string>
+			<string>04F8A43209933917B353255CBF215E30FA1BE722</string>
 			<key>IDESourceControlWCCName</key>
 			<string>bitflo</string>
 		</dict>
