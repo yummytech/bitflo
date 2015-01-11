@@ -26,7 +26,8 @@
     int _swipeCount;
     
     NSCondition *_responseCondition;
-    
+    NSCondition *_picWaitResponseCondition;
+
     BOOL _firmwareVersionReady;
     NSString *_firmwareVersion;
     
@@ -72,6 +73,10 @@
     NSData *_piccRfConfig;
     
     UIAlertView *_trackDataAlert;
+    NSOperationQueue * picQueue;
+    NSBlockOperation * picRead;
+    NSBlockOperation * picResponse;
+
 }
 
 @synthesize logView;
@@ -229,6 +234,7 @@
     _swipeCount = 0;
     
     _responseCondition = [[NSCondition alloc] init];
+    _picWaitResponseCondition = [[NSCondition alloc] init];
     
     _firmwareVersionReady = NO;
     _firmwareVersion = nil;
@@ -322,7 +328,8 @@
     // Load the initial key.
     [_dukptReceiver loadInitialKey:_ipek];
     
-    
+    picQueue = [[NSOperationQueue alloc]init];
+
 }
 
 - (IBAction)Next:(id)sender {
@@ -596,7 +603,7 @@
         self.observingMessages = YES;
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         self.timerSource = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
-        dispatch_source_set_timer(self.timerSource, dispatch_walltime(NULL, 0), 0.5 * NSEC_PER_SEC, 1ull * NSEC_PER_SEC);
+        dispatch_source_set_timer(self.timerSource, dispatch_walltime(NULL, 0), 1.5 * NSEC_PER_SEC, 1ull * NSEC_PER_SEC);
         dispatch_source_set_event_handler(self.timerSource, ^{
             if (self.isObservingMessages) {
                 //[self transmit:nil];
@@ -617,8 +624,9 @@
     [self resetReader];
 }
 
-- (IBAction)transmit:(id)sender {
-    
+- (IBAction)transmit:(id)sender
+  {
+    static BOOL state = YES;
     // Transmit the command APDU.
     _piccResponseApduReady = NO;
     _resultReady = NO;
@@ -627,8 +635,9 @@
     //[self showPiccResponseApdu:piccViewController];
     
     NSData *commandApdu = nil;
+
     commandApdu = [AJDHex byteArrayFromHexString:@"FF CA 00 00 00"];
-    
+
     if (![_reader piccTransmitWithTimeout:9.0 commandApdu:[commandApdu bytes] length:[commandApdu length]]) {
         
         // Show the request queue error.
@@ -639,7 +648,77 @@
         [self powerOn];
         
     }
+
     
+//    [self getNfcData];
+#if 0
+    
+    NSData* commandApdu = nil;
+    commandApdu = [AJDHex byteArrayFromHexString:@"FF 82 00 00 06 FF FF FF FF FF FF"]; // load auth keys
+    if (![_reader piccTransmitWithTimeout:9.0 commandApdu:[commandApdu bytes] length:[commandApdu length]]) {
+        NSLog(@"::error");
+        
+        // Show the request queue error.
+        [self showRequestQueueError];
+        
+    } else {
+        
+        [self powerOn];
+        
+    }
+#endif
+#if 0
+    commandApdu = [AJDHex byteArrayFromHexString:@"FF 82 00 01 06 FF FF FF FF FF FF"]; // load auth keys
+    if (![_reader piccTransmitWithTimeout:9.0 commandApdu:[commandApdu bytes] length:[commandApdu length]]) {
+        NSLog(@"::error");
+        
+        // Show the request queue error.
+        [self showRequestQueueError];
+        
+    } else {
+        
+        [self powerOn];
+        
+    }
+#endif
+
+#if 0
+    
+    if (state)
+    {
+        state = NO;
+        commandApdu = [AJDHex byteArrayFromHexString:@"FF 86 00 00 05 01 00 04 60 00"]; // authenticate block
+        if (![_reader piccTransmitWithTimeout:9.0 commandApdu:[commandApdu bytes] length:[commandApdu length]]) {
+            // Show the request queue error.
+            [self showRequestQueueError];
+            
+        } else {
+            
+            [self powerOn];
+            
+        }
+        NSLog(@"::commandApdu = %@",commandApdu);
+    }
+    else
+    {
+        state = YES;
+         commandApdu = [AJDHex byteArrayFromHexString:@"FF B0 00 04 20"];
+         //      commandApdu = [AJDHex byteArrayFromHexString:@"FF D6 00 04 10 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F 10"];
+         if (![_reader piccTransmitWithTimeout:9.0 commandApdu:[commandApdu bytes] length:[commandApdu length]])
+         {
+         
+         // Show the request queue error.
+         [self showRequestQueueError];
+         
+         }
+         else
+         {
+             [self powerOn];
+         }
+         NSLog(@"::commandApdu = %@",commandApdu);
+    }
+#endif
+
 }
 
 -(void)powerOn {
@@ -709,6 +788,115 @@
             [alert dismissWithClickedButtonIndex:0 animated:YES];
         });
     });
+}
+#pragma mark - Mifare 4K read/write 32 bytes starting at block 4
+- (BOOL)getNfcData //:(NSData *) data
+{
+    BOOL result = YES;
+
+    NSData * commandApdu = [AJDHex byteArrayFromHexString:@"FF 86 00 00 05 01 00 04 60 00"]; // authenticate block
+    if (![_reader piccTransmitWithTimeout:9.0 commandApdu:[commandApdu bytes] length:[commandApdu length]]) {
+        // Show the request queue error.
+        [self showRequestQueueError];
+        result = NO;
+    } else
+    {
+        [self powerOn];
+    }
+    NSLog(@"::commandApdu = %@",commandApdu);
+    
+    BOOL predicate = NO;
+    
+//    NSTimeInterval QLCTimeoutInterval = 2.0;
+
+//    NSDate *startDate = [NSDate date];
+//    NSDate *timeoutDate = [NSDate dateWithTimeIntervalSinceNow:QLCTimeoutInterval];
+//    uint32_t sleepTimeInterval = QLCTimeoutInterval; //arc4random_uniform(2 * QLCTimeoutInterval) + 1;
+//    NSLog(@"Sleeping for %u seconds.", sleepTimeInterval);
+//    sleep(sleepTimeInterval);
+//    [_picWaitResponseCondition lock];
+//    while(predicate = [_picWaitResponseCondition waitUntilDate:timeoutDate]){};
+//    [_picWaitResponseCondition unlock];
+#if 0
+    commandApdu = [AJDHex byteArrayFromHexString:@"FF B0 00 04 20"];
+    if (![_reader piccTransmitWithTimeout:9.0 commandApdu:[commandApdu bytes] length:[commandApdu length]]) {
+        
+        // Show the request queue error.
+        [self showRequestQueueError];
+        NSLog(@"::Error commandApdu = %@",commandApdu);
+        
+        //        result = NO;
+        
+    } else
+    {
+        [self powerOn];
+    }
+    NSLog(@"::commandApdu = %@",commandApdu);
+#endif
+#if 0
+    //picQueue
+    picRead = [NSBlockOperation blockOperationWithBlock: ^{ NSData * commandApdu = [AJDHex byteArrayFromHexString:@"FF B0 00 04 20"];
+        BOOL predicate = NO;
+        [_picWaitResponseCondition lock];
+        [_picWaitResponseCondition wait];
+        if (![_reader piccTransmitWithTimeout:9.0 commandApdu:[commandApdu bytes] length:[commandApdu length]]) {
+            
+            // Show the request queue error.
+            [self showRequestQueueError];
+            NSLog(@"::Error commandApdu = %@",commandApdu);
+            
+            //        result = NO;
+            
+        } else
+        {
+            [self powerOn];
+        }
+        [_picWaitResponseCondition unlock];
+        NSLog(@"::commandApdu = %@",commandApdu);
+    }];
+#endif
+    //picQueue
+    picRead = [NSBlockOperation blockOperationWithBlock: ^{
+        [_picWaitResponseCondition lock];
+        [_picWaitResponseCondition wait];
+        NSLog(@"::commandApdu = %@",commandApdu);
+        [self performSelectorOnMainThread:@selector(readCommand) withObject:nil waitUntilDone:NO];
+        [_picWaitResponseCondition unlock];
+    }];
+    
+    [picQueue cancelAllOperations];
+    [picQueue addOperation:picRead];
+
+    return YES;
+    
+    
+}
+
+- (void)readCommand
+{
+    NSData *commandApdu = [AJDHex byteArrayFromHexString:@"FF B0 00 04 20"];
+
+    if (![_reader piccTransmitWithTimeout:9.0 commandApdu:[commandApdu bytes] length:[commandApdu length]]) {
+        
+        // Show the request queue error.
+        [self showRequestQueueError];
+        NSLog(@"::Error commandApdu = %@",commandApdu);
+        
+        //        result = NO;
+        
+    } else
+    {
+        [self powerOn];
+    }
+    NSLog(@"::commandApdu = %@",commandApdu);
+  
+}
+
+- (BOOL)putNfcData:(NSData *) data
+{
+    // commandApdu = [AJDHex byteArrayFromHexString:@"FF D6 00 04 10 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F 10"];
+    
+    return YES;
 }
 
 #pragma mark - Audio Jack Reader Delegate
@@ -1003,6 +1191,8 @@ cleanup:
     
     NSString *hexString = [self toHexString:rawData length:length];
     
+    NSLog(@"::didSendRawData %@",hexString);
+    
     hexString = [hexString stringByAppendingString:[_reader verifyData:rawData length:length] ? @" (Checksum OK)" : @" (Checksum Error)"];
     
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -1021,6 +1211,26 @@ cleanup:
         // self.dataReceivedLabel.text = hexString;
         // [self.tableView reloadData];
     });
+    
+    //   picResponse = [NSBlockOperation blockOperationWithBlock: ^{ NSLog(@"::picResponse");
+    //   }];
+    
+    //    [picRead addDependency: picResponse];
+    //    [picQueue addOperation:picResponse];
+    //    [picQueue addOperation:picRead];
+    //    ::didSendRawData 23 00 05 A1 90 00 3A 7D
+
+    if((rawData[4] == 0x90 && rawData[5] == 0x00) || (rawData[4] == 0x63 && rawData[5] == 0x00))
+    {
+        NSLog(@"_picWaitResponseCondition signal");
+        [_picWaitResponseCondition signal];
+    }
+    else
+    {
+//        NSLog(@"_picWaitResponseCondition signal no cigar %2.2x %2.2x", rawData[4],rawData[5]);
+        
+    }
+
 }
 
 - (void)reader:(ACRAudioJackReader *)reader didSendCustomId:(const uint8_t *)customId length:(NSUInteger)length {
@@ -1076,6 +1286,19 @@ cleanup:
     [_responseCondition lock];
     _piccResponseApdu = [NSData dataWithBytes:responseApdu length:length];
     
+    NSLog(@"piccResponse %@, %d",_piccResponseApdu , length);
+#if 0
+    if((responseApdu[0] == 0x90 && responseApdu[1] == 0x00) || (responseApdu[0] == 0x63 && responseApdu[1] == 0x00))
+    {
+        NSLog(@"_picWaitResponseCondition signal");
+        [_picWaitResponseCondition signal];
+    }
+    else
+    {
+        NSLog(@"_picWaitResponseCondition signal no cigar %2.2x %2.2x", responseApdu[0],responseApdu[1]);
+    }
+#endif
+
     // Mute AudioJack library
     _reader.mute = YES;
     // Route audio to speakers
@@ -1123,9 +1346,21 @@ cleanup:
     //    });
     
     
+    if((responseApdu[0] == 0x90 && responseApdu[1] == 0x00) || (responseApdu[0] == 0x63 && responseApdu[1] == 0x00))
+    {
+//        NSLog(@"_picWaitResponseCondition signal");
+//        [_picWaitResponseCondition signal];
+    }
+    else
+    {
+//        NSLog(@"_picWaitResponseCondition signal no cigar %2.2x %2.2x", responseApdu[0],responseApdu[1]);
+    }
+
     _piccResponseApduReady = YES;
     [_responseCondition signal];
     [_responseCondition unlock];
+//        [_picWaitResponseCondition signal];
+    
 }
 
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)audioPlayer successfully:(BOOL)flag

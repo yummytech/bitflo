@@ -32,6 +32,7 @@
 - (void)resetReader;
 - (void)setSleep;
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)audioPlayer successfully:(BOOL)flag;
-
-
+- (BOOL)getNfcData;
+- (BOOL)putNfcData:(NSData *) data;
+- (void)readCommand;
 @end
