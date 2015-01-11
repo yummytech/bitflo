@@ -1047,19 +1047,19 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PinMissing.png" id="9mO-Gl-1z5">
-                                <rect key="frame" x="138" y="194" width="15" height="15"/>
+                                <rect key="frame" x="138" y="150" width="15" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PinMissing.png" id="6N4-Mh-emG">
-                                <rect key="frame" x="180" y="194" width="15" height="15"/>
+                                <rect key="frame" x="180" y="150" width="15" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PinMissing.png" id="Jyc-MT-LKE">
-                                <rect key="frame" x="219" y="194" width="15" height="15"/>
+                                <rect key="frame" x="219" y="150" width="15" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PinMissing.png" id="ijf-ce-tCV">
-                                <rect key="frame" x="261" y="194" width="15" height="15"/>
+                                <rect key="frame" x="261" y="150" width="15" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="yxe-IT-P5X">
@@ -1308,12 +1308,12 @@
         <image name="BoxWithBlueBackground.png" width="1030" height="242"/>
         <image name="Contactless156x92.png" width="156" height="92"/>
         <image name="Items.png" width="110" height="75"/>
-        <image name="ItemsPagedBox.png" width="110" height="113"/>
+        <image name="ItemsPagedBox.png" width="374" height="385"/>
         <image name="Keypad.png" width="92" height="92"/>
         <image name="KeypadButton378x241.png" width="378" height="241"/>
         <image name="PinKey.png" width="825" height="825"/>
         <image name="PinMissing.png" width="176" height="176"/>
-        <image name="XButtonGray80x80.png" width="80" height="80"/>
+        <image name="XButtonGray80x80.png" width="268" height="268"/>
         <image name="avioncito.png" width="148" height="147"/>
         <image name="dialoguito.png" width="147" height="126"/>
         <image name="item_field.png" width="1114" height="247"/>

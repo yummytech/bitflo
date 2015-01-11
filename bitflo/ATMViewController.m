@@ -110,9 +110,6 @@
         }
     }
     
-    passcode = [NSString stringWithFormat:@"%@%li",passcode,(long)selectedButton];
-    NSLog(@"passcode:%@",passcode);
-    
     if ([passcode length] > 3) {
         if ([storedPasscode isEqualToString:passcode]) {
             NSLog(@"success");
@@ -407,7 +404,7 @@
                 [alert show];
                 
             } else {
-                currentAccount = [objects objectAtIndex:0];
+                currentAccount = [[objects objectAtIndex:0] objectForKey:@"account"];
             }
             
             
