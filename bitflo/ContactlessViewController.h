@@ -50,7 +50,6 @@
 @property (nonatomic, strong) IBOutlet UIImageView *thirdNumber;
 @property (nonatomic, strong) IBOutlet UIImageView *fourthNumber;
 
-@property (nonatomic, strong) IBOutlet UILabel *OLabel;
 
 - (void)resetReader;
 - (void)setSleep;

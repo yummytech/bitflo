@@ -75,6 +75,7 @@
 
 @synthesize logView, amountTextField;
 @synthesize oneButton, twoButton, threeButton, fourButton, fiveButton, sixButton, sevenButton, eightButton, nineButton, zeroButton;
+@synthesize firstNumber, secondNumber, thirdNumber, fourthNumber;
 
 - (IBAction)passcode:(id)sender {
     
@@ -88,31 +89,105 @@
     if ([passcode length] > 3) {
         if ([storedPasscode isEqualToString:passcode]) {
             NSLog(@"success");
+            firstNumber.image = [UIImage imageNamed:@"PinPresent.png"];
+            secondNumber.image = [UIImage imageNamed:@"PinPresent.png"];
+            thirdNumber.image = [UIImage imageNamed:@"PinPresent.png"];
+            fourthNumber.image = [UIImage imageNamed:@"PinPresent.png"];
             [self deblur];
         } else {
             NSLog(@"fail");
             
-            /*
+            firstNumber.image = [UIImage imageNamed:@"PinMissing.png"];
+            secondNumber.image = [UIImage imageNamed:@"PinMissing.png"];
+            thirdNumber.image = [UIImage imageNamed:@"PinMissing.png"];
+            fourthNumber.image = [UIImage imageNamed:@"PinMissing.png"];
+            
             [UIView animateWithDuration:0.1 animations:^{
-                OLabel.frame = CGRectMake(OLabel.frame.origin.x + 10, OLabel.frame.origin.y, OLabel.frame.size.width, OLabel.frame.size.height); } completion:^(BOOL finished){
+                firstNumber.frame = CGRectMake(firstNumber.frame.origin.x + 10, firstNumber.frame.origin.y, firstNumber.frame.size.width, firstNumber.frame.size.height); } completion:^(BOOL finished){
                     [UIView animateWithDuration:0.1 animations:^{
-                        OLabel.frame = CGRectMake(OLabel.frame.origin.x - 10, OLabel.frame.origin.y, OLabel.frame.size.width, OLabel.frame.size.height); } completion:^(BOOL finished){
+                        firstNumber.frame = CGRectMake(firstNumber.frame.origin.x - 10, firstNumber.frame.origin.y, firstNumber.frame.size.width, firstNumber.frame.size.height); } completion:^(BOOL finished){
                             [UIView animateWithDuration:0.1 animations:^{
-                                OLabel.frame = CGRectMake(OLabel.frame.origin.x + 10, OLabel.frame.origin.y, OLabel.frame.size.width, OLabel.frame.size.height); } completion:^(BOOL finished){
+                                firstNumber.frame = CGRectMake(firstNumber.frame.origin.x + 10, firstNumber.frame.origin.y, firstNumber.frame.size.width, firstNumber.frame.size.height); } completion:^(BOOL finished){
                                     [UIView animateWithDuration:0.1 animations:^{
-                                        OLabel.frame = CGRectMake(OLabel.frame.origin.x - 10, OLabel.frame.origin.y, OLabel.frame.size.width, OLabel.frame.size.height); } completion:^(BOOL finished){
+                                        firstNumber.frame = CGRectMake(firstNumber.frame.origin.x - 10, firstNumber.frame.origin.y, firstNumber.frame.size.width, firstNumber.frame.size.height); } completion:^(BOOL finished){
                                             
                                         }];
                                 }];
                             
                         }];
                 }];
-             */
+            
+            [UIView animateWithDuration:0.1 animations:^{
+                secondNumber.frame = CGRectMake(secondNumber.frame.origin.x + 10, secondNumber.frame.origin.y, secondNumber.frame.size.width, secondNumber.frame.size.height); } completion:^(BOOL finished){
+                    [UIView animateWithDuration:0.1 animations:^{
+                        secondNumber.frame = CGRectMake(secondNumber.frame.origin.x - 10, secondNumber.frame.origin.y, secondNumber.frame.size.width, secondNumber.frame.size.height); } completion:^(BOOL finished){
+                            [UIView animateWithDuration:0.1 animations:^{
+                                secondNumber.frame = CGRectMake(secondNumber.frame.origin.x + 10, secondNumber.frame.origin.y, secondNumber.frame.size.width, secondNumber.frame.size.height); } completion:^(BOOL finished){
+                                    [UIView animateWithDuration:0.1 animations:^{
+                                        secondNumber.frame = CGRectMake(secondNumber.frame.origin.x - 10, secondNumber.frame.origin.y, secondNumber.frame.size.width, secondNumber.frame.size.height); } completion:^(BOOL finished){
+                                            
+                                        }];
+                                }];
+                            
+                        }];
+                }];
+            
+            [UIView animateWithDuration:0.1 animations:^{
+                thirdNumber.frame = CGRectMake(thirdNumber.frame.origin.x + 10, thirdNumber.frame.origin.y, thirdNumber.frame.size.width, thirdNumber.frame.size.height); } completion:^(BOOL finished){
+                    [UIView animateWithDuration:0.1 animations:^{
+                        thirdNumber.frame = CGRectMake(thirdNumber.frame.origin.x - 10, thirdNumber.frame.origin.y, thirdNumber.frame.size.width, thirdNumber.frame.size.height); } completion:^(BOOL finished){
+                            [UIView animateWithDuration:0.1 animations:^{
+                                thirdNumber.frame = CGRectMake(thirdNumber.frame.origin.x + 10, thirdNumber.frame.origin.y, thirdNumber.frame.size.width, thirdNumber.frame.size.height); } completion:^(BOOL finished){
+                                    [UIView animateWithDuration:0.1 animations:^{
+                                        thirdNumber.frame = CGRectMake(thirdNumber.frame.origin.x - 10, thirdNumber.frame.origin.y, thirdNumber.frame.size.width, thirdNumber.frame.size.height); } completion:^(BOOL finished){
+                                            
+                                        }];
+                                }];
+                            
+                        }];
+                }];
+            
+            [UIView animateWithDuration:0.1 animations:^{
+                fourthNumber.frame = CGRectMake(fourthNumber.frame.origin.x + 10, fourthNumber.frame.origin.y, fourthNumber.frame.size.width, fourthNumber.frame.size.height); } completion:^(BOOL finished){
+                    [UIView animateWithDuration:0.1 animations:^{
+                        fourthNumber.frame = CGRectMake(fourthNumber.frame.origin.x - 10, fourthNumber.frame.origin.y, fourthNumber.frame.size.width, fourthNumber.frame.size.height); } completion:^(BOOL finished){
+                            [UIView animateWithDuration:0.1 animations:^{
+                                fourthNumber.frame = CGRectMake(fourthNumber.frame.origin.x + 10, fourthNumber.frame.origin.y, fourthNumber.frame.size.width, fourthNumber.frame.size.height); } completion:^(BOOL finished){
+                                    [UIView animateWithDuration:0.1 animations:^{
+                                        fourthNumber.frame = CGRectMake(fourthNumber.frame.origin.x - 10, fourthNumber.frame.origin.y, fourthNumber.frame.size.width, fourthNumber.frame.size.height); } completion:^(BOOL finished){
+                                            
+                                        }];
+                                }];
+                            
+                        }];
+                }];
             
             
         }
+
         
         passcode = @"";
+    } else if ([passcode length] == 3) {
+        
+        firstNumber.image = [UIImage imageNamed:@"PinPresent.png"];
+        secondNumber.image = [UIImage imageNamed:@"PinPresent.png"];
+        thirdNumber.image = [UIImage imageNamed:@"PinPresent.png"];
+        fourthNumber.image = [UIImage imageNamed:@"PinMissing.png"];
+        
+    } else if ([passcode length] == 2) {
+        
+        firstNumber.image = [UIImage imageNamed:@"PinPresent.png"];
+        secondNumber.image = [UIImage imageNamed:@"PinPresent.png"];
+        thirdNumber.image = [UIImage imageNamed:@"PinMissing.png"];
+        fourthNumber.image = [UIImage imageNamed:@"PinMissing.png"];
+        
+    } else if ([passcode length] == 1) {
+        
+        firstNumber.image = [UIImage imageNamed:@"PinPresent.png"];
+        secondNumber.image = [UIImage imageNamed:@"PinMissing.png"];
+        thirdNumber.image = [UIImage imageNamed:@"PinMissing.png"];
+        fourthNumber.image = [UIImage imageNamed:@"PinMissing.png"];
+        
     }
     
 }
@@ -135,6 +210,11 @@
         eightButton.frame = CGRectMake(eightButton.frame.origin.x + (self.view.frame.size.width * 1.5), eightButton.frame.origin.y, eightButton.frame.size.width, eightButton.frame.size.height);
         nineButton.frame = CGRectMake(nineButton.frame.origin.x + (self.view.frame.size.width * 1.5), nineButton.frame.origin.y, nineButton.frame.size.width, nineButton.frame.size.height);
         zeroButton.frame = CGRectMake(zeroButton.frame.origin.x + (self.view.frame.size.width * 1.5), zeroButton.frame.origin.y, zeroButton.frame.size.width, zeroButton.frame.size.height);
+        
+        firstNumber.frame = CGRectMake(firstNumber.frame.origin.x + (self.view.frame.size.width * 1.5), firstNumber.frame.origin.y, firstNumber.frame.size.width, firstNumber.frame.size.height);
+        secondNumber.frame = CGRectMake(secondNumber.frame.origin.x + (self.view.frame.size.width * 1.5), secondNumber.frame.origin.y, secondNumber.frame.size.width, secondNumber.frame.size.height);
+        thirdNumber.frame = CGRectMake(thirdNumber.frame.origin.x + (self.view.frame.size.width * 1.5), thirdNumber.frame.origin.y, thirdNumber.frame.size.width, thirdNumber.frame.size.height);
+        fourthNumber.frame = CGRectMake(fourthNumber.frame.origin.x + (self.view.frame.size.width * 1.5), fourthNumber.frame.origin.y, fourthNumber.frame.size.width, fourthNumber.frame.size.height);
         
         
     }];
@@ -161,6 +241,11 @@
         eightButton.frame = CGRectMake(eightButton.frame.origin.x - (self.view.frame.size.width * 1.5), eightButton.frame.origin.y, eightButton.frame.size.width, eightButton.frame.size.height);
         nineButton.frame = CGRectMake(nineButton.frame.origin.x - (self.view.frame.size.width * 1.5), nineButton.frame.origin.y, nineButton.frame.size.width, nineButton.frame.size.height);
         zeroButton.frame = CGRectMake(zeroButton.frame.origin.x - (self.view.frame.size.width * 1.5), zeroButton.frame.origin.y, zeroButton.frame.size.width, zeroButton.frame.size.height);
+        
+        firstNumber.frame = CGRectMake(firstNumber.frame.origin.x - (self.view.frame.size.width * 1.5), firstNumber.frame.origin.y, firstNumber.frame.size.width, firstNumber.frame.size.height);
+        secondNumber.frame = CGRectMake(secondNumber.frame.origin.x - (self.view.frame.size.width * 1.5), secondNumber.frame.origin.y, secondNumber.frame.size.width, secondNumber.frame.size.height);
+        thirdNumber.frame = CGRectMake(thirdNumber.frame.origin.x - (self.view.frame.size.width * 1.5), thirdNumber.frame.origin.y, thirdNumber.frame.size.width, thirdNumber.frame.size.height);
+        fourthNumber.frame = CGRectMake(fourthNumber.frame.origin.x - (self.view.frame.size.width * 1.5), fourthNumber.frame.origin.y, fourthNumber.frame.size.width, fourthNumber.frame.size.height);
         
         
     }completion:^(BOOL finished){
@@ -377,6 +462,23 @@
     
     zeroButton.frame = CGRectMake(zeroButton.frame.origin.x - (self.view.frame.size.width * 1.5), zeroButton.frame.origin.y, zeroButton.frame.size.width, zeroButton.frame.size.height);
     [self.view bringSubviewToFront:zeroButton];
+    
+    firstNumber.image = [UIImage imageNamed:@"PinMissing.png"];
+    secondNumber.image = [UIImage imageNamed:@"PinMissing.png"];
+    thirdNumber.image = [UIImage imageNamed:@"PinMissing.png"];
+    fourthNumber.image = [UIImage imageNamed:@"PinMissing.png"];
+    
+    firstNumber.frame = CGRectMake(firstNumber.frame.origin.x - (self.view.frame.size.width * 1.5), firstNumber.frame.origin.y, firstNumber.frame.size.width, firstNumber.frame.size.height);
+    [self.view bringSubviewToFront:firstNumber];
+    
+    secondNumber.frame = CGRectMake(secondNumber.frame.origin.x - (self.view.frame.size.width * 1.5), secondNumber.frame.origin.y, secondNumber.frame.size.width, secondNumber.frame.size.height);
+    [self.view bringSubviewToFront:secondNumber];
+    
+    thirdNumber.frame = CGRectMake(thirdNumber.frame.origin.x - (self.view.frame.size.width * 1.5), thirdNumber.frame.origin.y, thirdNumber.frame.size.width, thirdNumber.frame.size.height);
+    [self.view bringSubviewToFront:thirdNumber];
+    
+    fourthNumber.frame = CGRectMake(fourthNumber.frame.origin.x - (self.view.frame.size.width * 1.5), fourthNumber.frame.origin.y, fourthNumber.frame.size.width, fourthNumber.frame.size.height);
+    [self.view bringSubviewToFront:fourthNumber];
     
     [self resetReader];
     

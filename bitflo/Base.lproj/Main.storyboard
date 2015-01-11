@@ -541,9 +541,11 @@
                                 </state>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xT0-2f-syi">
-                                <rect key="frame" x="69" y="184" width="30" height="30"/>
+                                <rect key="frame" x="61" y="217" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="1">
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="1" backgroundImage="PinKey.png">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -551,9 +553,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Bhc-jE-5Th">
-                                <rect key="frame" x="296" y="184" width="30" height="30"/>
+                                <rect key="frame" x="241" y="217" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="3">
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="3" backgroundImage="PinKey.png">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -561,9 +565,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="so1-AN-BLx">
-                                <rect key="frame" x="69" y="262" width="30" height="30"/>
+                                <rect key="frame" x="61" y="307" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="4">
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="4" backgroundImage="PinKey.png">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -571,9 +577,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qzo-Vn-7S6">
-                                <rect key="frame" x="172" y="262" width="30" height="30"/>
+                                <rect key="frame" x="152" y="307" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="5">
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="5" backgroundImage="PinKey.png">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -581,9 +589,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2V3-WB-NDj">
-                                <rect key="frame" x="296" y="262" width="30" height="30"/>
+                                <rect key="frame" x="241" y="307" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="6">
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="6" backgroundImage="PinKey.png">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -591,9 +601,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="u0R-la-wiY">
-                                <rect key="frame" x="69" y="347" width="30" height="30"/>
+                                <rect key="frame" x="61" y="397" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="7">
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="7" backgroundImage="PinKey.png">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -601,9 +613,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="A77-14-XIs">
-                                <rect key="frame" x="172" y="347" width="30" height="30"/>
+                                <rect key="frame" x="152" y="397" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="8">
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="8" backgroundImage="PinKey.png">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -611,49 +625,55 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="W8l-ak-rWf">
-                                <rect key="frame" x="296" y="347" width="30" height="30"/>
+                                <rect key="frame" x="241" y="397" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="9">
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="9" backgroundImage="PinKey.png">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="passcode:" destination="NwF-KZ-lyn" eventType="touchUpInside" id="DS3-f5-qbE"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Srh-oy-SyK">
-                                <rect key="frame" x="172" y="411" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="0">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="passcode:" destination="NwF-KZ-lyn" eventType="touchUpInside" id="skC-HW-Syo"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="iWx-fS-l5J">
-                                <rect key="frame" x="172" y="184" width="30" height="30"/>
+                                <rect key="frame" x="152" y="217" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="2">
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="2" backgroundImage="PinKey.png">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="passcode:" destination="NwF-KZ-lyn" eventType="touchUpInside" id="tsG-ra-Mfy"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="WgD-ba-qyg">
-                                <rect key="frame" x="111" y="108" width="20" height="20"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Srh-oy-SyK">
+                                <rect key="frame" x="152" y="486" width="70" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="0" backgroundImage="PinKey.png">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="passcode:" destination="NwF-KZ-lyn" eventType="touchUpInside" id="skC-HW-Syo"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PinMissing.png" id="WgD-ba-qyg">
+                                <rect key="frame" x="118" y="120" width="15" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="JZM-hT-HZW">
-                                <rect key="frame" x="153" y="108" width="20" height="20"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PinMissing.png" id="JZM-hT-HZW">
+                                <rect key="frame" x="160" y="120" width="15" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="ZKu-Lf-wfQ">
-                                <rect key="frame" x="234" y="108" width="20" height="20"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PinMissing.png" id="ZKu-Lf-wfQ">
+                                <rect key="frame" x="241" y="120" width="15" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="EII-Z6-94M">
-                                <rect key="frame" x="192" y="108" width="20" height="20"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PinMissing.png" id="EII-Z6-94M">
+                                <rect key="frame" x="199" y="120" width="15" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -869,9 +889,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="CGe-mq-sRr">
-                                <rect key="frame" x="59" y="205" width="30" height="30"/>
+                                <rect key="frame" x="59" y="217" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="1">
+                                <state key="normal" title="1" backgroundImage="PinKey.png">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -880,9 +901,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="yW6-2H-Alg">
-                                <rect key="frame" x="162" y="205" width="30" height="30"/>
+                                <rect key="frame" x="149" y="217" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="2">
+                                <state key="normal" title="2" backgroundImage="PinKey.png">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -891,9 +913,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="BAY-dj-WPR">
-                                <rect key="frame" x="286" y="205" width="30" height="30"/>
+                                <rect key="frame" x="241" y="217" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="3">
+                                <state key="normal" title="3" backgroundImage="PinKey.png">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -902,9 +925,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="v14-N1-j0e">
-                                <rect key="frame" x="59" y="283" width="30" height="30"/>
+                                <rect key="frame" x="59" y="307" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="4">
+                                <state key="normal" title="4" backgroundImage="PinKey.png">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -913,9 +937,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="85T-Uu-0oR">
-                                <rect key="frame" x="162" y="283" width="30" height="30"/>
+                                <rect key="frame" x="152" y="307" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="5">
+                                <state key="normal" title="5" backgroundImage="PinKey.png">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -924,9 +949,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vKo-tj-B4D">
-                                <rect key="frame" x="286" y="283" width="30" height="30"/>
+                                <rect key="frame" x="241" y="307" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="6">
+                                <state key="normal" title="6" backgroundImage="PinKey.png">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -935,9 +961,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="HQf-k1-4tT">
-                                <rect key="frame" x="59" y="368" width="30" height="30"/>
+                                <rect key="frame" x="59" y="398" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="7">
+                                <state key="normal" title="7" backgroundImage="PinKey.png">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -945,21 +972,11 @@
                                     <action selector="passcode:" destination="195-J2-9IS" eventType="touchUpInside" id="UY6-n7-53F"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="yxe-IT-P5X">
-                                <rect key="frame" x="162" y="368" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="8">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="passcode:" destination="195-J2-9IS" eventType="touchUpInside" id="I47-x2-E9Y"/>
-                                    <action selector="passcode:" destination="NwF-KZ-lyn" eventType="touchUpInside" id="rgC-SO-SV2"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0Fr-Oy-DBa">
-                                <rect key="frame" x="286" y="368" width="30" height="30"/>
+                                <rect key="frame" x="241" y="394" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="9">
+                                <state key="normal" title="9" backgroundImage="PinKey.png">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -968,14 +985,43 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0h3-0G-lqt">
-                                <rect key="frame" x="162" y="432" width="30" height="30"/>
+                                <rect key="frame" x="152" y="479" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="0">
+                                <state key="normal" title="0" backgroundImage="PinKey.png">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="passcode:" destination="NwF-KZ-lyn" eventType="touchUpInside" id="5f6-IA-YeN"/>
                                     <action selector="passcode:" destination="195-J2-9IS" eventType="touchUpInside" id="bHw-I3-Zhh"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PinMissing.png" id="9mO-Gl-1z5">
+                                <rect key="frame" x="118" y="178" width="15" height="15"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PinMissing.png" id="6N4-Mh-emG">
+                                <rect key="frame" x="160" y="178" width="15" height="15"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PinMissing.png" id="Jyc-MT-LKE">
+                                <rect key="frame" x="199" y="178" width="15" height="15"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PinMissing.png" id="ijf-ce-tCV">
+                                <rect key="frame" x="241" y="178" width="15" height="15"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="yxe-IT-P5X">
+                                <rect key="frame" x="152" y="398" width="70" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="8" backgroundImage="PinKey.png">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="passcode:" destination="195-J2-9IS" eventType="touchUpInside" id="I47-x2-E9Y"/>
+                                    <action selector="passcode:" destination="NwF-KZ-lyn" eventType="touchUpInside" id="rgC-SO-SV2"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -985,12 +1031,16 @@
                     <connections>
                         <outlet property="amountTextField" destination="VLy-6z-Q8Y" id="bBA-6E-e9K"/>
                         <outlet property="eightButton" destination="yxe-IT-P5X" id="lx2-fx-mIA"/>
+                        <outlet property="firstNumber" destination="9mO-Gl-1z5" id="0qB-L7-j2H"/>
                         <outlet property="fiveButton" destination="85T-Uu-0oR" id="xUJ-bq-bwo"/>
                         <outlet property="fourButton" destination="v14-N1-j0e" id="g9m-Fd-4uM"/>
+                        <outlet property="fourthNumber" destination="ijf-ce-tCV" id="4vT-YH-DbW"/>
                         <outlet property="nineButton" destination="0Fr-Oy-DBa" id="56X-N1-tmT"/>
                         <outlet property="oneButton" destination="CGe-mq-sRr" id="7aA-by-Mzu"/>
+                        <outlet property="secondNumber" destination="6N4-Mh-emG" id="oNK-zg-v8d"/>
                         <outlet property="sevenButton" destination="HQf-k1-4tT" id="gKp-5a-6HY"/>
                         <outlet property="sixButton" destination="vKo-tj-B4D" id="yEd-ig-IZp"/>
+                        <outlet property="thirdNumber" destination="Jyc-MT-LKE" id="ZQD-dR-3mi"/>
                         <outlet property="threeButton" destination="BAY-dj-WPR" id="fRQ-wg-7HB"/>
                         <outlet property="twoButton" destination="yW6-2H-Alg" id="CBo-wr-Ghm"/>
                         <outlet property="zeroButton" destination="0h3-0G-lqt" id="KVl-c4-y80"/>
@@ -1119,6 +1169,8 @@
         <image name="ItemsPagedBox.png" width="110" height="113"/>
         <image name="Keypad.png" width="92" height="92"/>
         <image name="KeypadButton378x241.png" width="378" height="241"/>
+        <image name="PinKey.png" width="825" height="825"/>
+        <image name="PinMissing.png" width="176" height="176"/>
         <image name="XButtonGray80x80.png" width="80" height="80"/>
         <image name="avioncito.png" width="148" height="147"/>
         <image name="dialoguito.png" width="147" height="126"/>
