@@ -12,7 +12,6 @@
 #import "AJDHex.h"  // TODO: this file shouldn't be needed as functions are duplicated here.
 #import "AppDelegate.h"
 
-
 #define FLOBLE_UUID @"6e400001-b5a3-f393-e0a9-e50e24dcca9e"
 
 @interface ContactlessViewController ()
@@ -74,8 +73,23 @@
     UIAlertView *_trackDataAlert;
 }
 
-@synthesize logView, oneButton, twoButton, threeButton, fourButton, fiveButton, sixButton, sevenButton, eightButton, nineButton, zeroButton;
-@synthesize firstNumber, secondNumber, thirdNumber, fourthNumber;
+@synthesize logView, oneButton, twoButton, threeButton, fourButton, fiveButton, sixButton, sevenButton, eightButton, nineButton, zeroButton, deleteButton;
+@synthesize firstNumber, secondNumber, thirdNumber, fourthNumber, salesButton;
+@synthesize salesArray, previous, amountLabel, enterPasscodeLabel;
+
+-(IBAction)openSales:(id)sender {
+    
+    SalesViewController *svc = [self.storyboard instantiateViewControllerWithIdentifier:@"sales"];
+    svc.salesArray = self.salesArray;
+    
+    svc.delegate = self;
+    
+    svc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [self presentViewController:svc animated:YES completion:nil];
+    
+    svc.totalLabel.text = [NSString stringWithFormat:@"Total $%.2f",[self.previous floatValue]];
+    
+}
 
 - (IBAction)passcode:(id)sender {
     
@@ -83,8 +97,15 @@
     
     NSInteger selectedButton = [senderButton tag];
     
-    passcode = [NSString stringWithFormat:@"%@%li",passcode,(long)selectedButton];
-    NSLog(@"passcode:%@",passcode);
+    if (selectedButton < 11) {
+        passcode = [NSString stringWithFormat:@"%@%li",passcode,(long)selectedButton];
+        NSLog(@"passcode:%@",passcode);
+    } else {
+        
+        if ([passcode length] > 0) {
+            passcode = [passcode substringToIndex:[passcode length] - 1];
+        }
+    }
     
     if ([passcode length] > 3) {
         if ([storedPasscode isEqualToString:passcode]) {
@@ -209,6 +230,9 @@
         eightButton.frame = CGRectMake(eightButton.frame.origin.x + (self.view.frame.size.width * 0.5), eightButton.frame.origin.y, eightButton.frame.size.width, eightButton.frame.size.height);
         nineButton.frame = CGRectMake(nineButton.frame.origin.x + (self.view.frame.size.width * 0.5), nineButton.frame.origin.y, nineButton.frame.size.width, nineButton.frame.size.height);
         zeroButton.frame = CGRectMake(zeroButton.frame.origin.x + (self.view.frame.size.width * 0.5), zeroButton.frame.origin.y, zeroButton.frame.size.width, zeroButton.frame.size.height);
+        deleteButton.frame = CGRectMake(deleteButton.frame.origin.x + (self.view.frame.size.width * 0.5), deleteButton.frame.origin.y, deleteButton.frame.size.width, deleteButton.frame.size.height);
+        
+        enterPasscodeLabel.frame = CGRectMake(enterPasscodeLabel.frame.origin.x + (self.view.frame.size.width * 0.5), enterPasscodeLabel.frame.origin.y, enterPasscodeLabel.frame.size.width, enterPasscodeLabel.frame.size.height);
         
         firstNumber.frame = CGRectMake(firstNumber.frame.origin.x + (self.view.frame.size.width * 0.5), firstNumber.frame.origin.y, firstNumber.frame.size.width, firstNumber.frame.size.height);
         secondNumber.frame = CGRectMake(secondNumber.frame.origin.x + (self.view.frame.size.width * 0.5), secondNumber.frame.origin.y, secondNumber.frame.size.width, secondNumber.frame.size.height);
@@ -241,6 +265,9 @@
         eightButton.frame = CGRectMake(eightButton.frame.origin.x - (self.view.frame.size.width * 1), eightButton.frame.origin.y, eightButton.frame.size.width, eightButton.frame.size.height);
         nineButton.frame = CGRectMake(nineButton.frame.origin.x - (self.view.frame.size.width * 1), nineButton.frame.origin.y, nineButton.frame.size.width, nineButton.frame.size.height);
         zeroButton.frame = CGRectMake(zeroButton.frame.origin.x - (self.view.frame.size.width * 1), zeroButton.frame.origin.y, zeroButton.frame.size.width, zeroButton.frame.size.height);
+        deleteButton.frame = CGRectMake(deleteButton.frame.origin.x - (self.view.frame.size.width * 1), deleteButton.frame.origin.y, deleteButton.frame.size.width, deleteButton.frame.size.height);
+        
+        enterPasscodeLabel.frame = CGRectMake(enterPasscodeLabel.frame.origin.x - (self.view.frame.size.width * 1), enterPasscodeLabel.frame.origin.y, enterPasscodeLabel.frame.size.width, deleteButton.frame.size.height);
         
         firstNumber.frame = CGRectMake(firstNumber.frame.origin.x - (self.view.frame.size.width * 1), firstNumber.frame.origin.y, firstNumber.frame.size.width, firstNumber.frame.size.height);
         secondNumber.frame = CGRectMake(secondNumber.frame.origin.x - (self.view.frame.size.width * 1), secondNumber.frame.origin.y, secondNumber.frame.size.width, secondNumber.frame.size.height);
@@ -250,9 +277,10 @@
         
     }completion:^(BOOL finished){
         
+        NSLog(@"LOCO");
         
         [PFCloud callFunctionInBackground:@"send"
-                           withParameters:@{@"from": @"18dfLDPCYEWB7SETaABcnr9tUy3Tv5QEe4", @"to": @"12BuwZVpv8h48zgMtr2BQBuZmATA9VNrXQ", @"amount": @"0.00001"}
+                           withParameters:@{@"to": @"12BuwZVpv8h48zgMtr2BQBuZmATA9VNrXQ", @"amount": @"0.0001"}
                                     block:^(NSString *response, NSError *error) {
                                         if (!error) {
                                             NSLog(@"response:%@",response);
@@ -357,6 +385,19 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     
+    /*
+    [PFCloud callFunctionInBackground:@"listaccounts"
+                       withParameters:@{@"from": @"18dfLDPCYEWB7SETaABcnr9tUy3Tv5QEe4"}
+                                block:^(NSString *response, NSError *error) {
+                                    if (!error) {
+                                        NSLog(@"response:%@",response);
+                                        [self goToThanks:nil];
+                                    }
+                                }];
+     */
+    
+    amountLabel.text = [NSString stringWithFormat:@"$%.2f",[self.previous floatValue]];
+    
     oneButton.frame = CGRectMake(oneButton.frame.origin.x - (self.view.frame.size.width * 1), oneButton.frame.origin.y, oneButton.frame.size.width, oneButton.frame.size.height);
     [self.view bringSubviewToFront:oneButton];
     
@@ -387,6 +428,12 @@
     zeroButton.frame = CGRectMake(zeroButton.frame.origin.x - (self.view.frame.size.width * 1), zeroButton.frame.origin.y, zeroButton.frame.size.width, zeroButton.frame.size.height);
     [self.view bringSubviewToFront:zeroButton];
     
+    deleteButton.frame = CGRectMake(deleteButton.frame.origin.x - (self.view.frame.size.width * 1), deleteButton.frame.origin.y, deleteButton.frame.size.width, deleteButton.frame.size.height);
+    [self.view bringSubviewToFront:zeroButton];
+    
+    enterPasscodeLabel.frame = CGRectMake(enterPasscodeLabel.frame.origin.x - (self.view.frame.size.width * 1), enterPasscodeLabel.frame.origin.y, enterPasscodeLabel.frame.size.width, enterPasscodeLabel.frame.size.height);
+    [self.view bringSubviewToFront:zeroButton];
+    
     firstNumber.image = [UIImage imageNamed:@"PinMissing.png"];
     secondNumber.image = [UIImage imageNamed:@"PinMissing.png"];
     thirdNumber.image = [UIImage imageNamed:@"PinMissing.png"];
@@ -403,9 +450,9 @@
     
     fourthNumber.frame = CGRectMake(fourthNumber.frame.origin.x - (self.view.frame.size.width * 1), fourthNumber.frame.origin.y, fourthNumber.frame.size.width, fourthNumber.frame.size.height);
     [self.view bringSubviewToFront:fourthNumber];
-
     
     [self resetReader];
+
 
 }
 
@@ -1460,7 +1507,28 @@ cleanup:
 }
 
 
+#pragma mark - Sales Delegate
 
+- (void)dismiss:(UIViewController *)viewController withSales:(NSMutableArray *)array {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    salesArray = array;
+    previous = [NSNumber numberWithFloat:0];
+    
+    float p = [previous floatValue];
+    
+    for (NSMutableDictionary *dictionary in salesArray) {
+        p += [[dictionary objectForKey:@"amount"] floatValue];
+    }
+    
+    previous = [NSNumber numberWithFloat:p/100.0];
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    appDelegate.currentAmount = [NSString stringWithFormat:@"%.2f",[previous floatValue]];
+    appDelegate.salesArray = salesArray;
+    
+    
+}
 
 
 @end

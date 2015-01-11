@@ -50,11 +50,14 @@
 @property (nonatomic, strong) IBOutlet UIButton *eightButton;
 @property (nonatomic, strong) IBOutlet UIButton *nineButton;
 @property (nonatomic, strong) IBOutlet UIButton *zeroButton;
+@property (nonatomic, strong) IBOutlet UIButton *deleteButton;
 
 @property (nonatomic, strong) IBOutlet UIImageView *firstNumber;
 @property (nonatomic, strong) IBOutlet UIImageView *secondNumber;
 @property (nonatomic, strong) IBOutlet UIImageView *thirdNumber;
 @property (nonatomic, strong) IBOutlet UIImageView *fourthNumber;
+
+@property (nonatomic, strong) IBOutlet UILabel *enterPasscodeLabel;
 
 - (void)resetReader;
 - (void)setSleep;

@@ -11,8 +11,9 @@
 #import <CommonCrypto/CommonCrypto.h>
 #import "AJDHex.h"  // TODO: this file shouldn't be needed as functions are duplicated here.
 #import "AppDelegate.h"
-
 #import "ATMViewController.h"
+#import "ConfigurationsViewController.h"
+#import "ViewController.h"
 
 @interface ATMViewController ()
 
@@ -74,14 +75,38 @@
 }
 
 @synthesize logView, amountTextField;
-@synthesize oneButton, twoButton, threeButton, fourButton, fiveButton, sixButton, sevenButton, eightButton, nineButton, zeroButton;
-@synthesize firstNumber, secondNumber, thirdNumber, fourthNumber;
+@synthesize oneButton, twoButton, threeButton, fourButton, fiveButton, sixButton, sevenButton, eightButton, nineButton, zeroButton, deleteButton;
+@synthesize firstNumber, secondNumber, thirdNumber, fourthNumber, enterPasscodeLabel;
+
+- (IBAction)goToMain:(id)sender {
+    
+    ViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"main_merchant"];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
+
+- (IBAction)goToConfigurations:(id)sender {
+    
+    ConfigurationsViewController *cvc = [self.storyboard instantiateViewControllerWithIdentifier:@"conf"];
+    [self.navigationController pushViewController:cvc animated:YES];
+    
+}
 
 - (IBAction)passcode:(id)sender {
     
     UIButton *senderButton = (UIButton *)sender;
     
     NSInteger selectedButton = [senderButton tag];
+    
+    if (selectedButton < 11) {
+        passcode = [NSString stringWithFormat:@"%@%li",passcode,(long)selectedButton];
+        NSLog(@"passcode:%@",passcode);
+    } else {
+        
+        if ([passcode length] > 0) {
+            passcode = [passcode substringToIndex:[passcode length] - 1];
+        }
+    }
     
     passcode = [NSString stringWithFormat:@"%@%li",passcode,(long)selectedButton];
     NSLog(@"passcode:%@",passcode);
@@ -210,6 +235,9 @@
         eightButton.frame = CGRectMake(eightButton.frame.origin.x + (self.view.frame.size.width * 1.5), eightButton.frame.origin.y, eightButton.frame.size.width, eightButton.frame.size.height);
         nineButton.frame = CGRectMake(nineButton.frame.origin.x + (self.view.frame.size.width * 1.5), nineButton.frame.origin.y, nineButton.frame.size.width, nineButton.frame.size.height);
         zeroButton.frame = CGRectMake(zeroButton.frame.origin.x + (self.view.frame.size.width * 1.5), zeroButton.frame.origin.y, zeroButton.frame.size.width, zeroButton.frame.size.height);
+        deleteButton.frame = CGRectMake(deleteButton.frame.origin.x + (self.view.frame.size.width * 0.5), deleteButton.frame.origin.y, deleteButton.frame.size.width, deleteButton.frame.size.height);
+        
+        enterPasscodeLabel.frame = CGRectMake(enterPasscodeLabel.frame.origin.x + (self.view.frame.size.width * 0.5), enterPasscodeLabel.frame.origin.y, enterPasscodeLabel.frame.size.width, enterPasscodeLabel.frame.size.height);
         
         firstNumber.frame = CGRectMake(firstNumber.frame.origin.x + (self.view.frame.size.width * 1.5), firstNumber.frame.origin.y, firstNumber.frame.size.width, firstNumber.frame.size.height);
         secondNumber.frame = CGRectMake(secondNumber.frame.origin.x + (self.view.frame.size.width * 1.5), secondNumber.frame.origin.y, secondNumber.frame.size.width, secondNumber.frame.size.height);
@@ -241,6 +269,9 @@
         eightButton.frame = CGRectMake(eightButton.frame.origin.x - (self.view.frame.size.width * 1.5), eightButton.frame.origin.y, eightButton.frame.size.width, eightButton.frame.size.height);
         nineButton.frame = CGRectMake(nineButton.frame.origin.x - (self.view.frame.size.width * 1.5), nineButton.frame.origin.y, nineButton.frame.size.width, nineButton.frame.size.height);
         zeroButton.frame = CGRectMake(zeroButton.frame.origin.x - (self.view.frame.size.width * 1.5), zeroButton.frame.origin.y, zeroButton.frame.size.width, zeroButton.frame.size.height);
+        deleteButton.frame = CGRectMake(deleteButton.frame.origin.x - (self.view.frame.size.width * 1), deleteButton.frame.origin.y, deleteButton.frame.size.width, deleteButton.frame.size.height);
+        
+        enterPasscodeLabel.frame = CGRectMake(enterPasscodeLabel.frame.origin.x - (self.view.frame.size.width * 1), enterPasscodeLabel.frame.origin.y, enterPasscodeLabel.frame.size.width, deleteButton.frame.size.height);
         
         firstNumber.frame = CGRectMake(firstNumber.frame.origin.x - (self.view.frame.size.width * 1.5), firstNumber.frame.origin.y, firstNumber.frame.size.width, firstNumber.frame.size.height);
         secondNumber.frame = CGRectMake(secondNumber.frame.origin.x - (self.view.frame.size.width * 1.5), secondNumber.frame.origin.y, secondNumber.frame.size.width, secondNumber.frame.size.height);
@@ -461,6 +492,12 @@
     [self.view bringSubviewToFront:nineButton];
     
     zeroButton.frame = CGRectMake(zeroButton.frame.origin.x - (self.view.frame.size.width * 1.5), zeroButton.frame.origin.y, zeroButton.frame.size.width, zeroButton.frame.size.height);
+    [self.view bringSubviewToFront:zeroButton];
+    
+    deleteButton.frame = CGRectMake(deleteButton.frame.origin.x - (self.view.frame.size.width * 1), deleteButton.frame.origin.y, deleteButton.frame.size.width, deleteButton.frame.size.height);
+    [self.view bringSubviewToFront:zeroButton];
+    
+    enterPasscodeLabel.frame = CGRectMake(enterPasscodeLabel.frame.origin.x - (self.view.frame.size.width * 1), enterPasscodeLabel.frame.origin.y, enterPasscodeLabel.frame.size.width, enterPasscodeLabel.frame.size.height);
     [self.view bringSubviewToFront:zeroButton];
     
     firstNumber.image = [UIImage imageNamed:@"PinMissing.png"];

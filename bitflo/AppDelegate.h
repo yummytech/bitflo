@@ -24,6 +24,7 @@
 @property (nonatomic, strong) NSNumber *isNewPayment;
 @property (nonatomic, strong) NSMutableDictionary *cardData;
 
+
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 

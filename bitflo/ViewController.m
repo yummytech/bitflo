@@ -11,6 +11,7 @@
 #import "SalesViewController.h"
 #import "ContactlessViewController.h"
 #import "ATMViewController.h"
+#import "ConfigurationsViewController.h"
 
 #define FLOBLE_UUID @"6e400001-b5a3-f393-e0a9-e50e24dcca9e"
 
@@ -23,6 +24,12 @@
 @synthesize chargeButton, itemCountLabel, lowerAmountLabel, noteButton, total, previous, salesArray;
 @synthesize itemsCountButton, testTextfield;
 
+- (IBAction)goToConfigurations:(id)sender {
+    
+    ConfigurationsViewController *cvc = [self.storyboard instantiateViewControllerWithIdentifier:@"conf"];
+    [self.navigationController pushViewController:cvc animated:YES];
+    
+}
 
 - (IBAction)goToATM:(id)sender {
     
@@ -182,10 +189,10 @@
 
 - (IBAction)pay:(id)sender {
     
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
     ContactlessViewController *cvc = [self.storyboard instantiateViewControllerWithIdentifier:@"payment"];
     //cvc.amount = appDelegate.currentAmount;
+    cvc.salesArray = salesArray;
+    cvc.previous = previous;
     [self.navigationController pushViewController:cvc animated:YES];
     
 }
@@ -277,7 +284,6 @@
 }
 
 #pragma mark - delegates
-
 
 - (void)sendNewItems:(NSMutableArray *)value {
     
