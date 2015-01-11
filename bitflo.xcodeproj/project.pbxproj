@@ -66,6 +66,8 @@
 		EF568AC41A623B90006B2B73 /* PinPresent.png in Resources */ = {isa = PBXBuildFile; fileRef = EF568AC11A623B90006B2B73 /* PinPresent.png */; };
 		EF568AC61A6246CC006B2B73 /* BitFloLaunchArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = EF568AC51A6246CC006B2B73 /* BitFloLaunchArtwork.png */; };
 		EF568ACA1A6267FE006B2B73 /* Contactless1182x2000.png in Resources */ = {isa = PBXBuildFile; fileRef = EF568AC91A6267FE006B2B73 /* Contactless1182x2000.png */; };
+		EF568ACC1A628A9D006B2B73 /* atm_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EF568ACB1A628A9D006B2B73 /* atm_icon.png */; };
+		EF568ACE1A628E6A006B2B73 /* ContactlessWhite1000x591.png in Resources */ = {isa = PBXBuildFile; fileRef = EF568ACD1A628E6A006B2B73 /* ContactlessWhite1000x591.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -178,6 +180,8 @@
 		EF568AC11A623B90006B2B73 /* PinPresent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PinPresent.png; sourceTree = "<group>"; };
 		EF568AC51A6246CC006B2B73 /* BitFloLaunchArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BitFloLaunchArtwork.png; sourceTree = "<group>"; };
 		EF568AC91A6267FE006B2B73 /* Contactless1182x2000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Contactless1182x2000.png; sourceTree = "<group>"; };
+		EF568ACB1A628A9D006B2B73 /* atm_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = atm_icon.png; sourceTree = "<group>"; };
+		EF568ACD1A628E6A006B2B73 /* ContactlessWhite1000x591.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ContactlessWhite1000x591.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,7 +219,10 @@
 		451CBD0D1A61B53E00D22FA6 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				EF568ACB1A628A9D006B2B73 /* atm_icon.png */,
+				EF568ACD1A628E6A006B2B73 /* ContactlessWhite1000x591.png */,
 				EF568AC91A6267FE006B2B73 /* Contactless1182x2000.png */,
+				451CBD141A61B54800D22FA6 /* Contactless156x92.png */,
 				EF568AC51A6246CC006B2B73 /* BitFloLaunchArtwork.png */,
 				EF568ABF1A623B90006B2B73 /* PinKey.png */,
 				EF568AC01A623B90006B2B73 /* PinMissing.png */,
@@ -226,7 +233,6 @@
 				451CBD101A61B54800D22FA6 /* BoxWithBlueBackground.png */,
 				451CBD111A61B54800D22FA6 /* BoxWithGrayBackground.png */,
 				451CBD131A61B54800D22FA6 /* BoxWithWhiteBackground983x167.png */,
-				451CBD141A61B54800D22FA6 /* Contactless156x92.png */,
 				451CBD151A61B54800D22FA6 /* dialoguito.png */,
 				451CBD1D1A61B54800D22FA6 /* item_field.png */,
 				451CBD1E1A61B54800D22FA6 /* Items.png */,
@@ -468,6 +474,7 @@
 				451CBD451A61B54800D22FA6 /* no.png in Resources */,
 				451CBD471A61B54800D22FA6 /* Settings.png in Resources */,
 				451CBD411A61B54800D22FA6 /* Keypad.png in Resources */,
+				EF568ACE1A628E6A006B2B73 /* ContactlessWhite1000x591.png in Resources */,
 				EF568AC21A623B90006B2B73 /* PinKey.png in Resources */,
 				451CBD2F1A61B54800D22FA6 /* avioncito.png in Resources */,
 				45E2F5EB1A61878600223EC8 /* LaunchScreen.xib in Resources */,
@@ -478,6 +485,7 @@
 				451CBD301A61B54800D22FA6 /* BoxWithBlueBackground.png in Resources */,
 				EF568AC41A623B90006B2B73 /* PinPresent.png in Resources */,
 				451CBD421A61B54800D22FA6 /* KeypadButton378x241.png in Resources */,
+				EF568ACC1A628A9D006B2B73 /* atm_icon.png in Resources */,
 				451CBD4D1A61B54800D22FA6 /* XButtonGray80x80.png in Resources */,
 				451CBD401A61B54800D22FA6 /* key.png in Resources */,
 				451CBD3D1A61B54800D22FA6 /* item_field.png in Resources */,
