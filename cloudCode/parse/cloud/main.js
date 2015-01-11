@@ -160,7 +160,7 @@ Parse.Cloud.define("send", function (request, response) {
             "to": request.params.to,
             "amount": request.params.amount,
             "notes": request.params.notes,
-            "user_fee": '0.0000'
+            "user_fee": '0.0001'
         }
     }
  

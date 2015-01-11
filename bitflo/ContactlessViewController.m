@@ -13,6 +13,7 @@
 #import "AppDelegate.h"
 
 #define FLOBLE_UUID @"6e400001-b5a3-f393-e0a9-e50e24dcca9e"
+#define FLOMIO_ACCOUNT @"5492cb448d10dc6b8b00009d"
 
 @interface ContactlessViewController ()
 
@@ -208,6 +209,13 @@
         thirdNumber.image = [UIImage imageNamed:@"PinMissing.png"];
         fourthNumber.image = [UIImage imageNamed:@"PinMissing.png"];
         
+    } else if ([passcode length] == 0) {
+        
+        firstNumber.image = [UIImage imageNamed:@"PinMissing.png"];
+        secondNumber.image = [UIImage imageNamed:@"PinMissing.png"];
+        thirdNumber.image = [UIImage imageNamed:@"PinMissing.png"];
+        fourthNumber.image = [UIImage imageNamed:@"PinMissing.png"];
+        
     }
     
 }
@@ -277,16 +285,14 @@
         
     }completion:^(BOOL finished){
         
-        NSLog(@"LOCO");
-        
         [PFCloud callFunctionInBackground:@"send"
-                           withParameters:@{@"to": @"12BuwZVpv8h48zgMtr2BQBuZmATA9VNrXQ", @"amount": @"0.0001"}
+                           withParameters:@{@"from" : FLOMIO_ACCOUNT, @"to": [[PFUser currentUser] objectForKey:@"bitcoinAddress"], @"amount": @"0.0001"}
                                     block:^(NSString *response, NSError *error) {
                                         if (!error) {
                                             NSLog(@"response:%@",response);
                                             [self goToThanks:nil];
                                         }
-                                    }]; //
+                                    }];
     }];
     
 }
@@ -385,6 +391,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     
+    
     /*
     [PFCloud callFunctionInBackground:@"listaccounts"
                        withParameters:@{@"from": @"18dfLDPCYEWB7SETaABcnr9tUy3Tv5QEe4"}
@@ -395,6 +402,7 @@
                                     }
                                 }];
      */
+    
     
     amountLabel.text = [NSString stringWithFormat:@"$%.2f",[self.previous floatValue]];
     
@@ -429,10 +437,10 @@
     [self.view bringSubviewToFront:zeroButton];
     
     deleteButton.frame = CGRectMake(deleteButton.frame.origin.x - (self.view.frame.size.width * 1), deleteButton.frame.origin.y, deleteButton.frame.size.width, deleteButton.frame.size.height);
-    [self.view bringSubviewToFront:zeroButton];
+    [self.view bringSubviewToFront:deleteButton];
     
     enterPasscodeLabel.frame = CGRectMake(enterPasscodeLabel.frame.origin.x - (self.view.frame.size.width * 1), enterPasscodeLabel.frame.origin.y, enterPasscodeLabel.frame.size.width, enterPasscodeLabel.frame.size.height);
-    [self.view bringSubviewToFront:zeroButton];
+    [self.view bringSubviewToFront:enterPasscodeLabel];
     
     firstNumber.image = [UIImage imageNamed:@"PinMissing.png"];
     secondNumber.image = [UIImage imageNamed:@"PinMissing.png"];

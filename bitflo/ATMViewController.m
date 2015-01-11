@@ -15,6 +15,8 @@
 #import "ConfigurationsViewController.h"
 #import "ViewController.h"
 
+#define FLOMIO_ACCOUNT @"5492cb448d10dc6b8b00009d"
+
 @interface ATMViewController ()
 
 @end
@@ -213,6 +215,13 @@
         thirdNumber.image = [UIImage imageNamed:@"PinMissing.png"];
         fourthNumber.image = [UIImage imageNamed:@"PinMissing.png"];
         
+    } else if ([passcode length] == 0) {
+        
+        firstNumber.image = [UIImage imageNamed:@"PinMissing.png"];
+        secondNumber.image = [UIImage imageNamed:@"PinMissing.png"];
+        thirdNumber.image = [UIImage imageNamed:@"PinMissing.png"];
+        fourthNumber.image = [UIImage imageNamed:@"PinMissing.png"];
+        
     }
     
 }
@@ -269,9 +278,9 @@
         eightButton.frame = CGRectMake(eightButton.frame.origin.x - (self.view.frame.size.width * 1.5), eightButton.frame.origin.y, eightButton.frame.size.width, eightButton.frame.size.height);
         nineButton.frame = CGRectMake(nineButton.frame.origin.x - (self.view.frame.size.width * 1.5), nineButton.frame.origin.y, nineButton.frame.size.width, nineButton.frame.size.height);
         zeroButton.frame = CGRectMake(zeroButton.frame.origin.x - (self.view.frame.size.width * 1.5), zeroButton.frame.origin.y, zeroButton.frame.size.width, zeroButton.frame.size.height);
-        deleteButton.frame = CGRectMake(deleteButton.frame.origin.x - (self.view.frame.size.width * 1), deleteButton.frame.origin.y, deleteButton.frame.size.width, deleteButton.frame.size.height);
+        deleteButton.frame = CGRectMake(deleteButton.frame.origin.x - (self.view.frame.size.width * 1.5), deleteButton.frame.origin.y, deleteButton.frame.size.width, deleteButton.frame.size.height);
         
-        enterPasscodeLabel.frame = CGRectMake(enterPasscodeLabel.frame.origin.x - (self.view.frame.size.width * 1), enterPasscodeLabel.frame.origin.y, enterPasscodeLabel.frame.size.width, deleteButton.frame.size.height);
+        enterPasscodeLabel.frame = CGRectMake(enterPasscodeLabel.frame.origin.x - (self.view.frame.size.width * 1.5), enterPasscodeLabel.frame.origin.y, enterPasscodeLabel.frame.size.width, deleteButton.frame.size.height);
         
         firstNumber.frame = CGRectMake(firstNumber.frame.origin.x - (self.view.frame.size.width * 1.5), firstNumber.frame.origin.y, firstNumber.frame.size.width, firstNumber.frame.size.height);
         secondNumber.frame = CGRectMake(secondNumber.frame.origin.x - (self.view.frame.size.width * 1.5), secondNumber.frame.origin.y, secondNumber.frame.size.width, secondNumber.frame.size.height);
@@ -283,7 +292,7 @@
         
         
         [PFCloud callFunctionInBackground:@"transfer"
-                           withParameters:@{@"to": @"aaaaa", @"from": @"aaaaa", @"amount": @"aaaaa"}
+                           withParameters:@{@"from": FLOMIO_ACCOUNT, @"to": currentAccount, @"amount": @"0.0001"}
                                     block:^(NSString *response, NSError *error) {
                                         if (!error) {
                                             [self goToThanks:nil];
@@ -292,7 +301,6 @@
     }];
     
 }
-
 
 - (IBAction)numbersMethod:(id)sender {
     
@@ -372,8 +380,6 @@
 
 }
 
-
-
 - (void)completeTransaction:(NSString *)UUID {
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -400,6 +406,8 @@
                 [alert addButtonWithTitle:@"OK"];
                 [alert show];
                 
+            } else {
+                currentAccount = [objects objectAtIndex:0];
             }
             
             
@@ -494,11 +502,11 @@
     zeroButton.frame = CGRectMake(zeroButton.frame.origin.x - (self.view.frame.size.width * 1.5), zeroButton.frame.origin.y, zeroButton.frame.size.width, zeroButton.frame.size.height);
     [self.view bringSubviewToFront:zeroButton];
     
-    deleteButton.frame = CGRectMake(deleteButton.frame.origin.x - (self.view.frame.size.width * 1), deleteButton.frame.origin.y, deleteButton.frame.size.width, deleteButton.frame.size.height);
-    [self.view bringSubviewToFront:zeroButton];
+    deleteButton.frame = CGRectMake(deleteButton.frame.origin.x - (self.view.frame.size.width * 1.5), deleteButton.frame.origin.y, deleteButton.frame.size.width, deleteButton.frame.size.height);
+    [self.view bringSubviewToFront:deleteButton];
     
-    enterPasscodeLabel.frame = CGRectMake(enterPasscodeLabel.frame.origin.x - (self.view.frame.size.width * 1), enterPasscodeLabel.frame.origin.y, enterPasscodeLabel.frame.size.width, enterPasscodeLabel.frame.size.height);
-    [self.view bringSubviewToFront:zeroButton];
+    enterPasscodeLabel.frame = CGRectMake(enterPasscodeLabel.frame.origin.x - (self.view.frame.size.width * 1.5), enterPasscodeLabel.frame.origin.y, enterPasscodeLabel.frame.size.width, enterPasscodeLabel.frame.size.height);
+    [self.view bringSubviewToFront:enterPasscodeLabel];
     
     firstNumber.image = [UIImage imageNamed:@"PinMissing.png"];
     secondNumber.image = [UIImage imageNamed:@"PinMissing.png"];

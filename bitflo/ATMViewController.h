@@ -30,6 +30,7 @@
     
     NSString *passcode;
     NSString *storedPasscode;
+    NSString *currentAccount;
 }
 
 @property (nonatomic, strong) dispatch_source_t timerSource;
