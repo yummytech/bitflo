@@ -385,6 +385,8 @@
     //AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     //float amount = [appDelegate.currentAmount floatValue];
     
+    NSLog(@"UUID:%@",[UUID stringByReplacingOccurrencesOfString:@" " withString:@""]);
+    
     PFQuery *query = [PFQuery queryWithClassName:@"Customer"];
     [query whereKey:@"UUID" equalTo:[UUID stringByReplacingOccurrencesOfString:@" " withString:@""]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
