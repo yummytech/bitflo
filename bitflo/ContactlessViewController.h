@@ -45,6 +45,11 @@
 @property (nonatomic, strong) IBOutlet UIButton *nineButton;
 @property (nonatomic, strong) IBOutlet UIButton *zeroButton;
 
+@property (nonatomic, strong) IBOutlet UIImageView *firstNumber;
+@property (nonatomic, strong) IBOutlet UIImageView *secondNumber;
+@property (nonatomic, strong) IBOutlet UIImageView *thirdNumber;
+@property (nonatomic, strong) IBOutlet UIImageView *fourthNumber;
+
 @property (nonatomic, strong) IBOutlet UILabel *OLabel;
 
 - (void)resetReader;

@@ -75,6 +75,7 @@
 }
 
 @synthesize logView, oneButton, twoButton, threeButton, fourButton, fiveButton, sixButton, sevenButton, eightButton, nineButton, zeroButton, OLabel;
+@synthesize firstNumber, secondNumber, thirdNumber, fourthNumber;
 
 - (IBAction)passcode:(id)sender {
     
@@ -88,29 +89,104 @@
     if ([passcode length] > 3) {
         if ([storedPasscode isEqualToString:passcode]) {
             NSLog(@"success");
+            firstNumber.image = [UIImage imageNamed:@""];
+            secondNumber.image = [UIImage imageNamed:@""];
+            thirdNumber.image = [UIImage imageNamed:@""];
+            fourthNumber.image = [UIImage imageNamed:@""];
             [self deblur];
         } else {
             NSLog(@"fail");
             
+            firstNumber.image = [UIImage imageNamed:@""];
+            secondNumber.image = [UIImage imageNamed:@""];
+            thirdNumber.image = [UIImage imageNamed:@""];
+            fourthNumber.image = [UIImage imageNamed:@""];
+            
             [UIView animateWithDuration:0.1 animations:^{
-                OLabel.frame = CGRectMake(OLabel.frame.origin.x + 10, OLabel.frame.origin.y, OLabel.frame.size.width, OLabel.frame.size.height); } completion:^(BOOL finished){
-                [UIView animateWithDuration:0.1 animations:^{
-                    OLabel.frame = CGRectMake(OLabel.frame.origin.x - 10, OLabel.frame.origin.y, OLabel.frame.size.width, OLabel.frame.size.height); } completion:^(BOOL finished){
-                        [UIView animateWithDuration:0.1 animations:^{
-                            OLabel.frame = CGRectMake(OLabel.frame.origin.x + 10, OLabel.frame.origin.y, OLabel.frame.size.width, OLabel.frame.size.height); } completion:^(BOOL finished){
-                                [UIView animateWithDuration:0.1 animations:^{
-                                    OLabel.frame = CGRectMake(OLabel.frame.origin.x - 10, OLabel.frame.origin.y, OLabel.frame.size.width, OLabel.frame.size.height); } completion:^(BOOL finished){
-                                        
-                                    }];
-                            }];
-                        
-                     }];
-            }];
+                firstNumber.frame = CGRectMake(firstNumber.frame.origin.x + 10, firstNumber.frame.origin.y, firstNumber.frame.size.width, firstNumber.frame.size.height); } completion:^(BOOL finished){
+                    [UIView animateWithDuration:0.1 animations:^{
+                        firstNumber.frame = CGRectMake(firstNumber.frame.origin.x - 10, firstNumber.frame.origin.y, firstNumber.frame.size.width, firstNumber.frame.size.height); } completion:^(BOOL finished){
+                            [UIView animateWithDuration:0.1 animations:^{
+                                firstNumber.frame = CGRectMake(firstNumber.frame.origin.x + 10, firstNumber.frame.origin.y, firstNumber.frame.size.width, firstNumber.frame.size.height); } completion:^(BOOL finished){
+                                    [UIView animateWithDuration:0.1 animations:^{
+                                        firstNumber.frame = CGRectMake(firstNumber.frame.origin.x - 10, firstNumber.frame.origin.y, firstNumber.frame.size.width, firstNumber.frame.size.height); } completion:^(BOOL finished){
+                                            
+                                        }];
+                                }];
+                            
+                        }];
+                }];
+            
+            [UIView animateWithDuration:0.1 animations:^{
+                secondNumber.frame = CGRectMake(secondNumber.frame.origin.x + 10, secondNumber.frame.origin.y, secondNumber.frame.size.width, secondNumber.frame.size.height); } completion:^(BOOL finished){
+                    [UIView animateWithDuration:0.1 animations:^{
+                        secondNumber.frame = CGRectMake(secondNumber.frame.origin.x - 10, secondNumber.frame.origin.y, secondNumber.frame.size.width, secondNumber.frame.size.height); } completion:^(BOOL finished){
+                            [UIView animateWithDuration:0.1 animations:^{
+                                secondNumber.frame = CGRectMake(secondNumber.frame.origin.x + 10, secondNumber.frame.origin.y, secondNumber.frame.size.width, secondNumber.frame.size.height); } completion:^(BOOL finished){
+                                    [UIView animateWithDuration:0.1 animations:^{
+                                        secondNumber.frame = CGRectMake(secondNumber.frame.origin.x - 10, secondNumber.frame.origin.y, secondNumber.frame.size.width, secondNumber.frame.size.height); } completion:^(BOOL finished){
+                                            
+                                        }];
+                                }];
+                            
+                        }];
+                }];
+            
+            [UIView animateWithDuration:0.1 animations:^{
+                thirdNumber.frame = CGRectMake(thirdNumber.frame.origin.x + 10, thirdNumber.frame.origin.y, thirdNumber.frame.size.width, thirdNumber.frame.size.height); } completion:^(BOOL finished){
+                    [UIView animateWithDuration:0.1 animations:^{
+                        thirdNumber.frame = CGRectMake(thirdNumber.frame.origin.x - 10, thirdNumber.frame.origin.y, thirdNumber.frame.size.width, thirdNumber.frame.size.height); } completion:^(BOOL finished){
+                            [UIView animateWithDuration:0.1 animations:^{
+                                thirdNumber.frame = CGRectMake(thirdNumber.frame.origin.x + 10, thirdNumber.frame.origin.y, thirdNumber.frame.size.width, thirdNumber.frame.size.height); } completion:^(BOOL finished){
+                                    [UIView animateWithDuration:0.1 animations:^{
+                                        thirdNumber.frame = CGRectMake(thirdNumber.frame.origin.x - 10, thirdNumber.frame.origin.y, thirdNumber.frame.size.width, thirdNumber.frame.size.height); } completion:^(BOOL finished){
+                                            
+                                        }];
+                                }];
+                            
+                        }];
+                }];
+            
+            [UIView animateWithDuration:0.1 animations:^{
+                fourthNumber.frame = CGRectMake(fourthNumber.frame.origin.x + 10, fourthNumber.frame.origin.y, fourthNumber.frame.size.width, fourthNumber.frame.size.height); } completion:^(BOOL finished){
+                    [UIView animateWithDuration:0.1 animations:^{
+                        fourthNumber.frame = CGRectMake(fourthNumber.frame.origin.x - 10, fourthNumber.frame.origin.y, fourthNumber.frame.size.width, fourthNumber.frame.size.height); } completion:^(BOOL finished){
+                            [UIView animateWithDuration:0.1 animations:^{
+                                fourthNumber.frame = CGRectMake(fourthNumber.frame.origin.x + 10, fourthNumber.frame.origin.y, fourthNumber.frame.size.width, fourthNumber.frame.size.height); } completion:^(BOOL finished){
+                                    [UIView animateWithDuration:0.1 animations:^{
+                                        fourthNumber.frame = CGRectMake(fourthNumber.frame.origin.x - 10, fourthNumber.frame.origin.y, fourthNumber.frame.size.width, fourthNumber.frame.size.height); } completion:^(BOOL finished){
+                                            
+                                        }];
+                                }];
+                            
+                        }];
+                }];
             
 
         }
         
         passcode = @"";
+    } else if ([passcode length] == 3) {
+        
+        firstNumber.image = [UIImage imageNamed:@""];
+        secondNumber.image = [UIImage imageNamed:@""];
+        thirdNumber.image = [UIImage imageNamed:@""];
+        fourthNumber.image = [UIImage imageNamed:@""];
+        
+    } else if ([passcode length] == 2) {
+        
+        firstNumber.image = [UIImage imageNamed:@""];
+        secondNumber.image = [UIImage imageNamed:@""];
+        thirdNumber.image = [UIImage imageNamed:@""];
+        fourthNumber.image = [UIImage imageNamed:@""];
+        
+    } else if ([passcode length] == 1) {
+        
+        firstNumber.image = [UIImage imageNamed:@""];
+        secondNumber.image = [UIImage imageNamed:@""];
+        thirdNumber.image = [UIImage imageNamed:@""];
+        fourthNumber.image = [UIImage imageNamed:@""];
+        
     }
     
 }
