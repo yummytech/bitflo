@@ -373,6 +373,15 @@
         currentInput = 0;
         amountTextField.text = [NSString stringWithFormat:@"$0.00"];
         
+    } else if (typedNumber == 12) {
+        
+        if ([amountTextField.text length] > 1) {
+            amountTextField.text = [amountTextField.text substringToIndex:[amountTextField.text length] - 1];
+        } else {
+            currentInputText = @"0";
+            currentInput = 0;
+            amountTextField.text = [NSString stringWithFormat:@"$0.00"];
+        }
     }
 
 }
