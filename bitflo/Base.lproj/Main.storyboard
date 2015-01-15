@@ -728,6 +728,23 @@
                                     <action selector="back:" destination="NwF-KZ-lyn" eventType="touchUpInside" id="XUR-go-HzR"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ZMQ-qB-i13">
+                                <rect key="frame" x="67" y="93" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="blur" destination="NwF-KZ-lyn" eventType="touchUpInside" id="ble-bP-eH1"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Dwd-Kx-q1E">
+                                <rect key="frame" x="99" y="97" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -745,6 +762,7 @@
                         <outlet property="secondNumber" destination="JZM-hT-HZW" id="cj5-OV-fzD"/>
                         <outlet property="sevenButton" destination="u0R-la-wiY" id="dpq-QR-Kjn"/>
                         <outlet property="sixButton" destination="2V3-WB-NDj" id="K7Q-29-vcl"/>
+                        <outlet property="testLabel" destination="Dwd-Kx-q1E" id="pKW-cU-Xn0"/>
                         <outlet property="thirdNumber" destination="EII-Z6-94M" id="GL5-Tw-PBg"/>
                         <outlet property="threeButton" destination="Bhc-jE-5Th" id="YC0-q4-JjL"/>
                         <outlet property="twoButton" destination="iWx-fS-l5J" id="uBI-u6-Jnh"/>
@@ -1115,6 +1133,16 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JHL-CG-CR4">
+                                <rect key="frame" x="257" y="107" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="blur" destination="195-J2-9IS" eventType="touchUpInside" id="wba-Bc-5jp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>

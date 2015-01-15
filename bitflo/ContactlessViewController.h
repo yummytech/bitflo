@@ -61,6 +61,8 @@
 
 @property (nonatomic, strong) IBOutlet UILabel *amountLabel;
 
+@property (nonatomic, strong) IBOutlet UILabel *testLabel;
+
 
 - (void)resetReader;
 - (void)setSleep;

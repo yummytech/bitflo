@@ -31,8 +31,11 @@
     phoneNumberTextField.text = @"";
     emailTextField.text = @"";
     
-    ViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"main_merchant"];
-    [self.navigationController pushViewController:vc animated:YES];
+    for (int i= 0 ; i < [[self.navigationController viewControllers]count] ; i++) {
+        if ( [[[self.navigationController viewControllers] objectAtIndex:i] isKindOfClass:[ViewController class]]) {
+            [self.navigationController popToViewController:[[self.navigationController viewControllers] objectAtIndex:i] animated:YES];
+        }
+    }
     
 }
 

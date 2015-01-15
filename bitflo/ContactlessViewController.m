@@ -93,6 +93,7 @@
 @synthesize logView, oneButton, twoButton, threeButton, fourButton, fiveButton, sixButton, sevenButton, eightButton, nineButton, zeroButton, deleteButton;
 @synthesize firstNumber, secondNumber, thirdNumber, fourthNumber, salesButton;
 @synthesize salesArray, previous, amountLabel, enterPasscodeLabel;
+@synthesize testLabel;
 
 -(IBAction)openSales:(id)sender {
     
@@ -236,11 +237,14 @@
     
 }
 
-- (void)blur {
-    
+- (IBAction)blur {
+
     passcode = @"";
     
     [UIView animateWithDuration:1.0 animations:^{
+        
+         NSLog(@"trtrtrtxxxx");
+
         
         blurEffectView.alpha = 0.8;
         blurEffectView.frame = self.view.bounds;
@@ -262,6 +266,8 @@
         secondNumber.frame = CGRectMake(secondNumber.frame.origin.x + (self.view.frame.size.width * 1.5), secondNumber.frame.origin.y, secondNumber.frame.size.width, secondNumber.frame.size.height);
         thirdNumber.frame = CGRectMake(thirdNumber.frame.origin.x + (self.view.frame.size.width * 1.5), thirdNumber.frame.origin.y, thirdNumber.frame.size.width, thirdNumber.frame.size.height);
         fourthNumber.frame = CGRectMake(fourthNumber.frame.origin.x + (self.view.frame.size.width * 1.5), fourthNumber.frame.origin.y, fourthNumber.frame.size.width, fourthNumber.frame.size.height);
+        
+        NSLog(@"origin_2:%f",eightButton.frame.origin.x);
         
         
             
@@ -301,6 +307,10 @@
         
     }completion:^(BOOL finished){
         
+        testLabel.text = @"perro";
+        
+        [blurEffectView.layer removeAllAnimations];
+        
         [PFCloud callFunctionInBackground:@"send"
                            withParameters:@{@"from" : FLOMIO_ACCOUNT, @"to": [[PFUser currentUser] objectForKey:@"bitcoinAddress"], @"amount": @"0.0001"}
                                     block:^(NSString *response, NSError *error) {
@@ -321,6 +331,8 @@
     
     //AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     //float amount = [appDelegate.currentAmount floatValue];
+
+    
     
     PFQuery *query = [PFQuery queryWithClassName:@"Customer"];
     [query whereKey:@"UUID" equalTo:[UUID stringByReplacingOccurrencesOfString:@" " withString:@""]];
@@ -371,6 +383,7 @@
         }
     }];
     
+    
 }
 
 -(void)goToThanksWithDict:(NSDictionary *)dict {
@@ -405,28 +418,20 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     
+    NSLog(@"origin:%f",eightButton.frame.origin.x);
     
-    blurEffectView.alpha = 0.8;
-    blurEffectView.frame = self.view.bounds;
-    oneButton.frame = CGRectMake(oneButton.frame.origin.x + (self.view.frame.size.width * 1.5), oneButton.frame.origin.y, oneButton.frame.size.width, oneButton.frame.size.height);
-    twoButton.frame = CGRectMake(twoButton.frame.origin.x + (self.view.frame.size.width * 1.5), twoButton.frame.origin.y, twoButton.frame.size.width, twoButton.frame.size.height);
-    threeButton.frame = CGRectMake(threeButton.frame.origin.x + (self.view.frame.size.width * 1.5), threeButton.frame.origin.y, threeButton.frame.size.width, threeButton.frame.size.height);
-    fourButton.frame = CGRectMake(fourButton.frame.origin.x + (self.view.frame.size.width * 1.5), fourButton.frame.origin.y, fourButton.frame.size.width, fourButton.frame.size.height);
-    fiveButton.frame = CGRectMake(fiveButton.frame.origin.x + (self.view.frame.size.width * 1.5), fiveButton.frame.origin.y, fiveButton.frame.size.width, fiveButton.frame.size.height);
-    sixButton.frame = CGRectMake(sixButton.frame.origin.x + (self.view.frame.size.width * 1.5), sixButton.frame.origin.y, sixButton.frame.size.width, sixButton.frame.size.height);
-    sevenButton.frame = CGRectMake(sevenButton.frame.origin.x + (self.view.frame.size.width * 1.5), sevenButton.frame.origin.y, sevenButton.frame.size.width, sevenButton.frame.size.height);
-    eightButton.frame = CGRectMake(eightButton.frame.origin.x + (self.view.frame.size.width * 1.5), eightButton.frame.origin.y, eightButton.frame.size.width, eightButton.frame.size.height);
-    nineButton.frame = CGRectMake(nineButton.frame.origin.x + (self.view.frame.size.width * 1.5), nineButton.frame.origin.y, nineButton.frame.size.width, nineButton.frame.size.height);
-    zeroButton.frame = CGRectMake(zeroButton.frame.origin.x + (self.view.frame.size.width * 1.5), zeroButton.frame.origin.y, zeroButton.frame.size.width, zeroButton.frame.size.height);
-    deleteButton.frame = CGRectMake(deleteButton.frame.origin.x + (self.view.frame.size.width * 1.5), deleteButton.frame.origin.y, deleteButton.frame.size.width, deleteButton.frame.size.height);
+    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+    blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"blur.png"]];
     
-    enterPasscodeLabel.frame = CGRectMake(enterPasscodeLabel.frame.origin.x + (self.view.frame.size.width * 1.5), enterPasscodeLabel.frame.origin.y, enterPasscodeLabel.frame.size.width, enterPasscodeLabel.frame.size.height);
+    [blurEffectView.contentView addSubview:imageView];
     
-    firstNumber.frame = CGRectMake(firstNumber.frame.origin.x + (self.view.frame.size.width * 1.5), firstNumber.frame.origin.y, firstNumber.frame.size.width, firstNumber.frame.size.height);
-    secondNumber.frame = CGRectMake(secondNumber.frame.origin.x + (self.view.frame.size.width * 1.5), secondNumber.frame.origin.y, secondNumber.frame.size.width, secondNumber.frame.size.height);
-    thirdNumber.frame = CGRectMake(thirdNumber.frame.origin.x + (self.view.frame.size.width * 1.5), thirdNumber.frame.origin.y, thirdNumber.frame.size.width, thirdNumber.frame.size.height);
-    fourthNumber.frame = CGRectMake(fourthNumber.frame.origin.x + (self.view.frame.size.width * 1.5), fourthNumber.frame.origin.y, fourthNumber.frame.size.width, fourthNumber.frame.size.height);
+    blurEffectView.frame = CGRectMake(self.view.frame.origin.x - self.view.frame.size.width, self.view.frame.origin.y, self.view.frame.size.width * 2, self.view.frame.size.height);
     
+    blurEffectView.alpha = 0.0;
+    
+    [self.view addSubview:blurEffectView];
+
     for (UIView *view in [self.view subviews]) {
         view.hidden = NO;
     }
@@ -505,9 +510,15 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
+    
+    [self.view.layer removeAllAnimations];
+    
     for (UIView *view in [self.view subviews]) {
         view.hidden = YES;
     }
+    
+    [self stopScan];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -545,17 +556,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
-    blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"blur.png"]];
     
-    [blurEffectView.contentView addSubview:imageView];
-    
-    blurEffectView.frame = CGRectMake(self.view.frame.origin.x - self.view.frame.size.width, self.view.frame.origin.y, self.view.frame.size.width * 2, self.view.frame.size.height);
-    
-    blurEffectView.alpha = 0.0;
-    
-    [self.view addSubview:blurEffectView];
     
     //[self setLogFile];
     
@@ -945,6 +946,8 @@
     // Reset the reader.
     [_reader resetWithCompletion:^{
         
+        NSLog(@"reset");
+        
         // Hide the progress.
         
         self.observingMessages = YES;
@@ -954,6 +957,7 @@
         dispatch_source_set_event_handler(self.timerSource, ^{
             if (self.isObservingMessages) {
                 //[self transmit:nil];
+                NSLog(@"PowerOn");
                 [self powerOn];
             }
         });
@@ -1037,7 +1041,7 @@
         
     } else {
         
-        //NSLog(@"Success");
+        NSLog(@"Success eeewww!");
         // Show the PICC ATR.
         //[self showPiccAtr:piccViewController];
     }
@@ -1085,6 +1089,12 @@
             [alert dismissWithClickedButtonIndex:0 animated:YES];
         });
     });
+}
+
+- (void)stopScan {
+    _reader.mute = YES; // Mute ACR35 library
+    if (self.timerSource) dispatch_suspend(self.timerSource);
+    NSLog(@"Stopped scan timer %p",self.timerSource);
 }
 
 #pragma mark - Mifare 4K read/write 32 bytes starting at block 4
@@ -1702,7 +1712,11 @@ cleanup:
     
     if ([UUID length] > 0) {
         NSLog(@"UUIS");
-        [self performSelectorOnMainThread:@selector(completeTransaction:) withObject:UUID waitUntilDone:NO];
+        
+        //[self performSelectorOnMainThread:@selector(completeTransaction:) withObject:UUID waitUntilDone:NO];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self completeTransaction:UUID];
+        });
         
     }
     
