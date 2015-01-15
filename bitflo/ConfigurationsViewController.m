@@ -19,6 +19,12 @@
 
 @synthesize accountTextField;
 
+- (IBAction)logOut:(id)sender {
+    
+    [PFUser logOut];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
 - (IBAction)goToMain:(id)sender {
     
     ViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"main_merchant"];
