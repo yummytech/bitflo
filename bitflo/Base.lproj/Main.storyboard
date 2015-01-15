@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B17" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Lxa-2O-Ksi">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C78c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Lxa-2O-Ksi">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
@@ -438,7 +438,6 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hHC-JP-CdK">
-                                                    <rect key="frame" x="17" y="17" width="154" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -452,7 +451,6 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zsX-Tx-iHh">
-                                                    <rect key="frame" x="17" y="40" width="209" height="39"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -473,14 +471,12 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2XC-7d-dfQ">
-                                                    <rect key="frame" x="8" y="12" width="202" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HQl-Pd-6Ra">
-                                                    <rect key="frame" x="244" y="12" width="62" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -698,7 +694,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="aX2-J6-aMe">
-                                <rect key="frame" x="117" y="498" width="88" height="50"/>
+                                <rect key="frame" x="117" y="498.00000073953902" width="88" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Sales" backgroundImage="thx_blue_button.png">
@@ -946,7 +942,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="numbersMethod:" destination="195-J2-9IS" eventType="touchUpInside" id="oYd-YV-hnI"/>
+                                    <action selector="numbersMethod:" destination="195-J2-9IS" eventType="touchUpInside" id="qbS-XZ-0mj"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rBR-1A-hC7">
@@ -966,7 +962,6 @@
                                 </state>
                                 <connections>
                                     <action selector="passcode:" destination="195-J2-9IS" eventType="touchUpInside" id="NTz-Bu-Iov"/>
-                                    <action selector="passcode:" destination="NwF-KZ-lyn" eventType="touchUpInside" id="txI-RQ-5RH"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="yW6-2H-Alg">
@@ -977,7 +972,6 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="passcode:" destination="NwF-KZ-lyn" eventType="touchUpInside" id="Ib7-CP-Ubt"/>
                                     <action selector="passcode:" destination="195-J2-9IS" eventType="touchUpInside" id="Rn6-wq-hTF"/>
                                 </connections>
                             </button>
@@ -989,8 +983,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="passcode:" destination="NwF-KZ-lyn" eventType="touchUpInside" id="5SB-ug-Q1U"/>
-                                    <action selector="passcode:" destination="195-J2-9IS" eventType="touchUpInside" id="TAy-HP-bXb"/>
+                                    <action selector="passcode:" destination="195-J2-9IS" eventType="touchUpInside" id="kka-Xp-u08"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="v14-N1-j0e">
@@ -1001,7 +994,6 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="passcode:" destination="NwF-KZ-lyn" eventType="touchUpInside" id="af1-SQ-L5e"/>
                                     <action selector="passcode:" destination="195-J2-9IS" eventType="touchUpInside" id="wzK-Me-HcQ"/>
                                 </connections>
                             </button>
@@ -1014,7 +1006,6 @@
                                 </state>
                                 <connections>
                                     <action selector="passcode:" destination="195-J2-9IS" eventType="touchUpInside" id="Fca-Py-vWq"/>
-                                    <action selector="passcode:" destination="NwF-KZ-lyn" eventType="touchUpInside" id="eaR-5X-nSf"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vKo-tj-B4D">
@@ -1026,7 +1017,6 @@
                                 </state>
                                 <connections>
                                     <action selector="passcode:" destination="195-J2-9IS" eventType="touchUpInside" id="8v5-it-COV"/>
-                                    <action selector="passcode:" destination="NwF-KZ-lyn" eventType="touchUpInside" id="Xxm-pM-IX4"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="HQf-k1-4tT">
@@ -1037,7 +1027,6 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="passcode:" destination="NwF-KZ-lyn" eventType="touchUpInside" id="6wF-M7-z8m"/>
                                     <action selector="passcode:" destination="195-J2-9IS" eventType="touchUpInside" id="UY6-n7-53F"/>
                                 </connections>
                             </button>
@@ -1050,7 +1039,6 @@
                                 </state>
                                 <connections>
                                     <action selector="passcode:" destination="195-J2-9IS" eventType="touchUpInside" id="I47-x2-E9Y"/>
-                                    <action selector="passcode:" destination="NwF-KZ-lyn" eventType="touchUpInside" id="rgC-SO-SV2"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0Fr-Oy-DBa">
@@ -1062,7 +1050,6 @@
                                 </state>
                                 <connections>
                                     <action selector="passcode:" destination="195-J2-9IS" eventType="touchUpInside" id="iin-5W-JFa"/>
-                                    <action selector="passcode:" destination="NwF-KZ-lyn" eventType="touchUpInside" id="jIU-jF-ceN"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0h3-0G-lqt">
@@ -1073,7 +1060,6 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="passcode:" destination="NwF-KZ-lyn" eventType="touchUpInside" id="5f6-IA-YeN"/>
                                     <action selector="passcode:" destination="195-J2-9IS" eventType="touchUpInside" id="bHw-I3-Zhh"/>
                                 </connections>
                             </button>
@@ -1123,7 +1109,7 @@
                                 <rect key="frame" x="67" y="105" width="186" height="99"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Amount" minimumFontSize="17" id="VLy-6z-Q8Y">
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Amount" minimumFontSize="17" id="VLy-6z-Q8Y">
                                 <rect key="frame" x="36" y="66" width="249" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1241,10 +1227,11 @@
                                 </state>
                                 <connections>
                                     <action selector="clear:" destination="GOC-1k-9ec" eventType="touchUpInside" id="Omd-MP-3lt"/>
+                                    <action selector="logOut:" destination="3ej-HV-bUe" eventType="touchUpInside" id="Sl5-Gp-51t"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="Dvm-LF-GMU">
-                                <rect key="frame" x="144" y="116" width="160" height="30"/>
+                                <rect key="frame" x="144.00000057220456" y="116" width="160" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -1253,7 +1240,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="KkF-bP-EaM">
-                                <rect key="frame" x="144" y="154" width="160" height="30"/>
+                                <rect key="frame" x="144.00000057220456" y="154" width="160" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -1262,7 +1249,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="8gQ-bd-NyE">
-                                <rect key="frame" x="144" y="192" width="160" height="30"/>
+                                <rect key="frame" x="144.00000057220456" y="192" width="160" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
