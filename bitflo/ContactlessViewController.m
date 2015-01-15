@@ -93,7 +93,6 @@
 @synthesize logView, oneButton, twoButton, threeButton, fourButton, fiveButton, sixButton, sevenButton, eightButton, nineButton, zeroButton, deleteButton;
 @synthesize firstNumber, secondNumber, thirdNumber, fourthNumber, salesButton;
 @synthesize salesArray, previous, amountLabel, enterPasscodeLabel;
-@synthesize testLabel;
 
 -(IBAction)openSales:(id)sender {
     
@@ -307,7 +306,6 @@
         
     }completion:^(BOOL finished){
         
-        testLabel.text = @"perro";
         
         [blurEffectView.layer removeAllAnimations];
         
