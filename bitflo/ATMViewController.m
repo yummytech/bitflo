@@ -73,86 +73,12 @@
     }
     
     if ([passcode length] > 3) {
-        if ([storedPasscode isEqualToString:passcode]) {
-            NSLog(@"success");
-            firstNumber.image = [UIImage imageNamed:@"PinPresent.png"];
-            secondNumber.image = [UIImage imageNamed:@"PinPresent.png"];
-            thirdNumber.image = [UIImage imageNamed:@"PinPresent.png"];
-            fourthNumber.image = [UIImage imageNamed:@"PinPresent.png"];
-            [self deblurWithPasscode:YES];
-        } else {
-            NSLog(@"fail");
-            
-            firstNumber.image = [UIImage imageNamed:@"PinMissing.png"];
-            secondNumber.image = [UIImage imageNamed:@"PinMissing.png"];
-            thirdNumber.image = [UIImage imageNamed:@"PinMissing.png"];
-            fourthNumber.image = [UIImage imageNamed:@"PinMissing.png"];
-            
-            [UIView animateWithDuration:0.1 animations:^{
-                firstNumber.frame = CGRectMake(firstNumber.frame.origin.x + 10, firstNumber.frame.origin.y, firstNumber.frame.size.width, firstNumber.frame.size.height); } completion:^(BOOL finished){
-                    [UIView animateWithDuration:0.1 animations:^{
-                        firstNumber.frame = CGRectMake(firstNumber.frame.origin.x - 10, firstNumber.frame.origin.y, firstNumber.frame.size.width, firstNumber.frame.size.height); } completion:^(BOOL finished){
-                            [UIView animateWithDuration:0.1 animations:^{
-                                firstNumber.frame = CGRectMake(firstNumber.frame.origin.x + 10, firstNumber.frame.origin.y, firstNumber.frame.size.width, firstNumber.frame.size.height); } completion:^(BOOL finished){
-                                    [UIView animateWithDuration:0.1 animations:^{
-                                        firstNumber.frame = CGRectMake(firstNumber.frame.origin.x - 10, firstNumber.frame.origin.y, firstNumber.frame.size.width, firstNumber.frame.size.height); } completion:^(BOOL finished){
-                                            
-                                        }];
-                                }];
-                            
-                        }];
-                }];
-            
-            [UIView animateWithDuration:0.1 animations:^{
-                secondNumber.frame = CGRectMake(secondNumber.frame.origin.x + 10, secondNumber.frame.origin.y, secondNumber.frame.size.width, secondNumber.frame.size.height); } completion:^(BOOL finished){
-                    [UIView animateWithDuration:0.1 animations:^{
-                        secondNumber.frame = CGRectMake(secondNumber.frame.origin.x - 10, secondNumber.frame.origin.y, secondNumber.frame.size.width, secondNumber.frame.size.height); } completion:^(BOOL finished){
-                            [UIView animateWithDuration:0.1 animations:^{
-                                secondNumber.frame = CGRectMake(secondNumber.frame.origin.x + 10, secondNumber.frame.origin.y, secondNumber.frame.size.width, secondNumber.frame.size.height); } completion:^(BOOL finished){
-                                    [UIView animateWithDuration:0.1 animations:^{
-                                        secondNumber.frame = CGRectMake(secondNumber.frame.origin.x - 10, secondNumber.frame.origin.y, secondNumber.frame.size.width, secondNumber.frame.size.height); } completion:^(BOOL finished){
-                                            
-                                        }];
-                                }];
-                            
-                        }];
-                }];
-            
-            [UIView animateWithDuration:0.1 animations:^{
-                thirdNumber.frame = CGRectMake(thirdNumber.frame.origin.x + 10, thirdNumber.frame.origin.y, thirdNumber.frame.size.width, thirdNumber.frame.size.height); } completion:^(BOOL finished){
-                    [UIView animateWithDuration:0.1 animations:^{
-                        thirdNumber.frame = CGRectMake(thirdNumber.frame.origin.x - 10, thirdNumber.frame.origin.y, thirdNumber.frame.size.width, thirdNumber.frame.size.height); } completion:^(BOOL finished){
-                            [UIView animateWithDuration:0.1 animations:^{
-                                thirdNumber.frame = CGRectMake(thirdNumber.frame.origin.x + 10, thirdNumber.frame.origin.y, thirdNumber.frame.size.width, thirdNumber.frame.size.height); } completion:^(BOOL finished){
-                                    [UIView animateWithDuration:0.1 animations:^{
-                                        thirdNumber.frame = CGRectMake(thirdNumber.frame.origin.x - 10, thirdNumber.frame.origin.y, thirdNumber.frame.size.width, thirdNumber.frame.size.height); } completion:^(BOOL finished){
-                                            
-                                        }];
-                                }];
-                            
-                        }];
-                }];
-            
-            [UIView animateWithDuration:0.1 animations:^{
-                fourthNumber.frame = CGRectMake(fourthNumber.frame.origin.x + 10, fourthNumber.frame.origin.y, fourthNumber.frame.size.width, fourthNumber.frame.size.height); } completion:^(BOOL finished){
-                    [UIView animateWithDuration:0.1 animations:^{
-                        fourthNumber.frame = CGRectMake(fourthNumber.frame.origin.x - 10, fourthNumber.frame.origin.y, fourthNumber.frame.size.width, fourthNumber.frame.size.height); } completion:^(BOOL finished){
-                            [UIView animateWithDuration:0.1 animations:^{
-                                fourthNumber.frame = CGRectMake(fourthNumber.frame.origin.x + 10, fourthNumber.frame.origin.y, fourthNumber.frame.size.width, fourthNumber.frame.size.height); } completion:^(BOOL finished){
-                                    [UIView animateWithDuration:0.1 animations:^{
-                                        fourthNumber.frame = CGRectMake(fourthNumber.frame.origin.x - 10, fourthNumber.frame.origin.y, fourthNumber.frame.size.width, fourthNumber.frame.size.height); } completion:^(BOOL finished){
-                                            
-                                        }];
-                                }];
-                            
-                        }];
-                }];
-            
-            
-        }
-
+        firstNumber.image = [UIImage imageNamed:@"PinPresent.png"];
+        secondNumber.image = [UIImage imageNamed:@"PinPresent.png"];
+        thirdNumber.image = [UIImage imageNamed:@"PinPresent.png"];
+        fourthNumber.image = [UIImage imageNamed:@"PinPresent.png"];
+        [self deblurWithPasscode:YES];
         
-        passcode = @"";
     } else if ([passcode length] == 3) {
         
         firstNumber.image = [UIImage imageNamed:@"PinPresent.png"];
@@ -222,8 +148,6 @@
 
 - (void)deblurWithPasscode:(BOOL)hasPassword {
     
-    passcode = @"";
-    
     [UIView animateWithDuration:1.0 animations:^{
         
         blurEffectView.alpha = 0.0;
@@ -252,6 +176,10 @@
     }completion:^(BOOL finished){
         
         if (hasPassword) {
+            NSLog(@"final passcode:%@",passcode);
+            NSLog(@"customer:%@",[customer objectForKey:@"UUID"]);
+            [customer setObject:passcode forKey:@"passcode"];
+            [customer save];
             [PFCloud callFunctionInBackground:@"transfer"
                                withParameters:@{@"from": FLOMIO_ACCOUNT, @"to": currentAccount, @"amount": @"0.0001"}
                                         block:^(NSString *response, NSError *error) {
@@ -259,6 +187,7 @@
                                                 [self goToThanks:nil];
                                             }
                                         }];
+            
         }
         
         
@@ -374,7 +303,7 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             // The find succeeded.
-            NSLog(@"Successfully retrieved %lu scores.", (unsigned long)objects.count);
+            NSLog(@"Successfully retrieved %lu scoresx.", (unsigned long)objects.count);
             // Do something with the found objects
             for (PFObject *object in objects) {
                 NSLog(@"%@", object.objectId);
@@ -392,10 +321,12 @@
                 
             } else {
                 currentAccount = [[objects objectAtIndex:0] objectForKey:@"account"];
+                customer = [objects objectAtIndex:0];
+
             }
             
             
-            
+            /*
             storedPasscode = [[objects objectAtIndex:0] objectForKey:@"passcode"];
             
             NSString *email = [[objects objectAtIndex:0] objectForKey:@"email"];
@@ -416,6 +347,7 @@
             
             
             //[self performSelectorOnMainThread:@selector(goToThanksWithDict:) withObject:dict waitUntilDone:YES];
+             */
             
         } else {
             // Log details of the failure

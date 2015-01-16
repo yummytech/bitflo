@@ -22,6 +22,8 @@
     NSString *passcode;
     NSString *storedPasscode;
     NSString *currentAccount;
+    
+    PFObject *customer;
 }
 
 @property (nonatomic, strong) IBOutlet UITextField *amountTextField;
