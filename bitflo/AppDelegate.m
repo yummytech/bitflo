@@ -938,9 +938,12 @@
         
         //[self performSelectorOnMainThread:@selector(completeTransaction:) withObject:UUID waitUntilDone:NO];
         dispatch_async(dispatch_get_main_queue(), ^{
+            
+            NSDictionary* userInfo = @{@"UUID": UUID};
+            
             [[NSNotificationCenter defaultCenter]
              postNotificationName:@"UUIDNotification"
-             object:self];
+             object:self userInfo:userInfo];
         });
     }
     

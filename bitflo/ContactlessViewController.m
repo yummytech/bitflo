@@ -38,8 +38,11 @@
     // unless you use this method for observation of other notifications
     // as well.
     
-    if ([[notification name] isEqualToString:@"UUIDNotification"])
-        NSLog (@"Successfully received the UUID");
+    if ([[notification name] isEqualToString:@"UUIDNotification"]) {
+        NSLog (@"Successfully received the UUID:%@",notification.userInfo);
+        [self completeTransaction:[notification.userInfo objectForKey:@"UUID"]];
+    }
+    
 }
 
 -(IBAction)openSales:(id)sender {
