@@ -447,6 +447,18 @@
                                                  name:@"UUIDNotification"
                                                object:nil];
     
+    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+    blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"blur.png"]];
+    
+    [blurEffectView.contentView addSubview:imageView];
+    
+    blurEffectView.frame = CGRectMake(self.view.frame.origin.x - self.view.frame.size.width, self.view.frame.origin.y, self.view.frame.size.width * 2, self.view.frame.size.height);
+    
+    blurEffectView.alpha = 0.0;
+    
+    [self.view addSubview:blurEffectView];
+    
     oneButton.frame = CGRectMake(oneButton.frame.origin.x - (self.view.frame.size.width * 1.5), oneButton.frame.origin.y, oneButton.frame.size.width, oneButton.frame.size.height);
     [self.view bringSubviewToFront:oneButton];
     
@@ -525,23 +537,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(receiveNotification:)
-                                                 name:@"UUIDNotification"
-                                               object:nil];
-
-    
-    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
-    blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"blur.png"]];
-    
-    [blurEffectView.contentView addSubview:imageView];
-    
-    blurEffectView.frame = CGRectMake(self.view.frame.origin.x - self.view.frame.size.width, self.view.frame.origin.y, self.view.frame.size.width * 2, self.view.frame.size.height);
-    
-    blurEffectView.alpha = 0.0;
-    
-    [self.view addSubview:blurEffectView];
 }
 
 

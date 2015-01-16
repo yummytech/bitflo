@@ -497,8 +497,6 @@
             dispatch_source_set_timer(self.timerSource, dispatch_walltime(NULL, 0), 0.5 * NSEC_PER_SEC, 1ull * NSEC_PER_SEC);
             dispatch_source_set_event_handler(self.timerSource, ^{
                 if (self.isObservingMessages) {
-                    //[self transmit:nil];
-                    NSLog(@"PowerOn");
                     [self powerOn];
                 }
             });
@@ -578,7 +576,6 @@
         
     } else {
         
-        NSLog(@"Success eeewww!");
         // Show the PICC ATR.
         //[self showPiccAtr:piccViewController];
     }

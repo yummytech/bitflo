@@ -185,8 +185,6 @@
     passcode = @"";
     
     [UIView animateWithDuration:1.0 animations:^{
-        
-         NSLog(@"trtrtrtxxxx");
 
         blurEffectView.alpha = 0.8;
         blurEffectView.frame = self.view.bounds;
