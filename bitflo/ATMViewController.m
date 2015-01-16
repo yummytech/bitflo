@@ -521,6 +521,8 @@
 - (void)viewWillDisappear:(BOOL)animated {
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate stopScan];
 
 }
 
