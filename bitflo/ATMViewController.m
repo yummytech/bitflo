@@ -8,8 +8,6 @@
 
 #import "ContactlessViewController.h"
 #import "ThanksViewController.h"
-#import <CommonCrypto/CommonCrypto.h>
-#import "AJDHex.h"  // TODO: this file shouldn't be needed as functions are duplicated here.
 #import "AppDelegate.h"
 #import "ATMViewController.h"
 #import "ConfigurationsViewController.h"
@@ -21,64 +19,13 @@
 
 @end
 
-@implementation ATMViewController  {
-    
-    ACRAudioJackReader *_reader;
-    ACRDukptReceiver *_dukptReceiver;
-    int _swipeCount;
-    
-    NSCondition *_responseCondition;
-    
-    BOOL _firmwareVersionReady;
-    NSString *_firmwareVersion;
-    
-    BOOL _statusReady;
-    ACRStatus *_status;
-    
-    BOOL _resultReady;
-    ACRResult *_result;
-    
-    BOOL _customIdReady;
-    NSData *_customId;
-    
-    BOOL _deviceIdReady;
-    NSData *_deviceId;
-    
-    BOOL _dukptOptionReady;
-    BOOL _dukptOption;
-    
-    BOOL _trackDataOptionReady;
-    ACRTrackDataOption _trackDataOption;
-    
-    BOOL _piccAtrReady;
-    NSData *_piccAtr;
-    
-    BOOL _piccResponseApduReady;
-    NSData *_piccResponseApdu;
-    
-    NSUserDefaults *_defaults;
-    NSData *_masterKey;
-    NSData *_masterKey2;
-    NSData *_aesKey;
-    NSData *_iksn;
-    NSData *_ipek;
-    
-    NSString *_piccTimeoutString;
-    NSString *_piccCardTypeString;
-    NSString *_piccCommandApduString;
-    NSString *_piccRfConfigString;
-    
-    NSUInteger _piccTimeout;
-    NSUInteger _piccCardType;
-    NSData *_piccCommandApdu;
-    NSData *_piccRfConfig;
-    
-    UIAlertView *_trackDataAlert;
-}
+@implementation ATMViewController
 
-@synthesize logView, amountTextField;
+@synthesize amountTextField;
 @synthesize oneButton, twoButton, threeButton, fourButton, fiveButton, sixButton, sevenButton, eightButton, nineButton, zeroButton, deleteButton;
 @synthesize firstNumber, secondNumber, thirdNumber, fourthNumber, enterPasscodeLabel;
+
+
 
 - (IBAction)goToMain:(id)sender {
     
@@ -554,6 +501,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receiveNotification:)
+                                                 name:@"UUIDNotification"
+                                               object:nil];
+
+    
     UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
     blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"blur.png"]];
@@ -565,6 +518,12 @@
     blurEffectView.alpha = 0.0;
     
     [self.view addSubview:blurEffectView];
-    
 }
+
+- (void) receiveNotification:(NSNotification *) notification
+{
+    if ([[notification name] isEqualToString:@"UUIDNotification"])
+        NSLog (@"Successfully received the UUID");
+}
+
 @end

@@ -8,8 +8,6 @@
 
 #import "ContactlessViewController.h"
 #import "ThanksViewController.h"
-#import <CommonCrypto/CommonCrypto.h>
-#import "AJDHex.h"  // TODO: this file shouldn't be needed as functions are duplicated here.
 #import "AppDelegate.h"
 
 #define FLOBLE_UUID @"6e400001-b5a3-f393-e0a9-e50e24dcca9e"

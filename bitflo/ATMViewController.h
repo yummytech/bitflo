@@ -7,22 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <AVFoundation/AVFoundation.h>
 #import <Parse/Parse.h>
-#import "AudioJack.h"
-
-#import <UIKit/UIKit.h>
 
 #define FLOBLE_UUID @"6e400001-b5a3-f393-e0a9-e50e24dcca9e"
 
-@interface ATMViewController : UIViewController <ACRAudioJackReaderDelegate, AVAudioPlayerDelegate>{
+@interface ATMViewController : UIViewController {
     
     CGPoint startPosition;
-    
-    //Application Delegate
-    //AppDelegate *appDelegate;
-    NSString  *filePath;
-    NSString *previousResponse;
     
     int currentInput;
     
@@ -32,12 +23,6 @@
     NSString *storedPasscode;
     NSString *currentAccount;
 }
-
-@property (nonatomic, strong) dispatch_source_t timerSource;
-@property (getter = isObservingMessages) BOOL observingMessages;
-
-@property (nonatomic, strong) IBOutlet UITextView *logView;
-@property (nonatomic, strong) AVAudioPlayer *audioPlayer;
 
 @property (nonatomic, strong) IBOutlet UITextField *amountTextField;
 
@@ -59,9 +44,5 @@
 @property (nonatomic, strong) IBOutlet UIImageView *fourthNumber;
 
 @property (nonatomic, strong) IBOutlet UILabel *enterPasscodeLabel;
-
-- (void)resetReader;
-- (void)setSleep;
-- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)audioPlayer successfully:(BOOL)flag;
 
 @end

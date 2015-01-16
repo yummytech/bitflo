@@ -629,7 +629,7 @@
 }
 
 - (void)stopScan {
-    _reader.mute = YES; // Mute ACR35 library
+    //_reader.mute = YES; // Mute ACR35 library
     if (self.timerSource) dispatch_suspend(self.timerSource);
     NSLog(@"Stopped scan timer %p",self.timerSource);
 }
@@ -941,10 +941,6 @@
             [[NSNotificationCenter defaultCenter]
              postNotificationName:@"UUIDNotification"
              object:self];
-
-//            [self completeTransaction:UUID];  /// GRUNDYOSO IS STUCK HERE!
-            //[self completeTransaction:UUID];  /// GRUNDYOSO IS STUCK HERE!
-
         });
     }
     

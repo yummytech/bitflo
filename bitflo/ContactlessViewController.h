@@ -8,18 +8,14 @@
 
 
 #import <UIKit/UIKit.h>
-#import <AVFoundation/AVFoundation.h>
 #import <Parse/Parse.h>
-#import "AudioJack.h"
 #import "SalesViewController.h"
 
 
-@interface ContactlessViewController : UIViewController <ACRAudioJackReaderDelegate, AVAudioPlayerDelegate, SalesDelegate>{
+@interface ContactlessViewController : UIViewController <SalesDelegate>{
     
     CGPoint startPosition;
-    
-    NSString *previousResponse;
-    
+        
     UIVisualEffectView *blurEffectView;
     
     NSString *passcode;
