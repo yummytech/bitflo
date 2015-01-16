@@ -20,7 +20,12 @@
 
 @synthesize oneButton, twoButton, threeButton, fourButton, fiveButton, sixButton, sevenButton, eightButton, nineButton, zeroButton, deleteButton;
 @synthesize firstNumber, secondNumber, thirdNumber, fourthNumber, salesButton;
-@synthesize salesArray, previous, amountLabel, enterPasscodeLabel;
+@synthesize salesArray, previous, amountLabel, enterPasscodeLabel, cancelButton;
+
+- (IBAction)cancel:(id)sender {
+    
+    [self deblurWithPasscode:NO];
+}
 
 - (void)viewDidLoad {
     
@@ -78,7 +83,7 @@
             secondNumber.image = [UIImage imageNamed:@"PinPresent.png"];
             thirdNumber.image = [UIImage imageNamed:@"PinPresent.png"];
             fourthNumber.image = [UIImage imageNamed:@"PinPresent.png"];
-            [self deblur];
+            [self deblurWithPasscode:YES];
         } else {
             NSLog(@"fail");
             
@@ -199,6 +204,7 @@
         nineButton.frame = CGRectMake(nineButton.frame.origin.x + (self.view.frame.size.width * 1.5), nineButton.frame.origin.y, nineButton.frame.size.width, nineButton.frame.size.height);
         zeroButton.frame = CGRectMake(zeroButton.frame.origin.x + (self.view.frame.size.width * 1.5), zeroButton.frame.origin.y, zeroButton.frame.size.width, zeroButton.frame.size.height);
         deleteButton.frame = CGRectMake(deleteButton.frame.origin.x + (self.view.frame.size.width * 1.5), deleteButton.frame.origin.y, deleteButton.frame.size.width, deleteButton.frame.size.height);
+        cancelButton.frame = CGRectMake(cancelButton.frame.origin.x + (self.view.frame.size.width * 1.5), cancelButton.frame.origin.y, cancelButton.frame.size.width, cancelButton.frame.size.height);
         
         enterPasscodeLabel.frame = CGRectMake(enterPasscodeLabel.frame.origin.x + (self.view.frame.size.width * 1.5), enterPasscodeLabel.frame.origin.y, enterPasscodeLabel.frame.size.width, enterPasscodeLabel.frame.size.height);
         
@@ -211,7 +217,7 @@
     }];
 }
 
-- (void)deblur {
+- (void)deblurWithPasscode:(BOOL)hasPassword {
     
     passcode = @"";
     
@@ -230,8 +236,9 @@
         nineButton.frame = CGRectMake(nineButton.frame.origin.x - (self.view.frame.size.width * 1.5), nineButton.frame.origin.y, nineButton.frame.size.width, nineButton.frame.size.height);
         zeroButton.frame = CGRectMake(zeroButton.frame.origin.x - (self.view.frame.size.width * 1.5), zeroButton.frame.origin.y, zeroButton.frame.size.width, zeroButton.frame.size.height);
         deleteButton.frame = CGRectMake(deleteButton.frame.origin.x - (self.view.frame.size.width * 1.5), deleteButton.frame.origin.y, deleteButton.frame.size.width, deleteButton.frame.size.height);
+        cancelButton.frame = CGRectMake(cancelButton.frame.origin.x - (self.view.frame.size.width * 1.5), cancelButton.frame.origin.y, cancelButton.frame.size.width, cancelButton.frame.size.height);
         
-        enterPasscodeLabel.frame = CGRectMake(enterPasscodeLabel.frame.origin.x - (self.view.frame.size.width * 1.5), enterPasscodeLabel.frame.origin.y, enterPasscodeLabel.frame.size.width, deleteButton.frame.size.height);
+        enterPasscodeLabel.frame = CGRectMake(enterPasscodeLabel.frame.origin.x - (self.view.frame.size.width * 1.5), enterPasscodeLabel.frame.origin.y, enterPasscodeLabel.frame.size.width, enterPasscodeLabel.frame.size.height);
         
         firstNumber.frame = CGRectMake(firstNumber.frame.origin.x - (self.view.frame.size.width * 1.5), firstNumber.frame.origin.y, firstNumber.frame.size.width, firstNumber.frame.size.height);
         secondNumber.frame = CGRectMake(secondNumber.frame.origin.x - (self.view.frame.size.width * 1.5), secondNumber.frame.origin.y, secondNumber.frame.size.width, secondNumber.frame.size.height);
@@ -241,17 +248,17 @@
         
     }completion:^(BOOL finished){
         
+        if (hasPassword) {
+            [PFCloud callFunctionInBackground:@"send"
+                               withParameters:@{@"from" : FLOMIO_ACCOUNT, @"to": [[PFUser currentUser] objectForKey:@"bitcoinAddress"], @"amount": @"0.0001"}
+                                        block:^(NSString *response, NSError *error) {
+                                            if (!error) {
+                                                NSLog(@"response:%@",response);
+                                                [self goToThanks:nil];
+                                            }
+                                        }];
+        }
         
-        [blurEffectView.layer removeAllAnimations];
-        
-        [PFCloud callFunctionInBackground:@"send"
-                           withParameters:@{@"from" : FLOMIO_ACCOUNT, @"to": [[PFUser currentUser] objectForKey:@"bitcoinAddress"], @"amount": @"0.0001"}
-                                    block:^(NSString *response, NSError *error) {
-                                        if (!error) {
-                                            NSLog(@"response:%@",response);
-                                            [self goToThanks:nil];
-                                        }
-                                    }];
     }];
     
 }
@@ -368,17 +375,6 @@
         view.hidden = NO;
     }
     
-    /*
-    [PFCloud callFunctionInBackground:@"listaccounts"
-                       withParameters:@{@"from": @"18dfLDPCYEWB7SETaABcnr9tUy3Tv5QEe4"}
-                                block:^(NSString *response, NSError *error) {
-                                    if (!error) {
-                                        NSLog(@"response:%@",response);
-                                        [self goToThanks:nil];
-                                    }
-                                }];
-     */
-    
     amountLabel.text = [NSString stringWithFormat:@"Total $%.2f",[self.previous floatValue]];
     
     oneButton.frame = CGRectMake(oneButton.frame.origin.x - (self.view.frame.size.width * 1.5), oneButton.frame.origin.y, oneButton.frame.size.width, oneButton.frame.size.height);
@@ -413,6 +409,9 @@
     
     deleteButton.frame = CGRectMake(deleteButton.frame.origin.x - (self.view.frame.size.width * 1.5), deleteButton.frame.origin.y, deleteButton.frame.size.width, deleteButton.frame.size.height);
     [self.view bringSubviewToFront:deleteButton];
+    
+    cancelButton.frame = CGRectMake(cancelButton.frame.origin.x - (self.view.frame.size.width * 1.5), cancelButton.frame.origin.y, cancelButton.frame.size.width, cancelButton.frame.size.height);
+    [self.view bringSubviewToFront:cancelButton];
     
     enterPasscodeLabel.frame = CGRectMake(enterPasscodeLabel.frame.origin.x - (self.view.frame.size.width * 1.5), enterPasscodeLabel.frame.origin.y, enterPasscodeLabel.frame.size.width, enterPasscodeLabel.frame.size.height);
     [self.view bringSubviewToFront:enterPasscodeLabel];

@@ -23,10 +23,14 @@
 
 @synthesize amountTextField;
 @synthesize oneButton, twoButton, threeButton, fourButton, fiveButton, sixButton, sevenButton, eightButton, nineButton, zeroButton, deleteButton;
-@synthesize firstNumber, secondNumber, thirdNumber, fourthNumber, enterPasscodeLabel;
+@synthesize firstNumber, secondNumber, thirdNumber, fourthNumber, enterPasscodeLabel, cancelButton;
 
-- (void) receiveNotification:(NSNotification *) notification
-{
+- (IBAction)cancel:(id)sender {
+    
+    [self deblurWithPasscode:NO];
+}
+
+- (void) receiveNotification:(NSNotification *) notification {
     // [notification name] should always be @"TestNotification"
     // unless you use this method for observation of other notifications
     // as well.
@@ -37,7 +41,6 @@
     }
     
 }
-
 
 - (IBAction)goToMain:(id)sender {
     
@@ -76,7 +79,7 @@
             secondNumber.image = [UIImage imageNamed:@"PinPresent.png"];
             thirdNumber.image = [UIImage imageNamed:@"PinPresent.png"];
             fourthNumber.image = [UIImage imageNamed:@"PinPresent.png"];
-            [self deblur];
+            [self deblurWithPasscode:YES];
         } else {
             NSLog(@"fail");
             
@@ -200,9 +203,10 @@
         eightButton.frame = CGRectMake(eightButton.frame.origin.x + (self.view.frame.size.width * 1.5), eightButton.frame.origin.y, eightButton.frame.size.width, eightButton.frame.size.height);
         nineButton.frame = CGRectMake(nineButton.frame.origin.x + (self.view.frame.size.width * 1.5), nineButton.frame.origin.y, nineButton.frame.size.width, nineButton.frame.size.height);
         zeroButton.frame = CGRectMake(zeroButton.frame.origin.x + (self.view.frame.size.width * 1.5), zeroButton.frame.origin.y, zeroButton.frame.size.width, zeroButton.frame.size.height);
-        deleteButton.frame = CGRectMake(deleteButton.frame.origin.x + (self.view.frame.size.width * 0.5), deleteButton.frame.origin.y, deleteButton.frame.size.width, deleteButton.frame.size.height);
+        deleteButton.frame = CGRectMake(deleteButton.frame.origin.x + (self.view.frame.size.width * 1.5), deleteButton.frame.origin.y, deleteButton.frame.size.width, deleteButton.frame.size.height);
+        cancelButton.frame = CGRectMake(cancelButton.frame.origin.x + (self.view.frame.size.width * 1.5), cancelButton.frame.origin.y, cancelButton.frame.size.width, cancelButton.frame.size.height);
         
-        enterPasscodeLabel.frame = CGRectMake(enterPasscodeLabel.frame.origin.x + (self.view.frame.size.width * 0.5), enterPasscodeLabel.frame.origin.y, enterPasscodeLabel.frame.size.width, enterPasscodeLabel.frame.size.height);
+        enterPasscodeLabel.frame = CGRectMake(enterPasscodeLabel.frame.origin.x + (self.view.frame.size.width * 1.5), enterPasscodeLabel.frame.origin.y, enterPasscodeLabel.frame.size.width, enterPasscodeLabel.frame.size.height);
         
         firstNumber.frame = CGRectMake(firstNumber.frame.origin.x + (self.view.frame.size.width * 1.5), firstNumber.frame.origin.y, firstNumber.frame.size.width, firstNumber.frame.size.height);
         secondNumber.frame = CGRectMake(secondNumber.frame.origin.x + (self.view.frame.size.width * 1.5), secondNumber.frame.origin.y, secondNumber.frame.size.width, secondNumber.frame.size.height);
@@ -216,7 +220,7 @@
     
 }
 
-- (void)deblur {
+- (void)deblurWithPasscode:(BOOL)hasPassword {
     
     passcode = @"";
     
@@ -235,6 +239,7 @@
         nineButton.frame = CGRectMake(nineButton.frame.origin.x - (self.view.frame.size.width * 1.5), nineButton.frame.origin.y, nineButton.frame.size.width, nineButton.frame.size.height);
         zeroButton.frame = CGRectMake(zeroButton.frame.origin.x - (self.view.frame.size.width * 1.5), zeroButton.frame.origin.y, zeroButton.frame.size.width, zeroButton.frame.size.height);
         deleteButton.frame = CGRectMake(deleteButton.frame.origin.x - (self.view.frame.size.width * 1.5), deleteButton.frame.origin.y, deleteButton.frame.size.width, deleteButton.frame.size.height);
+        cancelButton.frame = CGRectMake(cancelButton.frame.origin.x - (self.view.frame.size.width * 1.5), cancelButton.frame.origin.y, cancelButton.frame.size.width, deleteButton.frame.size.height);
         
         enterPasscodeLabel.frame = CGRectMake(enterPasscodeLabel.frame.origin.x - (self.view.frame.size.width * 1.5), enterPasscodeLabel.frame.origin.y, enterPasscodeLabel.frame.size.width, deleteButton.frame.size.height);
         
@@ -246,14 +251,17 @@
         
     }completion:^(BOOL finished){
         
+        if (hasPassword) {
+            [PFCloud callFunctionInBackground:@"transfer"
+                               withParameters:@{@"from": FLOMIO_ACCOUNT, @"to": currentAccount, @"amount": @"0.0001"}
+                                        block:^(NSString *response, NSError *error) {
+                                            if (!error) {
+                                                [self goToThanks:nil];
+                                            }
+                                        }];
+        }
         
-        [PFCloud callFunctionInBackground:@"transfer"
-                           withParameters:@{@"from": FLOMIO_ACCOUNT, @"to": currentAccount, @"amount": @"0.0001"}
-                                    block:^(NSString *response, NSError *error) {
-                                        if (!error) {
-                                            [self goToThanks:nil];
-                                        }
-                                    }];
+        
     }];
     
 }
@@ -497,6 +505,9 @@
     
     deleteButton.frame = CGRectMake(deleteButton.frame.origin.x - (self.view.frame.size.width * 1.5), deleteButton.frame.origin.y, deleteButton.frame.size.width, deleteButton.frame.size.height);
     [self.view bringSubviewToFront:deleteButton];
+    
+    cancelButton.frame = CGRectMake(cancelButton.frame.origin.x - (self.view.frame.size.width * 1.5), cancelButton.frame.origin.y, cancelButton.frame.size.width, cancelButton.frame.size.height);
+    [self.view bringSubviewToFront:cancelButton];
     
     enterPasscodeLabel.frame = CGRectMake(enterPasscodeLabel.frame.origin.x - (self.view.frame.size.width * 1.5), enterPasscodeLabel.frame.origin.y, enterPasscodeLabel.frame.size.width, enterPasscodeLabel.frame.size.height);
     [self.view bringSubviewToFront:enterPasscodeLabel];

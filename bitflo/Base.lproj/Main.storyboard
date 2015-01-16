@@ -706,16 +706,17 @@
                                     <action selector="openSales:" destination="NwF-KZ-lyn" eventType="touchUpInside" id="Yc3-pf-31a"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hM0-iK-olI">
-                                <rect key="frame" x="126" y="418" width="70" height="70"/>
+                            <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="XTg-uE-Z91">
+                                <rect key="frame" x="16" y="426" width="76" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Delete">
+                                <state key="normal" title="Cancel">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="passcode:" destination="NwF-KZ-lyn" eventType="touchUpInside" id="gxc-hQ-fQ4"/>
+                                    <action selector="cancel:" destination="NwF-KZ-lyn" eventType="touchUpInside" id="kUC-AF-lyM"/>
+                                    <action selector="passcode:" destination="NwF-KZ-lyn" eventType="touchUpInside" id="Xq1-I6-5fZ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pw6-pZ-Tv8">
@@ -729,10 +730,23 @@
                                     <action selector="back:" destination="NwF-KZ-lyn" eventType="touchUpInside" id="XUR-go-HzR"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hM0-iK-olI">
+                                <rect key="frame" x="234" y="426" width="70" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Delete">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="passcode:" destination="NwF-KZ-lyn" eventType="touchUpInside" id="gxc-hQ-fQ4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="cancelButton" destination="XTg-uE-Z91" id="kdS-S4-Dv8"/>
                         <outlet property="deleteButton" destination="hM0-iK-olI" id="fv7-Dh-4n9"/>
                         <outlet property="eightButton" destination="A77-14-XIs" id="NDs-xq-dGC"/>
                         <outlet property="enterPasscodeLabel" destination="eMv-NT-8hT" id="jnP-fv-Rsh"/>
@@ -1065,7 +1079,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="oYC-4O-8jT">
-                                <rect key="frame" x="125" y="424" width="70" height="70"/>
+                                <rect key="frame" x="234" y="457" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Delete">
@@ -1116,12 +1130,25 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="S5A-3U-8x7">
+                                <rect key="frame" x="16" y="457" width="76" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancel:" destination="195-J2-9IS" eventType="touchUpInside" id="4VL-yC-P1P"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="amountTextField" destination="VLy-6z-Q8Y" id="bBA-6E-e9K"/>
-                        <outlet property="deleteButton" destination="oYC-4O-8jT" id="Brd-2A-mav"/>
+                        <outlet property="cancelButton" destination="S5A-3U-8x7" id="rR2-P0-rBr"/>
+                        <outlet property="deleteButton" destination="oYC-4O-8jT" id="nov-le-OSe"/>
                         <outlet property="eightButton" destination="yxe-IT-P5X" id="lx2-fx-mIA"/>
                         <outlet property="enterPasscodeLabel" destination="dhK-uW-hI2" id="tnA-ct-HnX"/>
                         <outlet property="firstNumber" destination="9mO-Gl-1z5" id="0qB-L7-j2H"/>

@@ -37,6 +37,7 @@
 @property (nonatomic, strong) IBOutlet UIButton *nineButton;
 @property (nonatomic, strong) IBOutlet UIButton *zeroButton;
 @property (nonatomic, strong) IBOutlet UIButton *deleteButton;
+@property (nonatomic, strong) IBOutlet UIButton *cancelButton;
 
 @property (nonatomic, strong) IBOutlet UIImageView *firstNumber;
 @property (nonatomic, strong) IBOutlet UIImageView *secondNumber;
