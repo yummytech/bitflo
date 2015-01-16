@@ -24,6 +24,26 @@
 @synthesize firstNumber, secondNumber, thirdNumber, fourthNumber, salesButton;
 @synthesize salesArray, previous, amountLabel, enterPasscodeLabel;
 
+- (void)viewDidLoad {
+    
+    [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receiveNotification:)
+                                                 name:@"UUIDNotification"
+                                               object:nil];
+}
+
+- (void) receiveNotification:(NSNotification *) notification
+{
+    // [notification name] should always be @"TestNotification"
+    // unless you use this method for observation of other notifications
+    // as well.
+    
+    if ([[notification name] isEqualToString:@"UUIDNotification"])
+        NSLog (@"Successfully received the UUID");
+}
+
 -(IBAction)openSales:(id)sender {
     
     SalesViewController *svc = [self.storyboard instantiateViewControllerWithIdentifier:@"sales"];
