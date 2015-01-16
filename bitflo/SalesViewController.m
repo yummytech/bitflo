@@ -98,6 +98,8 @@
         tableView.rowHeight = 44;
         tableHeight += tableView.rowHeight;
         
+        NSLog(@"count:%@",[salesArray objectAtIndex:indexPath.row]);
+        
         SalesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
         cell.amountDescriptionLabel.text = [[salesArray objectAtIndex:indexPath.row] objectForKey:@"description"];
         cell.amountLabel.text = [NSString stringWithFormat:@"$%.2f",[[[salesArray objectAtIndex:indexPath.row] objectForKey:@"amount"] floatValue]/100];

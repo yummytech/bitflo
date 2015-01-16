@@ -567,4 +567,555 @@
     [self.view addSubview:blurEffectView];
     
 }
+<<<<<<< Updated upstream
+=======
+
+- (void)showRequestQueueError {
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        // Show the result.
+        UIAlertView *resultAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"The request cannot be queued." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [resultAlert show];
+    });
+}
+
+- (void)setSleep {
+    
+    // Show the progress.
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"Setting the reader to sleep..." delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
+    [alert show];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        // Set the reader to sleep.
+        _resultReady = NO;
+        if (![_reader sleep]) {
+            
+            // TODO: Show the sleep request queue error (this should only happen when App goes to background so perhaps a Nitification?).
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Reader Error"
+                                                            message:@"The reader couldn't be set to sleep"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+            
+        } else {
+            
+            // This is simply a place holder for the Successful Sleep state. Not needed for this app.
+        }
+        
+        // Hide the progress.
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [alert dismissWithClickedButtonIndex:0 animated:YES];
+        });
+    });
+}
+
+#pragma mark - Audio Jack Reader Delegate
+
+- (void)reader:(ACRAudioJackReader *)reader didNotifyResult:(ACRResult *)result {
+    
+    [_responseCondition lock];
+    _result = result;
+    _resultReady = YES;
+    [_responseCondition signal];
+    [_responseCondition unlock];
+}
+
+- (void)reader:(ACRAudioJackReader *)reader didSendFirmwareVersion:(NSString *)firmwareVersion {
+    
+    [_responseCondition lock];
+    _firmwareVersion = firmwareVersion;
+    _firmwareVersionReady = YES;
+    [_responseCondition signal];
+    [_responseCondition unlock];
+}
+
+- (void)reader:(ACRAudioJackReader *)reader didSendStatus:(ACRStatus *)status {
+    
+    [_responseCondition lock];
+    _status = status;
+    _statusReady = YES;
+    [_responseCondition signal];
+    [_responseCondition unlock];
+}
+
+- (void)readerDidNotifyTrackData:(ACRAudioJackReader *)reader {
+    
+    // Show the track data alert.
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        _trackDataAlert = [[UIAlertView alloc] initWithTitle:@"Information" message:@"Processing the track data..." delegate:nil cancelButtonTitle:nil otherButtonTitles: nil];
+        [_trackDataAlert show];
+        
+        // Dismiss the track data alert after 5 seconds.
+        [self performSelector:@selector(AJD_dismissAlertView:) withObject:_trackDataAlert afterDelay:5];
+    });
+}
+
+- (void)reader:(ACRAudioJackReader *)reader didSendTrackData:(ACRTrackData *)trackData {
+    
+    ACRTrack1Data *track1Data = [[ACRTrack1Data alloc] init];
+    ACRTrack2Data *track2Data = [[ACRTrack2Data alloc] init];
+    ACRTrack1Data *track1MaskedData = [[ACRTrack1Data alloc] init];
+    ACRTrack2Data *track2MaskedData = [[ACRTrack2Data alloc] init];
+    NSString *track1MacString = @"";
+    NSString *track2MacString = @"";
+    //NSString *batteryStatusString = [self AJD_stringFromBatteryStatus:trackData.batteryStatus];
+    NSString *keySerialNumberString = @"";
+    NSString *errorString = @"";
+    
+    // Dismiss the track data alert.
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self AJD_dismissAlertView:_trackDataAlert];
+    });
+    
+    if ((trackData.track1ErrorCode != ACRTrackErrorSuccess) &&
+        (trackData.track2ErrorCode != ACRTrackErrorSuccess)) {
+        
+        errorString = @"The track 1 and track 2 data";
+        
+    } else {
+        
+        if (trackData.track1ErrorCode != ACRTrackErrorSuccess) {
+            errorString = @"The track 1 data";
+        }
+        
+        if (trackData.track2ErrorCode != ACRTrackErrorSuccess) {
+            errorString = @"The track 2 data";
+        }
+    }
+    
+    errorString = [errorString stringByAppendingString:@" may be corrupted. Please swipe the card again!"];
+    
+    // Show the track error.
+    if ((trackData.track1ErrorCode != ACRTrackErrorSuccess) ||
+        (trackData.track2ErrorCode != ACRTrackErrorSuccess)) {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:errorString message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alert show];
+        });
+    }
+    
+    if ([trackData isKindOfClass:[ACRAesTrackData class]]) {
+        
+        ACRAesTrackData *aesTrackData = (ACRAesTrackData *) trackData;
+        uint8_t *buffer = (uint8_t *) [aesTrackData.trackData bytes];
+        NSUInteger bufferLength = [aesTrackData.trackData length];
+        uint8_t decryptedTrackData[128];
+        size_t decryptedTrackDataLength = 0;
+        
+        // Decrypt the track data.
+        if (![self decryptData:buffer dataInLength:bufferLength key:[_aesKey bytes] keyLength:[_aesKey length] dataOut:decryptedTrackData dataOutLength:sizeof(decryptedTrackData) pBytesReturned:&decryptedTrackDataLength]) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"The track data cannot be decrypted. Please swipe the card again!" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                [alert show];
+            });
+            
+            goto cleanup;
+        }
+        
+        // Verify the track data.
+        if (![_reader verifyData:decryptedTrackData length:decryptedTrackDataLength]) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"The track data contains checksum error. Please swipe the card again!" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                [alert show];
+            });
+            
+            goto cleanup;
+        }
+        
+        // Decode the track data.
+        track1Data = [track1Data initWithBytes:decryptedTrackData length:trackData.track1Length];
+        track2Data = [track2Data initWithBytes:decryptedTrackData + 79 length:trackData.track2Length];
+        
+    } else if ([trackData isKindOfClass:[ACRDukptTrackData class]]) {
+        
+        ACRDukptTrackData *dukptTrackData = (ACRDukptTrackData *) trackData;
+        NSUInteger ec = 0;
+        NSUInteger ec2 = 0;
+        NSData *key = nil;
+        NSData *dek = nil;
+        NSData *macKey = nil;
+        uint8_t dek3des[24];
+        
+        keySerialNumberString = [AJDHex hexStringFromByteArray:dukptTrackData.keySerialNumber];
+        track1MacString = [AJDHex hexStringFromByteArray:dukptTrackData.track1Mac];
+        track2MacString = [AJDHex hexStringFromByteArray:dukptTrackData.track2Mac];
+        track1MaskedData = [track1MaskedData initWithString:dukptTrackData.track1MaskedData];
+        track2MaskedData = [track2MaskedData initWithString:dukptTrackData.track2MaskedData];
+        
+        // Compare the key serial number.
+        if (![ACRDukptReceiver compareKeySerialNumber:_iksn ksn2:dukptTrackData.keySerialNumber]) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"The key serial number does not match with the settings." message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                [alert show];
+            });
+            
+            goto cleanup;
+        }
+        
+        // Get the encryption counter from KSN.
+        ec = [ACRDukptReceiver encryptionCounterFromKeySerialNumber:dukptTrackData.keySerialNumber];
+        
+        // Get the encryption counter from DUKPT receiver.
+        ec2 = [_dukptReceiver encryptionCounter];
+        
+        // Load the initial key if the encryption counter from KSN is less than
+        // the encryption counter from DUKPT receiver.
+        if (ec < ec2) {
+            
+            [_dukptReceiver loadInitialKey:_ipek];
+            ec2 = [_dukptReceiver encryptionCounter];
+        }
+        
+        // Synchronize the key if the encryption counter from KSN is greater
+        // than the encryption counter from DUKPT receiver.
+        while (ec > ec2) {
+            
+            [_dukptReceiver key];
+            ec2 = [_dukptReceiver encryptionCounter];
+        }
+        
+        if (ec != ec2) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"The encryption counter is invalid." message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                [alert show];
+            });
+            
+            goto cleanup;
+        }
+        
+        key = [_dukptReceiver key];
+        if (key == nil) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"The maximum encryption count had been reached." message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                [alert show];
+            });
+            
+            goto cleanup;
+        }
+        
+        dek = [ACRDukptReceiver dataEncryptionRequestKeyFromKey:key];
+        macKey = [ACRDukptReceiver macRequestKeyFromKey:key];
+        
+        // Generate 3DES key (K1 = K3).
+        memcpy(dek3des, [dek bytes], [dek length]);
+        memcpy(dek3des + [dek length], [dek bytes], 8);
+        
+        if (dukptTrackData.track1Data != nil) {
+            
+            uint8_t track1Buffer[80];
+            size_t bytesReturned = 0;
+            NSString *track1DataString = nil;
+            
+            // Decrypt the track 1 data.
+            if (![self AJD_tripleDesDecryptData:[dukptTrackData.track1Data bytes] dataInLength:[dukptTrackData.track1Data length] key:dek3des keyLength:sizeof(dek3des) dataOut:track1Buffer dataOutLength:sizeof(track1Buffer) bytesReturned:&bytesReturned]) {
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"The track 1 data cannot be decrypted. Please swipe the card again!" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                    [alert show];
+                });
+                
+                goto cleanup;
+            }
+            
+            // Generate the MAC for track 1 data.
+            track1MacString = [track1MacString stringByAppendingFormat:@" (%@)", [AJDHex hexStringFromByteArray:[ACRDukptReceiver macFromData:track1Buffer dataLength:sizeof(track1Buffer) key:[macKey bytes] keyLength:[macKey length]]]];
+            
+            // Get the track 1 data as string.
+            track1DataString = [[NSString alloc] initWithBytes:track1Buffer length:dukptTrackData.track1Length encoding:NSASCIIStringEncoding];
+            
+            // Divide the track 1 data into fields.
+            track1Data = [track1Data initWithString:track1DataString];
+        }
+        
+        if (dukptTrackData.track2Data != nil) {
+            
+            uint8_t track2Buffer[48];
+            size_t bytesReturned = 0;
+            NSString *track2DataString = nil;
+            
+            // Decrypt the track 2 data.
+            if (![self AJD_tripleDesDecryptData:[dukptTrackData.track2Data bytes] dataInLength:[dukptTrackData.track2Data length] key:dek3des keyLength:sizeof(dek3des) dataOut:track2Buffer dataOutLength:sizeof(track2Buffer) bytesReturned:&bytesReturned]) {
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"The track 2 data cannot be decrypted. Please swipe the card again!" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                    [alert show];
+                });
+                
+                goto cleanup;
+            }
+            
+            // Generate the MAC for track 2 data.
+            track2MacString = [track2MacString stringByAppendingFormat:@" (%@)", [AJDHex hexStringFromByteArray:[ACRDukptReceiver macFromData:track2Buffer dataLength:sizeof(track2Buffer) key:[macKey bytes] keyLength:[macKey length]]]];
+            
+            // Get the track 2 data as string.
+            track2DataString = [[NSString alloc] initWithBytes:track2Buffer length:dukptTrackData.track2Length encoding:NSASCIIStringEncoding];
+            
+            // Divide the track 2 data into fields.
+            track2Data = [track2Data initWithString:track2DataString];
+        }
+    }
+    
+cleanup:
+    
+    // Show the data.
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        _swipeCount++;
+        //        self.swipeCountLabel.text = [NSString stringWithFormat:@"%d", _swipeCount];
+        //
+        //        self.batteryStatusLabel.text = batteryStatusString;
+        //        self.keySerialNumberLabel.text = keySerialNumberString;
+        //        self.track1MacLabel.text = track1MacString;
+        //        self.track2MacLabel.text = track2MacString;
+        //
+        //        self.track1Jis2DataLabel.text = track1Data.jis2Data;
+        //        self.track1PrimaryAccountNumberLabel.text = [NSString stringWithFormat:@"%@\n%@", track1Data.primaryAccountNumber, track1MaskedData.primaryAccountNumber];
+        //        self.track1NameLabel.text = [NSString stringWithFormat:@"%@\n%@", track1Data.name, track1MaskedData.name];
+        //        self.track1ExpirationDateLabel.text = [NSString stringWithFormat:@"%@\n%@", track1Data.expirationDate, track1MaskedData.expirationDate];
+        //        self.track1ServiceCodeLabel.text = [NSString stringWithFormat:@"%@\n%@", track1Data.serviceCode, track1MaskedData.serviceCode];
+        //        self.track1DiscretionaryDataLabel.text = [NSString stringWithFormat:@"%@\n%@", track1Data.discretionaryData, track1MaskedData.discretionaryData];
+        //
+        //        self.track2PrimaryAccountNumberLabel.text = [NSString stringWithFormat:@"%@\n%@", track2Data.primaryAccountNumber, track2MaskedData.primaryAccountNumber];
+        //        self.track2ExpirationDateLabel.text = [NSString stringWithFormat:@"%@\n%@", track2Data.expirationDate, track2MaskedData.expirationDate];
+        //        self.track2ServiceCodeLabel.text = [NSString stringWithFormat:@"%@\n%@", track2Data.serviceCode, track2MaskedData.serviceCode];
+        //        self.track2DiscretionaryDataLabel.text = [NSString stringWithFormat:@"%@\n%@", track2Data.discretionaryData, track2MaskedData.discretionaryData];
+        //
+        //        [self.tableView reloadData];
+    });
+}
+
+- (void)reader:(ACRAudioJackReader *)reader didSendRawData:(const uint8_t *)rawData length:(NSUInteger)length {
+    
+    NSString *hexString = [self toHexString:rawData length:length];
+    
+    hexString = [hexString stringByAppendingString:[_reader verifyData:rawData length:length] ? @" (Checksum OK)" : @" (Checksum Error)"];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        //Set hex value to Gloval Variable
+        AppDelegate* appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        [appDelegate.cardData setObject:hexString forKey:@"hex"];
+        
+        //Wrtite to Log
+        NSString *logEntry = [NSString stringWithFormat:@"Reader sent data:%@",hexString];
+        [logEntry writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+        
+        
+        // NSLog(@"LOG_HEX%@",hexString);
+        // TODO: This is where I need to display the hexString into the Card Details/Log Console views.
+        // self.dataReceivedLabel.text = hexString;
+        // [self.tableView reloadData];
+    });
+}
+
+- (void)reader:(ACRAudioJackReader *)reader didSendCustomId:(const uint8_t *)customId length:(NSUInteger)length {
+    
+    [_responseCondition lock];
+    _customId = [NSData dataWithBytes:customId length:length];
+    _customIdReady = YES;
+    [_responseCondition signal];
+    [_responseCondition unlock];
+}
+
+- (void)reader:(ACRAudioJackReader *)reader didSendDeviceId:(const uint8_t *)deviceId length:(NSUInteger)length {
+    
+    [_responseCondition lock];
+    _deviceId = [NSData dataWithBytes:deviceId length:length];
+    _deviceIdReady = YES;
+    [_responseCondition signal];
+    [_responseCondition unlock];
+}
+
+- (void)reader:(ACRAudioJackReader *)reader didSendDukptOption:(BOOL)enabled {
+    
+    [_responseCondition lock];
+    _dukptOption = enabled;
+    _dukptOptionReady = YES;
+    [_responseCondition signal];
+    [_responseCondition unlock];
+}
+
+- (void)reader:(ACRAudioJackReader *)reader didSendTrackDataOption:(ACRTrackDataOption)option {
+    
+    [_responseCondition lock];
+    _trackDataOption = option;
+    _trackDataOptionReady = YES;
+    [_responseCondition signal];
+    [_responseCondition unlock];
+}
+
+- (void)reader:(ACRAudioJackReader *)reader didSendPiccAtr:(const uint8_t *)atr length:(NSUInteger)length {
+    
+    [_responseCondition lock];
+    _piccAtr = [NSData dataWithBytes:atr length:length];
+    _piccAtrReady = YES;
+    
+    [self transmit:nil];
+    
+    [_responseCondition signal];
+    [_responseCondition unlock];
+}
+
+- (void)reader:(ACRAudioJackReader *)reader didSendPiccResponseApdu:(const uint8_t *)responseApdu length:(NSUInteger)length {
+    
+    [_responseCondition lock];
+    _piccResponseApdu = [NSData dataWithBytes:responseApdu length:length];
+    
+    // Mute AudioJack library
+    _reader.mute = YES;
+    // Route audio to speakers
+    [[AVAudioSession sharedInstance] overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker error:nil];
+    
+    // Construct URL to a scan sound file
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"scan_sound" ofType:@"mp3"]; // Android scan sound
+    // NSString *path = [[NSBundle mainBundle] pathForResource:@"notification" ofType:@"mp3"];  // Bird chirp sound
+    NSURL *soundUrl = [NSURL fileURLWithPath:path];
+    
+    NSError *error;
+    // Create audio player object and initialize with URL to sound a scan
+    self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:&error];
+    self.audioPlayer.numberOfLoops = 1; // only play sound once
+    
+    if (self.audioPlayer == nil)
+        NSLog(@"%@",[error description]);
+    else
+        self.audioPlayer.delegate = self; // assign this player delegate to this class so audioPlayerDidFinishPlaying will be called here
+    [self.audioPlayer play]; // play the scan sound
+    NSString *UUID = [self toHexString:[_piccResponseApdu bytes] length:[_piccResponseApdu length]];
+    
+    
+    NSLog(@"UUID:%@",UUID);
+    
+    if ([UUID length] > 0) {
+        NSLog(@"UUIS");
+        //[self performSelectorOnMainThread:@selector(completeTransaction:) withObject:UUID waitUntilDone:NO];
+        
+    }
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        logView.text = [NSString stringWithFormat:@"%@ \n %@", logView.text,[self toHexString:[_piccResponseApdu bytes] length:[_piccResponseApdu length]-2]]; // log the scan UUID without SW1 and SW2
+    });
+    
+    
+    //    dispatch_async(dispatch_get_main_queue(), ^{
+    //
+    //        if (![previousResponse isEqualToString:[self toHexString:[_piccResponseApdu bytes] length:[_piccResponseApdu length]]]) {
+    //            NSLog(@"SDE%@",[self toHexString:[_piccResponseApdu bytes] length:[_piccResponseApdu length]]);
+    //        }
+    //
+    //        previousResponse = [self toHexString:[_piccResponseApdu bytes] length:[_piccResponseApdu length]];
+    //
+    //    });
+    
+    
+    _piccResponseApduReady = YES;
+    [_responseCondition signal];
+    [_responseCondition unlock];
+}
+
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)audioPlayer successfully:(BOOL)flag
+{
+    [[AVAudioSession sharedInstance] overrideOutputAudioPort:AVAudioSessionPortOverrideNone error:nil]; // Route audio back to Headphones
+    _reader.mute = NO; // Unmute the AudioJack library
+}
+
+- (void)readerDidReset:(ACRAudioJackReader *)reader {
+    
+}
+
+#pragma mark - Private Methods
+
+/**
+ * Converts the battery status to string.
+ * @param batteryStatus the battery status.
+ * @return the battery status string.
+ */
+- (NSString *)AJD_stringFromBatteryStatus:(NSUInteger)batteryStatus {
+    
+    NSString *batteryStatusString = nil;
+    
+    switch (batteryStatus) {
+            
+        case ACRBatteryStatusLow:
+            batteryStatusString = @"Low";
+            break;
+            
+        case ACRBatteryStatusFull:
+            batteryStatusString = @"Full";
+            break;
+            
+        default:
+            batteryStatusString = @"Unknown";
+            break;
+    }
+    
+    return batteryStatusString;
+}
+
+/**
+ * Decrypts the data using Triple DES.
+ * @param dataIn           the input buffer.
+ * @param dataInLength     the input buffer length.
+ * @param key              the key.
+ * @param keyLength        the key length.
+ * @param dataOut          the output buffer.
+ * @param dataOutLength    the output buffer length.
+ * @param bytesReturnedPtr the pointer to number of bytes returned.
+ * @return <code>YES</code> if the operation completed successfully, otherwise
+ *         <code>NO</code>.
+ */
+- (BOOL)AJD_tripleDesDecryptData:(const void *)dataIn dataInLength:(size_t)dataInLength key:(const void *)key keyLength:(size_t)keyLength dataOut:(void *)dataOut dataOutLength:(size_t)dataOutLength bytesReturned:(size_t *)bytesReturnedPtr {
+    
+    BOOL ret = NO;
+    
+    // Decrypt the data.
+    if (CCCrypt(kCCDecrypt, kCCAlgorithm3DES, 0, key, keyLength, NULL, dataIn, dataInLength, dataOut, dataOutLength, bytesReturnedPtr) == kCCSuccess) {
+        ret = YES;
+    }
+    
+    return ret;
+}
+
+/**
+ * Dismisses the alert view.
+ * @param alertView the alert view.
+ */
+- (void)AJD_dismissAlertView:(UIAlertView *)alertView {
+    [alertView dismissWithClickedButtonIndex:0 animated:YES];
+}
+
+
+/**
+ * Detect when the audio route has changed manage when Headphone jack is plugged/unplugged so as to never hear the AudioJack tone
+ * @param notification the notification registered
+ */
+-(void)handleRouteChange:(NSNotification*)notification{
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    AVAudioSessionPortDescription *input = [[session.currentRoute.inputs count]?session.currentRoute.inputs:nil objectAtIndex:0];
+    
+    if ([input.portType isEqual: @"MicrophoneBuiltIn"]) {
+        // TODO: need to mute AudioJack library
+    } else if ([input.portType isEqual: @"MicrophoneWired"]) {
+        // TODO: need to unmute AudioJack library
+    }
+}
+
+>>>>>>> Stashed changes
 @end

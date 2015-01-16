@@ -153,6 +153,8 @@
         
     } else if (typedNumber == 12) {
         
+        NSLog(@"que ladilla");
+        
         previous = [NSNumber numberWithFloat:[self labelNumericalValue]];
         
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
