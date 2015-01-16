@@ -25,6 +25,18 @@
 @synthesize oneButton, twoButton, threeButton, fourButton, fiveButton, sixButton, sevenButton, eightButton, nineButton, zeroButton, deleteButton;
 @synthesize firstNumber, secondNumber, thirdNumber, fourthNumber, enterPasscodeLabel;
 
+- (void) receiveNotification:(NSNotification *) notification
+{
+    // [notification name] should always be @"TestNotification"
+    // unless you use this method for observation of other notifications
+    // as well.
+    
+    if ([[notification name] isEqualToString:@"UUIDNotification"]) {
+        NSLog (@"Successfully received the UUID:%@",notification.userInfo);
+        [self completeTransaction:[notification.userInfo objectForKey:@"UUID"]];
+    }
+    
+}
 
 
 - (IBAction)goToMain:(id)sender {
@@ -430,6 +442,11 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receiveNotification:)
+                                                 name:@"UUIDNotification"
+                                               object:nil];
+    
     oneButton.frame = CGRectMake(oneButton.frame.origin.x - (self.view.frame.size.width * 1.5), oneButton.frame.origin.y, oneButton.frame.size.width, oneButton.frame.size.height);
     [self.view bringSubviewToFront:oneButton];
     
@@ -488,6 +505,13 @@
     
 }
 
+
+- (void)viewWillDisappear:(BOOL)animated {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -520,10 +544,5 @@
     [self.view addSubview:blurEffectView];
 }
 
-- (void) receiveNotification:(NSNotification *) notification
-{
-    if ([[notification name] isEqualToString:@"UUIDNotification"])
-        NSLog (@"Successfully received the UUID");
-}
 
 @end

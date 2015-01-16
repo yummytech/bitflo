@@ -26,10 +26,6 @@
     
     [super viewDidLoad];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(receiveNotification:)
-                                                 name:@"UUIDNotification"
-                                               object:nil];
 }
 
 - (void) receiveNotification:(NSNotification *) notification
@@ -353,7 +349,10 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     
-    NSLog(@"origin:%f",eightButton.frame.origin.x);
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receiveNotification:)
+                                                 name:@"UUIDNotification"
+                                               object:nil];
     
     UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
     blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
@@ -443,7 +442,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     
-    [self.view.layer removeAllAnimations];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     
     for (UIView *view in [self.view subviews]) {
         view.hidden = YES;
