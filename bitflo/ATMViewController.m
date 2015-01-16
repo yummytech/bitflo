@@ -334,13 +334,19 @@
         
     } else if (typedNumber == 12) {
         
-        if ([amountTextField.text length] > 1) {
-            amountTextField.text = [amountTextField.text substringToIndex:[amountTextField.text length] - 1];
+        
+        currentInputText = [NSString stringWithFormat:@"%i",currentInput];
+        if (currentInput > 0) {
+            currentInputText = [currentInputText substringToIndex:[currentInputText length] - 1];
+            currentInput = (int)[currentInputText integerValue];
+            float currentFloat = currentInput/100.00;
+            amountTextField.text = [NSString stringWithFormat:@"$%.2f",currentFloat];
         } else {
-            currentInputText = @"0";
+            currentInputText = @"$0.00";
             currentInput = 0;
-            amountTextField.text = [NSString stringWithFormat:@"$0.00"];
         }
+        
+        
     }
 
 }
