@@ -216,9 +216,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		451CBD0D1A61B53E00D22FA6 /* Images */ = {
+		451CBD0D1A61B53E00D22FA6 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				451CBD741A61C99F00D22FA6 /* scan_sound.mp3 */,
 				EF568AD31A62E0C4006B2B73 /* atm_icon.png */,
 				EF568ACF1A62E0AA006B2B73 /* Contactless1182x2000.png */,
 				EF568AD01A62E0AA006B2B73 /* ContactlessWhite1000x591.png */,
@@ -248,10 +249,10 @@
 				451CBD2B1A61B54800D22FA6 /* thx_button.png */,
 				451CBD2D1A61B54800D22FA6 /* XButtonGray80x80.png */,
 			);
-			name = Images;
+			name = Assets;
 			sourceTree = "<group>";
 		};
-		451CBD511A61BDC000D22FA6 /* AudioJack */ = {
+		451CBD511A61BDC000D22FA6 /* ACR35 */ = {
 			isa = PBXGroup;
 			children = (
 				451CBD711A61C5E600D22FA6 /* Dummy.mm */,
@@ -271,15 +272,8 @@
 				451CBD5D1A61BDC000D22FA6 /* AudioJackErrors.h */,
 				451CBD5E1A61BDC000D22FA6 /* libAudioJack.a */,
 			);
+			name = ACR35;
 			path = AudioJack;
-			sourceTree = "<group>";
-		};
-		451CBD731A61C99000D22FA6 /* Audios */ = {
-			isa = PBXGroup;
-			children = (
-				451CBD741A61C99F00D22FA6 /* scan_sound.mp3 */,
-			);
-			name = Audios;
 			sourceTree = "<group>";
 		};
 		45E2F5CB1A61878600223EC8 = {
@@ -303,9 +297,8 @@
 		45E2F5D61A61878600223EC8 /* bitflo */ = {
 			isa = PBXGroup;
 			children = (
-				451CBD731A61C99000D22FA6 /* Audios */,
-				451CBD511A61BDC000D22FA6 /* AudioJack */,
-				451CBD0D1A61B53E00D22FA6 /* Images */,
+				451CBD511A61BDC000D22FA6 /* ACR35 */,
+				451CBD0D1A61B53E00D22FA6 /* Assets */,
 				45E2F6161A61885600223EC8 /* Frameworks */,
 				45E2F5DB1A61878600223EC8 /* AppDelegate.h */,
 				45E2F5DC1A61878600223EC8 /* AppDelegate.m */,

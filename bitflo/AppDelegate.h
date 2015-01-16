@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
+#import <AVFoundation/AVFoundation.h>
+#import "AudioJack.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate> {
+
+}
 
 @property (strong, nonatomic) UIWindow *window;
 
@@ -23,11 +27,18 @@
 
 @property (nonatomic, strong) NSNumber *isNewPayment;
 @property (nonatomic, strong) NSMutableDictionary *cardData;
+@property (nonatomic, strong) dispatch_source_t timerSource;
+@property (getter = isObservingMessages) BOOL observingMessages;
 
+@property (nonatomic, strong) AVAudioPlayer *audioPlayer;
 
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)audioPlayer successfully:(BOOL)flag;
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
-
+- (void)resetReader:(id)viewController;
+- (void)setSleep;
+- (void)initACR35;
+- (void)stopScan;
 
 @end
 

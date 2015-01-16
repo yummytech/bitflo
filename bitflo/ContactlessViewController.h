@@ -18,9 +18,6 @@
     
     CGPoint startPosition;
     
-    //Application Delegate
-    //AppDelegate *appDelegate;
-    NSString  *filePath;
     NSString *previousResponse;
     
     UIVisualEffectView *blurEffectView;
@@ -29,11 +26,6 @@
     NSString *storedPasscode;
 }
 
-@property (nonatomic, strong) dispatch_source_t timerSource;
-@property (getter = isObservingMessages) BOOL observingMessages;
-
-@property (nonatomic, strong) IBOutlet UITextView *logView;
-@property (nonatomic, strong) AVAudioPlayer *audioPlayer;
 
 @property (nonatomic, strong) IBOutlet UIButton *oneButton;
 @property (nonatomic, strong) IBOutlet UIButton *twoButton;
@@ -60,13 +52,6 @@
 @property (nonatomic, strong) IBOutlet UIButton *salesButton;
 
 @property (nonatomic, strong) IBOutlet UILabel *amountLabel;
-
-@property (nonatomic, strong) IBOutlet UILabel *testLabel;
-
-
-- (void)resetReader;
-- (void)setSleep;
-- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)audioPlayer successfully:(BOOL)flag;
 
 
 @end
