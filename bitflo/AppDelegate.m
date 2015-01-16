@@ -938,7 +938,7 @@
         
         //[self performSelectorOnMainThread:@selector(completeTransaction:) withObject:UUID waitUntilDone:NO];
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self completeTransaction:UUID];  /// GRUNDYOSO IS STUCK HERE!
+//            [self completeTransaction:UUID];  /// GRUNDYOSO IS STUCK HERE!
         });
     }
     

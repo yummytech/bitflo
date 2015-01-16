@@ -417,7 +417,7 @@
     [self.view bringSubviewToFront:fourthNumber];
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [appDelegate resetReader:self];
+    [appDelegate resetReader];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

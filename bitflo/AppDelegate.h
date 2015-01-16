@@ -35,7 +35,7 @@
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)audioPlayer successfully:(BOOL)flag;
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
-- (void)resetReader:(id)viewController;
+- (void)resetReader;
 - (void)setSleep;
 - (void)initACR35;
 - (void)stopScan;
