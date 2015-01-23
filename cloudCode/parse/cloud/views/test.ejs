@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Starter Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/starter-template.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="/js/html5shiv.min.js"></script>
+      <script src="/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    	
+    	
+    	 		
+<% if(typeof transactions != 'undefined'){%>
+	<ul>
+	 <% for(var i=0; i < transactions.length; i++) { %>
+		
+		<% if(typeof transactions[i].transaction.recipient_account != 'undefined' && transactions[i].transaction.recipient_account.name == result.account.name){%>
+           <li>Recipient Transaction:</li>	
+           <li>
+            <p>
+                <%= transactions[i].transaction.recipient_account.name %>
+                <br />
+                <%= transactions[i].transaction.recipient_account.id %>
+            </p>
+            <p>
+                <%= transactions[i].transaction.amount.amount %>&nbsp;
+                <%= transactions[i].transaction.amount.currency %>
+            </p>
+           </li>
+         <% } %>
+         
+         
+	     <% if(typeof transactions[i].transaction.sender_account != 'undefined' && transactions[i].transaction.sender_account.name == result.account.name){%>
+           <li>Sender Transaction:</li>
+           <li>
+            <p>
+                <%= transactions[i].transaction.sender_account.name %>
+                <br />
+                <%= transactions[i].transaction.sender_account.id %>
+            </p>
+             <p>
+                <%= transactions[i].transaction.amount.amount %>&nbsp;
+                <%= transactions[i].transaction.amount.currency %>
+            </p>
+           </li>
+         <% } %>
+         
+			
+	  <% } %>
+	</ul>
+<%}%>
+    	
+
+      
+        <form name="sendmoney" id="sendmoney" class="form-horizontal" role="form" action="/send" method="post">
+    <fieldset>
+      <!---<legend>Add User</legend>--->
+      <div class="form-group">
+        <label class="col-sm-3 control-label" for="address">Bitcoin Address</label>
+        <div class="col-sm-4">
+           <input type="text" class="form-control" name="address" placeholder="BitCoin Address" autofocus>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label" for="email">E-Mail</label>
+        <div class="col-sm-4">
+          <input type="email" class="form-control" name="email" placeholder="E-Mail">
+        </div>
+      </div>
+	  <div class="form-group">
+        <label class="col-sm-3 control-label" for="cur">Currency</label>
+        <div class="col-sm-4">
+            <select class="form-control" name="cur">
+			  <option selected="selected" value="BTC">BTC</option>
+			  <option value="USD">USD</option>
+			  <option value="EUR">EUR</option>
+			</select>
+        </div>
+      </div>
+	  <div class="form-group">
+        <label class="col-sm-3 control-label" for="amount">Amount</label>
+        <div class="col-sm-3 input-group">
+        	<span class="input-group-addon">$</span>	
+          <input class="form-control" name="amount" placeholder="Amount to send" required type="money"
+                >
+				<!---<span class="input-group-addon">.00</span>--->
+        </div>
+      </div>
+     <div class="form-group">
+        <label class="col-sm-3 control-label" for="note">Note:</label>
+        <div class="col-sm-4">
+          <textarea class="form-control" rows="3" name="note" placeholder="Note"></textarea>
+        </div>
+      </div>	
+      <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-9">
+          <button type="submit" class="btn btn-success" id="sbtBtn">Send Money</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

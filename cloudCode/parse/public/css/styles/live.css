@@ -1,0 +1,36 @@
+/* Pagination CSS for MSN Live search */
+div.pagination.live {
+	font-size:small;
+	margin:10px 0;
+}
+div.pagination.live a, div.pagination.live span {
+	margin:0pt 0.38em 0pt 0pt;
+	padding:0.3em 0.7em;
+	text-align:center;
+	text-decoration:none;
+	border:1px solid #CCC;
+	cursor:pointer;
+}
+div.pagination.live a {
+	color:#00C;
+}
+div.pagination.live a:hover {
+	background:#F0F7E8;
+	border:1px solid #83BC46;
+}
+div.pagination.live span {
+	background:#F0F7E8;
+	border:1px solid #83BC46;
+}
+div.pagination.live a.previous, div.pagination.live a.next {
+	border:medium none;
+	font-size:120%;
+	font-weight:700;
+	padding:0.2em 0.5em;
+	text-decoration:underline;
+	background:none;
+}
+div.pagination.live a.previous {
+	margin-right:0.7em;
+	padding-left:0pt;
+}

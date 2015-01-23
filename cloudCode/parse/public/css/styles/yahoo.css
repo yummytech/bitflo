@@ -1,0 +1,48 @@
+/* Pagination CSS for Yahoo! */
+
+div.pagination.yahoo {
+	margin:10px 0;
+	font-size:small;
+	font-size-adjust:none;
+	font-style:normal;
+	font-variant:normal;
+	font-weight:normal;
+	line-height:1.22em;
+}
+div.pagination.yahoo span, div.pagination.yahoo a {
+	xdisplay:block;
+	xfloat:left;
+	margin:0 5px 0 0;
+	padding:1px 8px;
+	text-align:center;
+}
+div.pagination.yahoo span {
+	color:#000;
+	font-size:107%;
+	font-weight:bold;
+	padding:2px 6px;
+}
+div.pagination.yahoo a {
+	border:1px solid #CCDBE4;
+	color:#3666D4;
+	text-decoration:none;
+}
+div.pagination.yahoo a:hover {
+	color:#FFF;
+	background-color:#3666D4;
+	border-color:#2B55AF;
+}
+div.pagination.yahoo a.previous, div.pagination.yahoo a.next {
+	border-width:2px;
+	font-size:114%;
+	margin-top:-2px;
+	padding-bottom:1px;
+	padding-top:1px;
+}
+div.pagination.yahoo a.previous {
+	margin-right:14px;
+}
+div.pagination.yahoo a.next {
+	margin-left:9px;
+}
+

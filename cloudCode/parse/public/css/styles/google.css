@@ -1,0 +1,47 @@
+/* Pagination CSS for Google! */
+div.pagination.google {
+	margin-top:26px;
+	text-align:center;
+}
+div.pagination.google span {
+	background:transparent url(google-current.png) 0 0 no-repeat;
+	color:#A90A08;
+	padding-top:26px;
+	width:15px;
+	float:left;
+	font-size:10pt;
+	font-weight:bold;
+}
+div.pagination.google a {
+	float:left;
+	display:inline-block;
+	background:transparent url(google-number.png) 0 0 no-repeat;
+	width:15px;
+	padding-top:26px;
+	color:black;
+	font-size:10pt;
+}
+div.pagination.google a.previous, div.pagination.google span.previous {
+	width:70px;
+	background:transparent url(google-previous.png) 25px 0 no-repeat;
+	font-weight:bold;
+	color:#00C;
+	font-size:12pt;
+	padding-right:2px;
+}
+div.pagination.google span.previous {
+	background:transparent url(google-previous.png) -20px 0 no-repeat;
+	width:24px;
+}
+div.pagination.google a.next, div.pagination.google span.next {
+	background:transparent url(google-next.png) 0 0 no-repeat;
+	width:67px;
+	font-weight:bold;
+	color:#00C;
+	font-size:12pt;
+	padding-left:2px;
+	text-align:right;
+}
+div.pagination.google span.next {
+	width:45px;
+}

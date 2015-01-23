@@ -1,0 +1,586 @@
+<% include templates/minheader %>
+ <div class="container">
+<p>&nbsp;<br />&nbsp; </p>
+  	<% if(typeof sendresult != 'undefined') {%>
+ 		  <% if(sendresult.hasOwnProperty('transaction')){ %>
+ 		  <div class="alert alert-info alert-dismissible" role="alert">
+   			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+ 		    <ul>
+ 		    	<li>Transaction Id:<%= sendresult.transaction.id %></li>
+ 		    	<li>Transaction Status:<%= sendresult.status %></li>
+ 		    	<li>Transaction Success:<%= sendresult.success %></li>
+ 		    	<li>Transaction Request:<%= sendresult.request %></li>
+ 		    	<% if(sendresult.hasOwnProperty('errors')){ %>
+ 		    	 <li>Transaction Error:<%= sendresult.errors %></li>
+ 		    	<%}%>
+ 		    </ul>
+ 		   </div> 
+ 		    <%}else {%>	
+ 		     <div id="resultstablediv">
+ 			</div>	
+				<table id="resultstable" class="table table-condensed table-hover">
+  				</table>
+ 		   <% } %>
+ 	<%}else {%>	
+ <div id="resultstablediv">
+ </div>	
+  <table id="resultstable" class="table table-condensed table-hover">
+  </table>
+		   
+ 	<% } %>
+ <% if(typeof message != 'undefined' && message != '') {%>
+ <div class="alert alert-info alert-dismissible" role="alert">
+   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+   <strong>Message! </strong> <%= message%>
+  </div>
+ <% } %>
+<ul class="nav nav-tabs">
+ <li class="active"><a href="#details" data-toggle="tab">Details</a></li>
+ <li><a href="#send" data-toggle="tab">Send</a></li>
+ <li><a href="#request" data-toggle="tab">Request</a></li>
+</ul>
+<div id="myTabContent" class="tab-content">	
+ <div class="tab-pane active in" id="details"> 
+	
+ 	            <div class=" col-md-9 col-lg-9 "> 
+                  <table class="table table-user-information">
+                    <tbody>
+                     <!--- <tr>
+                        <td>Account:</td>
+                        <td><%= result.account.id %></td>
+                      </tr>--->
+                      <tr>
+                        <td>BTCA:</td>
+                        <td id="bitcoinaddress"></td>
+                      </tr>
+                      <tr>
+                        <td>Status:</td>
+                        <td><% if (result.account.active) {%>
+                        	  Active
+                        	<% }else{ %>
+                        	 In-Active
+                        	<% } %>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Since:</td>
+                        <td id="createdat"><%= moment(result.account.created_at).format('MMMM Do YYYY, h:mm:ss a') %></td>
+                      </tr>
+                      <tr>
+                        <td><%= result.account.balance.currency %>:</td>
+                        <td><%= result.account.balance.amount %></td>
+                      </tr>
+                      <tr>
+                        <td><%= result.account.native_balance.currency %>:</td>
+                        <td><%= result.account.native_balance.amount %></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                      <div class="panel-footer">
+<!---                        <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
+                        <span class="pull-right">
+                            <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+                            <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+                        </span>--->
+                    </div>
+                </div>
+
+
+
+ </div>
+ 			  
+<div class="tab-pane fade" id="send">		
+<br />
+<form name="sendmoney" id="sendmoney" class="form-horizontal" role="form" action="/send" method="post">
+    <fieldset>
+      <!---<legend>Add User</legend>--->
+      <div class="form-group">
+        <label class="col-sm-3 control-label" for="address">Bitcoin Address</label>
+        <div class="col-sm-4">
+           <input type="text" class="form-control" name="address" placeholder="BitCoin Address" autofocus>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label" for="email">E-Mail</label>
+        <div class="col-sm-4">
+          <input type="email" class="form-control" name="email" placeholder="E-Mail">
+        </div>
+      </div>
+<!---	  <div class="form-group">
+        <label class="col-sm-3 control-label" for="cur">Currency</label>
+        <div class="col-sm-4">
+            <select class="form-control" name="cur">
+			  <option selected="selected" value="BTC">BTC</option>
+			  <option value="USD">USD</option>
+			  <option value="EUR">EUR</option>
+			</select>
+        </div>
+      </div>--->
+	  <div class="form-group">
+        <label class="col-sm-3 control-label" for="amount">Amount</label>
+        <div class="col-sm-3 input-group">
+        	<span class="input-group-addon">$</span>	
+          <input class="form-control" name="amount" placeholder="Amount to send" required type="money"
+                >
+				<!---<span class="input-group-addon">.00</span>--->
+        </div>
+      </div>
+     <div class="form-group">
+        <label class="col-sm-3 control-label" for="note">Note:</label>
+        <div class="col-sm-4">
+          <textarea class="form-control" rows="3" name="note" placeholder="Note"></textarea>
+        </div>
+      </div>	
+      <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-9">
+          <button type="submit" class="btn btn-success" id="sbtBtn">Send Money</button>
+        </div>
+      </div>
+    </fieldset>
+  </form> 
+
+ </div> 
+ 
+ 
+ <div class="tab-pane fade" id="request">	
+<br />
+<form name="requestmoney" id="requestmoney" class="form-horizontal" role="form" action="/request" method="post">
+    <fieldset>
+      <!---<legend>Add User</legend>--->
+      <div class="form-group">
+        <label class="col-sm-3 control-label" for="email">E-Mail</label>
+        <div class="col-sm-4">
+          <input type="email" class="form-control" name="email" placeholder="E-Mail">
+        </div>
+      </div>
+<!---	  <div class="form-group">
+        <label class="col-sm-3 control-label" for="cur">Currency</label>
+        <div class="col-sm-4">
+            <select class="form-control" name="cur">
+			  <option selected="selected" value="BTC">BTC</option>
+			  <option value="USD">USD</option>
+			  <option value="EUR">EUR</option>
+			</select>
+        </div>
+      </div>--->
+	  <div class="form-group">
+        <label class="col-sm-3 control-label" for="amount">Amount</label>
+        <div class="col-sm-3 input-group">
+        	<span class="input-group-addon">$</span>	
+          <input class="form-control" name="amount" placeholder="Amount to request" required type="money"
+                >
+				<!---<span class="input-group-addon">.00</span>--->
+        </div>
+      </div>
+     <div class="form-group">
+        <label class="col-sm-3 control-label" for="note">Note:</label>
+        <div class="col-sm-4">
+          <textarea class="form-control" rows="3" name="note" placeholder="Note"></textarea>
+        </div>
+      </div>	
+      <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-9">
+          <button type="submit" class="btn btn-success" id="rbtBtn">Request Money</button>
+        </div>
+      </div>
+    </fieldset>
+  </form> 
+
+ </div> 
+ 
+ </div> 
+ 
+ <div id="transactionsdiv" class="table-responsive col-md-9 col-lg-9">
+ 	<p>&nbsp;<br />&nbsp;</p>
+  <table id="transactionstable" class="table table-condensed table-hover">
+   	<thead>
+		<tr>
+			<th>Role</th>
+			<th class="numeric">Amount (BTC)</th>
+			<th>Recv Addr</th>
+			<th>Request</th>
+			<th>Status</th>
+		</tr>
+	</thead>
+  </table>
+</div>
+</div> 
+<script src="https://www.parsecdn.com/js/parse-1.3.3.min.js"></script>
+<script type="text/javascript">
+var ccacctid = 	'<%= result.account.id %>';
+Parse.initialize(getOne(), getTwo());
+
+Parse.Cloud.run('listTransactionsByAccountId', { id: ccacctid }, {
+    success: function (result) {
+		for ( var i = 0; i < result.transactions.length; i++ ) {
+    			if (typeof result.transactions[i].transaction.recipient_account != 'undefined' && result.transactions[i].transaction.recipient_account.id == '<%=result.account.id%>') {
+        			var $tr = $('<tr>').append($('<td>').text('Recipient'));
+        				$tr.append($('<td>').text(result.transactions[i].transaction.amount.amount));
+        				
+        				if(typeof result.transactions[i].transaction.recipient_address != 'undefined'){
+        					$tr.append($('<td>').text(result.transactions[i].transaction.recipient_address));
+        				}else{
+        					$tr.append($('<td>').text('n/a'));
+        				}
+        				
+        				$tr.append($('<td>').text(result.transactions[i].transaction.request));
+        				
+        			   if(result.transactions[i].transaction.status == 'pending'){
+        					$tr.append($('<td>').text(result.transactions[i].transaction.status).addClass('warning'));
+        				}else{
+        					$tr.append($('<td>').text(result.transactions[i].transaction.status).addClass('success'));
+        				}
+            			
+        				
+        				$tr.appendTo('#transactionstable');
+        			
+    			}
+    			
+    		  if (typeof result.transactions[i].transaction.sender_account != 'undefined' && result.transactions[i].transaction.sender_account.id == '<%=result.account.id%>') {
+        			var $tr = $('<tr>').append(
+            			$('<td>').text('Sender'),
+            			$('<td>').text(result.transactions[i].transaction.amount.amount));
+            			
+            		  if(typeof result.transactions[i].transaction.recipient_address != 'undefined'){
+        					$tr.append($('<td>').text(result.transactions[i].transaction.recipient_address));
+        				}else{
+        					$tr.append($('<td>').text('n/a'));
+        				}	
+        				
+        			$tr.append($('<td>').text(result.transactions[i].transaction.request));	
+            			
+            		  if(result.transactions[i].transaction.status == 'pending'){
+        					$tr.append($('<td>').text(result.transactions[i].transaction.status).addClass('warning'));
+        				}else{
+        					$tr.append($('<td>').text(result.transactions[i].transaction.status).addClass('success'));
+        				}
+            			
+            			$tr.appendTo('#transactionstable');
+        			
+    			}
+			}
+        
+    },
+    error: function (error) {
+    	  $('#resultstablediv').empty();
+          $('#resultstablediv').html('<div class="alert alert-warning alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>Warning!</strong> ' + error.message + '</div>');
+    				
+         //$("#text").html('<p>Error: ' + error.message + '</p>');
+    }
+});
+
+Parse.Cloud.run('getBitCoinAddressByAccountId', { id: ccacctid }, {
+    success: function (result) {
+    		$("#bitcoinaddress").text(result.address);
+    },
+    error: function (error) {
+    	$('#resultstablediv').empty();
+    	$('#resultstablediv').html('<div class="alert alert-warning alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>Warning!</strong> ' + error.message + '</div>');
+        $("#bitcoinaddress").text('-----');
+    }
+});
+
+
+
+</script>
+<script type="text/javascript">
+var dom = {};
+
+	$("#sendmoney").submit(function(event) {
+		 //Stop the form from submitting
+         event.preventDefault();
+     	 //Grab the form values   
+   		 dom.form = $("#sendmoney");
+		 dom.address = dom.form.find( "input[ name = 'address' ]" );
+		 dom.amount = dom.form.find( "input[ name = 'amount' ]" );
+		 dom.email = dom.form.find( "input[ name = 'email' ]" );
+		 //dom.cur = dom.form.find( "select[ name = 'cur' ]" );
+		 dom.note = dom.form.find( "textarea[ name = 'note' ]" );
+         
+         //Disable the submit button to avoid multiple submissions
+         $("#sbtBtn").prop("disabled",true);
+         $("#sbtBtn").html('Processing....');
+        
+         //Start checking the fields
+         if(dom.address.val()){
+         	//Since we have a BitCoin Address we are good
+         	if(dom.address.val()){
+         		//Change this submit via parse API
+         		 //Make a call to the send Function
+         		 $("#sbtBtn").html('Working On It....');
+         		 
+         		 sendMoneyRequest(ccacctid,dom.address.val(),dom.amount.val(),dom.note.val());
+         		
+         	}else{
+         	//No valid Address provided
+         	//Populate the message box with the error message
+          	 $('#resultstablediv').html('<div class="alert alert-warning alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>Invalid!</strong>A valid BitCoin address is required.</div>');
+    			
+         	 //Focus on the address
+         	 dom.address.focus();
+         	 //Update the button text
+         	 $("#sbtBtn").html('Send Money.');
+         	 //enable the submit button
+         	 $("#sbtBtn").prop("disabled",false);
+         	}
+         	
+         	
+         }else if(dom.email.val()){
+         	//Since we have an Email Address
+         	if( !isValidEmailAddress( dom.email.val() ) ) { 
+         	
+         	//Push the message out	
+         	$('#resultstablediv').html('<div class="alert alert-warning alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>Invalid!</strong>A valid E-Mail address is required. ('+dom.email.val()+')</div>');
+    		
+           	 //Focus on the email address
+         	 dom.address.focus();
+         	//Update the button text
+         	 $("#sbtBtn").html('Send Money.');
+         	 //enable the submit button
+         	 $("#sbtBtn").prop("disabled",false);
+         	 }else{
+         	 	///Change this submit via parse API
+         		 //Make a call to the send Function
+         		 $("#sbtBtn").html('Working On It....');
+         		 
+         		 sendMoneyRequest(ccacctid,dom.email.val(),dom.amount.val(),dom.note.val());
+         	 }
+         	
+         }else{
+         	//No valid Address provided
+         	 $('#resultstablediv').html('<div class="alert alert-warning alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>Warning!</strong>A BitCoin or E-Mail address is required.</div>');
+    		
+           	 //Focus on the email address
+         	 dom.address.focus();
+         	//Update the button text
+         	 $("#sbtBtn").html('Send Money.');
+         	 //enable the submit button
+         	 $("#sbtBtn").prop("disabled",false);
+         }
+         
+	});
+
+    
+	//Process the form submission
+	$("#requestmoney").submit(function(event) {
+		//Stop the form from submitting
+         event.preventDefault();
+         
+         //Grab the form and it's values'
+         dom.form = $("#requestmoney");
+		 dom.amount = dom.form.find( "input[ name = 'amount' ]" );
+	     dom.email = dom.form.find( "input[ name = 'email' ]" );
+	     dom.note = dom.form.find( "textarea[ name = 'note' ]" );
+
+		 //Halt multiple submissions by disabling the submit button
+         $("#rbtBtn").prop("disabled",true);
+         $('#resultstablediv').empty();
+         
+        //Start Checking values
+		if(dom.email.val()){
+         	//Since we have an Email Address
+         	if( !isValidEmailAddress( dom.email.val() ) ) { 
+         		
+         		//Invalid email, kick it back
+         		//alert('invalid: ' + dom.email.val()); 
+         		
+         		
+         	  $('#resultstablediv').html('<div class="alert alert-warning alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>Invalid!</strong>' + dom.email.val() + '</div>');
+    		
+         		
+         		
+         		//Focus on the email field
+         		dom.email.focus();
+         		//Re-enable the submit button
+         		$("#rbtBtn").prop("disabled",false);
+         	 }else{
+         	 	//Make a Money Request
+         	 	$("#rbtBtn").html('Processing....');
+         	 	
+         	 	
+         	 	Parse.Cloud.run('requestmoney', { id: '<%= result.account.id %>',from:dom.email.val(),amount:dom.amount.val(),notes:dom.note.val()}, {
+    				success: function (result) {
+    					
+    					$("#rbtBtn").html('Loading Results....');
+    					var $div = $('<div class="alert alert-success alert-dismissible" role="alert">');
+    					var $btn = $('<button type="button" class="close" data-dismiss="alert" aria-label="Close">');
+    					var $spn = $('<span aria-hidden="true">').html('&times;').appendTo($btn);
+    					//append the button to the div first
+    					
+    					$btn.appendTo($div);
+    					
+    					//Create the UL
+    					var $ul = $('<ul>').append($('<li>').text('Id: ' + result.transaction.id));
+    						$ul.append($('<li>').text('Amount: ' + result.transaction.amount.amount + ' ' + result.transaction.amount.currency)); 
+    					
+    					
+    					if(typeof result.transaction.notes != 'undefined' && result.transaction.notes != ''){
+    						$ul.append($('<li>').text('Status: ' + result.transaction.notes));
+    					}	
+    					
+    					if(typeof result.errors != 'undefined'){
+        					  
+        					
+        					for(var i = 0; i < result.errors.length; i++ ){
+        						$ul.append($('<li>').text('Error: ' + result.errors[i]));
+        					}
+        					   
+    					}else{
+    						$ul.append($('<li>').text('Status: ' + result.transaction.status)); 
+    					}
+    					
+
+        				
+    					
+    					//append the UL to the div
+    					$ul.appendTo($div);
+    					
+    					
+    					$div.appendTo('#resultstablediv');
+    					
+    				if(typeof result.success != 'undefined' && result.success){
+    						
+    					//We also need to update the transactions table
+    					var $tr = $('<tr>').append($('<td>').text('Recipient'));
+        				$tr.append($('<td>').text(result.transaction.amount.amount));
+        				
+        				if(typeof result.transaction.recipient_address != 'undefined'){
+        					$tr.append($('<td>').text(result.transaction.recipient_address));
+        				}else{
+        					$tr.append($('<td>').text('n/a'));
+        				}
+        				
+        				$tr.append($('<td>').text(result.transaction.request));
+        				
+        			   if(result.transaction.status == 'pending'){
+        					$tr.append($('<td>').text(result.transaction.status).addClass('warning'));
+        				}else{
+        					$tr.append($('<td>').text(result.transaction.status).addClass('success'));
+        				}
+            			
+        				
+        				$tr.prependTo('#transactionstable');
+        				
+    					$("#rbtBtn").html('Request Money');
+    					$("#requestmoney")[0].reset();	
+    				}else{
+    					$("#rbtBtn").html('Request Money..');
+    				}
+    					
+
+    					
+    				$("#rbtBtn").prop("disabled",false);
+    					
+    					
+    					//$("#resultstable").empty();
+    					
+    				},
+    				error: function (error) { 	
+					  $('#resultstablediv').html('<div class="alert alert-warning alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>Warning!</strong> ' + error.message + '</div>');
+    					$("#rbtBtn").html('Request Money');
+    				}
+				});
+         	 }
+         	
+         }else{
+         	//No valid Address provided
+         	  $('#resultstablediv').html('<div class="alert alert-warning alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>Info!</strong> A valid E-Mail address is required.</div>');
+    				
+         	// alert('A valid E-Mail address is required.');
+         	 //Focus on the email field
+         	 dom.email.focus();
+         	 //Re-enable the submit button
+         	 $("#rbtBtn").prop("disabled",false);
+         }
+         
+	});
+	
+	
+function sendMoneyRequest(from,to,amount,note){
+	
+	         	 	Parse.Cloud.run('send', { from:from,to:to,amount:amount,notes:note}, {
+    				success: function (result) {
+    					
+    					$("#sbtBtn").html('Loading Results....');
+    					var $div = $('<div class="alert alert-success alert-dismissible" role="alert">');
+    					var $btn = $('<button type="button" class="close" data-dismiss="alert" aria-label="Close">');
+    					var $spn = $('<span aria-hidden="true">').html('&times;').appendTo($btn);
+    					//append the button to the div first
+    					
+    					$btn.appendTo($div);
+    					
+    					//Create the UL
+    					var $ul = $('<ul>').append($('<li>').text('Id: ' + result.transaction.id));
+    						$ul.append($('<li>').text('Amount: ' + result.transaction.amount.amount + ' ' + result.transaction.amount.currency)); 
+    					
+    					
+    					if(typeof result.transaction.notes != 'undefined' && result.transaction.notes != ''){
+    						$ul.append($('<li>').text('Status: ' + result.transaction.notes));
+    					}	
+    					
+    					if(typeof result.errors != 'undefined'){
+        					  
+        					
+        					for(var i = 0; i < result.errors.length; i++ ){
+        						$ul.append($('<li>').text('Error: ' + result.errors[i]));
+        					}
+        					   
+    					}else{
+    						$ul.append($('<li>').text('Status: ' + result.transaction.status)); 
+    					}
+    					
+
+        				
+    					
+    					//append the UL to the div
+    					$ul.appendTo($div);
+    					
+    					
+    					$div.appendTo('#resultstablediv');
+    					
+    				if(typeof result.success != 'undefined' && result.success){
+    						
+    					//We also need to update the transactions table
+    					var $tr = $('<tr>').append($('<td>').text('Sender'));
+        				$tr.append($('<td>').text(result.transaction.amount.amount));
+        				
+        				if(typeof result.transaction.recipient_address != 'undefined'){
+        					$tr.append($('<td>').text(result.transaction.recipient_address));
+        				}else{
+        					$tr.append($('<td>').text('n/a'));
+        				}
+        				
+        				$tr.append($('<td>').text(result.transaction.request));
+        				
+        			   if(result.transaction.status == 'pending'){
+        					$tr.append($('<td>').text(result.transaction.status).addClass('warning'));
+        				}else{
+        					$tr.append($('<td>').text(result.transaction.status).addClass('success'));
+        				}
+            			
+        				
+        				$tr.prependTo('#transactionstable');
+        				
+    					$("#sbtBtn").html('Send Money');
+    					$("#sendmoney")[0].reset();	
+    				}else{
+    					$("#sbtBtn").html('Send Money..');
+    				}
+    					
+
+    					
+    				$("#sbtBtn").prop("disabled",false);
+    					
+    					
+    					//$("#resultstable").empty();
+    					
+    				},
+    				error: function (error) { 	
+					  $('#resultstablediv').html('<div class="alert alert-warning alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>Warning!</strong> ' + error.message + '</div>');
+    					$("#sbtBtn").html('Request Money');
+    				}
+				});
+}	
+	
+</script>
+<% include templates/minfooter %>

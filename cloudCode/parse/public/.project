@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>BitFlo</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+	</buildSpec>
+	<natures>
+		<nature>com.adobe.ide.coldfusion.projectNature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>Cloud</name>
+			<type>2</type>
+			<location>C:/Users/aalford/BitFlo/cloud</location>
+		</link>
+	</linkedResources>
+</projectDescription>

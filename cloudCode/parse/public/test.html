@@ -1,0 +1,40 @@
+<html>
+<head>
+<script src="http://www.parsecdn.com/js/parse-1.3.3.min.js"></script>
+<script src="JSON-js-master\json.js"></script>
+ <script type="text/javascript">
+Parse.initialize("yAlCwfOGqCttOdLeme3rP1ah98B3pF34G6XOgDnL", "oHJLZyVrPWaTHCqTgE2IoK4dFdYkvJRLOpYP5mvM");
+
+     //Richard-18dfLDPCYEWB7SETaABcnr9tUy3Tv5QEe4 / info@flomio.com
+     //Allyn-1DCJ4rF78R4iDVW5KFwVnRjuP9LGGWMvA / allynalford@gmail.com
+
+     //AllynAlfordWallet - 18NotwY2dx47qLjdBttXHxCzjejd3Yx7Ji / 54b1c97d6b18ca05a0000031
+
+
+
+
+Parse.Cloud.run('balance', { id: '54b27ec9e119fbb68900008b' }, {
+    success: function (result) {
+        //alert(result);
+        //resStr = JSON.stringify(result);
+        // j = JSON.parse(result);
+        //resStr = JSON.stringify(result.accounts);
+        //var resStr = object.toJSONString(result);
+        //var myObject = eval('(' + result + ')');
+        //var resStr = myObject.account[0].id;
+        // alert(result);
+        document.write('<p>Result: ' + JSON.stringify(result) + '</p>');
+    },
+    error: function (error) {
+        document.write('<p>Error: ' + JSON.stringify(error) + '</p>');
+    }
+});
+
+
+
+
+</script>
+</head>
+<body>
+</body>
+</html>
